@@ -23,6 +23,12 @@ public class Anakart extends BilgisayarBileseni{
         this.bellek_saat_hizi = bellek_saat_hizi;
     }
 
+    public Anakart(int kampanya_id, String cpu_soketi, int bellek_saat_hizi, String marka, float fiyat, int stok) {
+        super(marka, fiyat, stok, kampanya_id);
+        this.cpu_soketi = cpu_soketi;
+        this.bellek_saat_hizi = bellek_saat_hizi;
+    }
+
     public String getCpu_soketi() {
         return cpu_soketi;
     }
