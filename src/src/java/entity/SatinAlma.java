@@ -23,6 +23,9 @@ public class SatinAlma {
         this.tutar = tutar;
     }
 
+    public SatinAlma() {
+    }
+
     public int getKullanici_id() {
         return kullanici_id;
     }
