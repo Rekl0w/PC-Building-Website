@@ -8,6 +8,8 @@ package dao;
  *
  * @author musabeytekin
  */
-public class EkranKartiDAO {
+public class EkranKartiDAO extends DBConnection{
+    
+    
     
 }

@@ -5,10 +5,6 @@ public class BilgisayarBileseni {
     private int urun_id;
     private String marka;
     private float fiyat;
-
-    public void setKampanya_id(int kampanya_id) {
-        this.kampanya_id = kampanya_id;
-    }
     private int stok;
     private int kampanya_id;
 
@@ -45,6 +41,10 @@ public class BilgisayarBileseni {
         this.marka = marka;
         this.fiyat = fiyat;
         this.stok = stok;
+        this.kampanya_id = kampanya_id;
+    }
+    
+    public void setKampanya_id(int kampanya_id) {
         this.kampanya_id = kampanya_id;
     }
 
