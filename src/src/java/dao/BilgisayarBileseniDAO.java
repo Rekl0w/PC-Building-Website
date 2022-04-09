@@ -44,7 +44,7 @@ public class BilgisayarBileseniDAO extends DBConnection{
     public void delete(BilgisayarBileseni a) {
         try {
             Statement st = this.connect().createStatement();
-            String query = "delete from anakart where urun_id = '" + a.getUrun_id() + "'";
+            String query = "delete from bilgisayar_bileseni where urun_id = '" + a.getUrun_id() + "'";
             st.executeUpdate(query);
         } catch (Exception ex) {
 

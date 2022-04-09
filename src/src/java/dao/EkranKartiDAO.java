@@ -31,7 +31,7 @@ public class EkranKartiDAO extends DBConnection{
     public void update(EkranKarti a) {
         try {
             Statement st = this.connect().createStatement();
-            String query = "update ekran_karti set model = '" + a.getModel()+ "',bellek = '" + a.getBellek()+ "',kampanya_id = '" + a.getKampanya_id() + "', marka ='" + a.getMarka() + "', fiyat = '" + a.getFiyat() + "', stok = '" + a.getStok() + "' ";
+            String query = "update ekran_karti set model = '" + a.getModel()+ "',bellek = '" + a.getBellek()+ "', kampanya_id = '" + a.getKampanya_id() + "', marka ='" + a.getMarka() + "', fiyat = '" + a.getFiyat() + "', stok = '" + a.getStok() + "' ";
             st.executeUpdate(query);
         } catch (Exception ex) {
 
