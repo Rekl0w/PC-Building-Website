@@ -11,6 +11,7 @@ public class Anakart extends BilgisayarBileseni{
     public Anakart() {
     }
 
+    //
     public Anakart(String cpu_soketi, int bellek_saat_hizi, String marka, float fiyat, int stok) {
         super(marka, fiyat, stok);
         this.cpu_soketi = cpu_soketi;
