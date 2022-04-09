@@ -4,6 +4,7 @@ package entity;
 
 public class BilgisayarBileseni {
     
+  
     private int urun_id;
     private int kampanya_id;
     private String marka;
