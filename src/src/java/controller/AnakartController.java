@@ -30,7 +30,7 @@ public class AnakartController implements Serializable {
     public void delete() {
         this.getDao().delete(entity);
         entity = new Anakart();
-
+        
     }
 
     public Anakart getEntity() {
