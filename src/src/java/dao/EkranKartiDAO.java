@@ -43,7 +43,7 @@ public class EkranKartiDAO extends DBConnection {
         }
     }
 
-    public void getList() {
+    public List<EkranKarti> getList() {
         List<EkranKarti> list = new ArrayList<>();
         try {
             Statement st = this.connect().createStatement();
@@ -58,6 +58,7 @@ public class EkranKartiDAO extends DBConnection {
 
             System.out.println(ex.getMessage());
         }
+        return list;
     }
 
 }

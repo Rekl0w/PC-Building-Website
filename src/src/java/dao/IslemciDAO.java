@@ -43,7 +43,7 @@ public class IslemciDAO extends DBConnection {
         }
     }
 
-    public void getList() {
+    public List<Islemci> getList() {
         List<Islemci> list = new ArrayList<>();
         try {
             Statement st = this.connect().createStatement();
@@ -58,6 +58,7 @@ public class IslemciDAO extends DBConnection {
 
             System.out.println(ex.getMessage());
         }
+        return list;
     }
 
 }

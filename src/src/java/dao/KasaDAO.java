@@ -43,7 +43,7 @@ public class KasaDAO extends DBConnection {
         }
     }
 
-    public void getList() {
+    public List<Kasa> getList() {
         List<Kasa> list = new ArrayList<>();
         try {
             Statement st = this.connect().createStatement();
@@ -58,6 +58,7 @@ public class KasaDAO extends DBConnection {
 
             System.out.println(ex.getMessage());
         }
+        return list;
     }
 
 }

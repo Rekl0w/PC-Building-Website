@@ -43,7 +43,7 @@ public class AnakartDAO extends DBConnection {
         }
     }
 
-    public void getList() {
+    public List<Anakart> getList() {
         List<Anakart> list = new ArrayList<>();
         try {
             Statement st = this.connect().createStatement();
@@ -58,6 +58,7 @@ public class AnakartDAO extends DBConnection {
 
             System.out.println(ex.getMessage());
         }
+        return list;
     }
 
 }

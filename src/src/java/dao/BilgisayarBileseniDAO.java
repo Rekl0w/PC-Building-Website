@@ -44,7 +44,7 @@ public class BilgisayarBileseniDAO extends DBConnection {
         }
     }
 
-    public void getList() {
+    public List<BilgisayarBileseni> getList() {
         List<BilgisayarBileseni> list = new ArrayList<>();
         try {
             Statement st = this.connect().createStatement();
@@ -58,7 +58,10 @@ public class BilgisayarBileseniDAO extends DBConnection {
         } catch (Exception ex) {
 
             System.out.println(ex.getMessage());
+
         }
+        return list;
+
     }
 
 }

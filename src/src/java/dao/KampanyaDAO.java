@@ -43,7 +43,7 @@ public class KampanyaDAO extends DBConnection {
         }
     }
 
-    public void getList() {
+    public List<Kampanya> getList() {
         List<Kampanya> list = new ArrayList<>();
         try {
             Statement st = this.connect().createStatement();
@@ -58,6 +58,8 @@ public class KampanyaDAO extends DBConnection {
 
             System.out.println(ex.getMessage());
         }
+        return list;
     }
+    
 
 }

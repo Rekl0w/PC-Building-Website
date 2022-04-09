@@ -43,7 +43,7 @@ public class KullaniciDAO extends DBConnection {
         }
     }
 
-    public void getList() {
+    public List<Kullanici> getList() {
         List<Kullanici> list = new ArrayList<>();
         try {
             Statement st = this.connect().createStatement();
@@ -58,6 +58,7 @@ public class KullaniciDAO extends DBConnection {
 
             System.out.println(ex.getMessage());
         }
+        return list;
     }
 
 }
