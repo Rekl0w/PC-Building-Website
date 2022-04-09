@@ -10,5 +10,5 @@ Kullanıcılar bu websitesi aracılığıyla istedikleri bilgisayar bileşenleri
 istedikleri bilgisayar sistemini toplayabileceklerdir.
 Bu websitesinde işlemci, ram, anakart, ekran kartı, kasa, monitör, klavye, mouse gibi
 bileşenler konfigüre edilebilecektir.
-----------------------------
+
 ![ERModel](https://github.com/Rekl0w/PC-Building-Website/blob/main/docs/ER_Diagram.jpg?raw=true)
