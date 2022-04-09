@@ -2,10 +2,10 @@
 
 
 ![GitHub contributors](https://img.shields.io/github/contributors/Rekl0w/PC-Building-Website)
----------------------------
+
 
 ## PROJE ÖZETİ:
------------------------------
+
 Kullanıcılar bu websitesi aracılığıyla istedikleri bilgisayar bileşenlerini seçerek,
 istedikleri bilgisayar sistemini toplayabileceklerdir.
 Bu websitesinde işlemci, ram, anakart, ekran kartı, kasa, monitör, klavye, mouse gibi
