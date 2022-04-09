@@ -10,4 +10,5 @@ package dao;
  */
 public class IslemciDAO {
     
+    
 }
