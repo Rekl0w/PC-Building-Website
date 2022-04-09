@@ -40,8 +40,7 @@ public class AnakartDAO extends DBConnection {
     public void delete(Anakart a) {
         try {
             Statement st = this.connect().createStatement();
-            String query = "update anakart set kampanya_id = '"+a.getKampanya_id()+"', cpu_soketi_markasi = '"+a.getCpu_soketi()+"', bellek_saat_hizi = '"+a.getBellek_saat_hizi()+"', marka = '"+a.getFiyat()+"', fiyat = '"+a.getStok()+"' ";
-            st.executeUpdate(query);
+            
         } catch (Exception ex) {
 
             System.out.println(ex.getMessage());
