@@ -43,7 +43,7 @@ public class BilgisayarBileseni {
         this.stok = stok;
         this.kampanya_id = kampanya_id;
     }
-    
+
     public void setKampanya_id(int kampanya_id) {
         this.kampanya_id = kampanya_id;
     }

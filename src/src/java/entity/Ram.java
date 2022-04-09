@@ -1,8 +1,7 @@
-
 package entity;
 
+public class Ram extends BilgisayarBileseni {
 
-public class Ram extends BilgisayarBileseni{
     private int bellek;
 
     public Ram() {
@@ -25,6 +24,5 @@ public class Ram extends BilgisayarBileseni{
     public void setBellek(int bellek) {
         this.bellek = bellek;
     }
-    
-    
+
 }

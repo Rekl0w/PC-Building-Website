@@ -1,8 +1,7 @@
-
 package entity;
 
+public class Kasa extends BilgisayarBileseni {
 
-public class Kasa extends BilgisayarBileseni{
     private String boyut;
     private int kampanya_id;
 
@@ -36,7 +35,5 @@ public class Kasa extends BilgisayarBileseni{
     public void setKampanya_id(int kampanya_id) {
         this.kampanya_id = kampanya_id;
     }
-    
-    
-    
+
 }

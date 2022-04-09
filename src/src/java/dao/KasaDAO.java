@@ -1,4 +1,3 @@
-
 package dao;
 
 import entity.Kasa;
@@ -7,8 +6,8 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-
 public class KasaDAO extends DBConnection {
+
     public void create(Kasa k) {
         try {
             Statement st = this.connect().createStatement();

@@ -1,14 +1,13 @@
-
 package dao;
 
-import entity.Kasa;
 import entity.Kullanici;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
-public class KullaniciDAO extends DBConnection{
-    
+
+public class KullaniciDAO extends DBConnection {
+
     public void create(Kullanici k) {
         try {
             Statement st = this.connect().createStatement();
@@ -24,7 +23,7 @@ public class KullaniciDAO extends DBConnection{
     public void update(Kullanici k) {
         try {
             Statement st = this.connect().createStatement();
-            String query = "update kullanici set kullanici_id = '" + k.getKullanici_id() + "', ad_soyad ='" + k.getAd_soyad()+ "', sifre = '" + k.getSifre() + "' ";
+            String query = "update kullanici set kullanici_id = '" + k.getKullanici_id() + "', ad_soyad ='" + k.getAd_soyad() + "', sifre = '" + k.getSifre() + "' ";
             st.executeUpdate(query);
         } catch (Exception ex) {
 

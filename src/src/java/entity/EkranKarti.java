@@ -1,8 +1,7 @@
-
 package entity;
 
+public class EkranKarti extends BilgisayarBileseni {
 
-public class EkranKarti extends BilgisayarBileseni{
     private String model;
     private int bellek;
 
@@ -11,7 +10,6 @@ public class EkranKarti extends BilgisayarBileseni{
         this.model = model;
         this.bellek = bellek;
     }
-    
 
     public EkranKarti(String model, int bellek, String marka, float fiyat, int stok) {
         super(marka, fiyat, stok);
@@ -44,6 +42,4 @@ public class EkranKarti extends BilgisayarBileseni{
         this.bellek = bellek;
     }
 
-    
-    
 }

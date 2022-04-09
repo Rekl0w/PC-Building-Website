@@ -1,9 +1,7 @@
-
 package entity;
 
+public class Islemci extends BilgisayarBileseni {
 
-public class Islemci extends BilgisayarBileseni{
-    
     private int cekirdek_sayisi;
     private float hiz;
 
@@ -27,8 +25,6 @@ public class Islemci extends BilgisayarBileseni{
         this.cekirdek_sayisi = cekirdek_sayisi;
         this.hiz = hiz;
     }
-    
-    
 
     public int getCekirdek_sayisi() {
         return cekirdek_sayisi;
@@ -45,6 +41,5 @@ public class Islemci extends BilgisayarBileseni{
     public void setHiz(float hiz) {
         this.hiz = hiz;
     }
-    
-    
+
 }

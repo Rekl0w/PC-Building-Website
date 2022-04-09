@@ -1,7 +1,7 @@
 package entity;
 
-
 public class SatinAlma {
+
     private int kullanici_id;
     private int urun_id;
     private float tutar;
@@ -54,7 +54,5 @@ public class SatinAlma {
     public void setTarih(String tarih) {
         this.tarih = tarih;
     }
-    
-    
 
 }

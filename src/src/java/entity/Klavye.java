@@ -1,8 +1,7 @@
-
 package entity;
 
+public class Klavye extends BilgisayarBileseni {
 
-public class Klavye extends BilgisayarBileseni{
     private String switch_modeli;
 
     public Klavye(String switch_modeli, String marka, float fiyat, int stok) {
@@ -25,7 +24,5 @@ public class Klavye extends BilgisayarBileseni{
     public void setSwitch_modeli(String switch_modeli) {
         this.switch_modeli = switch_modeli;
     }
-    
-    
-    
+
 }

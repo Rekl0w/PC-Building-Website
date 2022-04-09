@@ -1,12 +1,9 @@
-
 package entity;
 
+public class Anakart extends BilgisayarBileseni {
 
-public class Anakart extends BilgisayarBileseni{
-    
     private String cpu_soketi;
     private int bellek_saat_hizi;
-    
 
     public Anakart() {
     }
@@ -45,7 +42,4 @@ public class Anakart extends BilgisayarBileseni{
         this.bellek_saat_hizi = bellek_saat_hizi;
     }
 
-    
-    
-    
 }

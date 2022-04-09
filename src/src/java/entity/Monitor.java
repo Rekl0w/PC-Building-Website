@@ -1,8 +1,7 @@
-
 package entity;
 
+public class Monitor extends BilgisayarBileseni {
 
-public class Monitor extends BilgisayarBileseni{
     private int ekran_yenileme_hizi;
     private int boyut;
 
@@ -34,6 +33,5 @@ public class Monitor extends BilgisayarBileseni{
     public void setBoyut(int boyut) {
         this.boyut = boyut;
     }
-    
-    
+
 }

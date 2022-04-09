@@ -1,8 +1,7 @@
-
 package entity;
 
-
 public class Kullanici {
+
     private int kullanici_id;
     private String ad_soyad;
     private String sifre;
@@ -24,7 +23,7 @@ public class Kullanici {
     public int getKullanici_id() {
         return kullanici_id;
     }
-    
+
     public String getAd_soyad() {
         return ad_soyad;
     }
@@ -40,7 +39,5 @@ public class Kullanici {
     public void setSifre(String sifre) {
         this.sifre = sifre;
     }
-    
-    
-    
+
 }

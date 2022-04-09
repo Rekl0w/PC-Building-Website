@@ -1,8 +1,7 @@
-
 package entity;
 
-
 public class Kampanya {
+
     private int kampanya_id;
     private float indirim_yuzdesi;
 
@@ -29,6 +28,5 @@ public class Kampanya {
     public void setIndirim_yuzdesi(float indirim_yuzdesi) {
         this.indirim_yuzdesi = indirim_yuzdesi;
     }
-    
-    
+
 }

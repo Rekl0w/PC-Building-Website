@@ -1,8 +1,7 @@
-
 package entity;
 
+public class Mouse extends BilgisayarBileseni {
 
-public class Mouse extends BilgisayarBileseni{
     private String baglanma_sekli;
 
     public Mouse() {
@@ -25,6 +24,5 @@ public class Mouse extends BilgisayarBileseni{
     public void setBaglanma_sekli(String baglanma_sekli) {
         this.baglanma_sekli = baglanma_sekli;
     }
-    
-    
+
 }

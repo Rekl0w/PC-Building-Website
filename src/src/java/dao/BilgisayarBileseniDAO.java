@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package dao;
 
 import entity.Anakart;
@@ -11,16 +7,12 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- *
- * @author musabeytekin
- */
-public class BilgisayarBileseniDAO extends DBConnection{
-    
+public class BilgisayarBileseniDAO extends DBConnection {
+
     public void create(BilgisayarBileseni a) {
         try {
             Statement st = this.connect().createStatement();
-            String query = "insert into bilgisayar_bileseni (kampanya_id, marka, fiyat, stok) values('" + a.getKampanya_id() + "', '" + a.getMarka()+ "', '" + a.getFiyat()+ "', '" + a.getStok()+ "' ";
+            String query = "insert into bilgisayar_bileseni (kampanya_id, marka, fiyat, stok) values('" + a.getKampanya_id() + "', '" + a.getMarka() + "', '" + a.getFiyat() + "', '" + a.getStok() + "' ";
             st.executeUpdate(query);
         } catch (Exception ex) {
 
@@ -68,5 +60,5 @@ public class BilgisayarBileseniDAO extends DBConnection{
             System.out.println(ex.getMessage());
         }
     }
-    
+
 }
