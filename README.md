@@ -4,7 +4,7 @@
 ![GitHub contributors](https://img.shields.io/github/contributors/Rekl0w/PC-Building-Website)
 ---------------------------
 
-PROJE ÖZETİ:
+## PROJE ÖZETİ:
 -----------------------------
 Kullanıcılar bu websitesi aracılığıyla istedikleri bilgisayar bileşenlerini seçerek,
 istedikleri bilgisayar sistemini toplayabileceklerdir.
