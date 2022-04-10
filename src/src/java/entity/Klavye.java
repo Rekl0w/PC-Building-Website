@@ -22,10 +22,6 @@ public class Klavye extends BilgisayarBileseni {
     public Klavye() {
     }
 
-    public Klavye(String string, String string0, float aFloat, int aInt, Kampanya findById) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
     public String getSwitch_modeli() {
         return switch_modeli;
     }

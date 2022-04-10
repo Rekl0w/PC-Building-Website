@@ -12,7 +12,7 @@ public class IslemciDAO extends DBConnection {
     public void create(Islemci a) {
         try {
             Statement st = this.getConnection().createStatement();
-            String query = "insert into islemci (urun_id, cekirdek_sayisi, hiz, kampanya_id, marka, fiyat, stok) values(" + a.getUrun_id()+ "," + a.getCekirdek_sayisi() + "," + a.getHiz() + "," + a.getKampanya().getKampanya_id() + ", '" + a.getMarka() + "', " + a.getFiyat() + ", " + a.getStok();
+            String query = "insert into islemci (urun_id, kampanya_id, cekirdek_sayisi, hiz, marka, fiyat, stok) values(" + a.getUrun_id()+ "," + a.getKampanya().getKampanya_id() + "," + a.getCekirdek_sayisi() + "," + a.getHiz() + "," +  "'" + a.getMarka() + "', " + a.getFiyat() + ", " + a.getStok() + ")";
             st.executeUpdate(query);
         } catch (Exception ex) {
 
@@ -52,7 +52,7 @@ public class IslemciDAO extends DBConnection {
             ResultSet rs = st.executeQuery(query);
 
             while (rs.next()) {
-                list.add(new Islemci(rs.getInt("urun_id"), rs.getInt("cekirdek_sayisi"), rs.getFloat("hiz"), rs.getString("marka"), rs.getFloat("fiyat"), rs.getInt("stok"), this.getKampanyaDAO().findById(rs.getInt("kampanya_id"))));
+                list.add(new Islemci(rs.getInt("urun_id"), this.getKampanyaDAO().findById(rs.getInt("kampanya_id")), rs.getInt("cekirdek_sayisi"), rs.getFloat("hiz"), rs.getString("marka"), rs.getFloat("fiyat"), rs.getInt("stok") ));
 
             }
         } catch (Exception ex) {

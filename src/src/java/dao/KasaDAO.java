@@ -9,11 +9,10 @@ import java.util.List;
 public class KasaDAO extends DBConnection {
 
     private KampanyaDAO kampanyaDAO;
-
     public void create(Kasa k) {
         try {
             Statement st = this.getConnection().createStatement();
-            String query = "insert into kasa (urun_id, boyut, marka, fiyat, stok,kampanya_id) values(" + k.getUrun_id() + ", " + k.getBoyut() + ", '" + k.getMarka() + "', " + k.getFiyat() + ", " + k.getStok() + ", " + k.getKampanya().getKampanya_id() + ") ";
+            String query = "insert into kasa (kampanya_id, boyut, marka, fiyat, stok) values(" + k.getKampanya().getKampanya_id() + ", '" + k.getBoyut() + "', '" + k.getMarka() + "', " + k.getFiyat() + ", " + k.getStok() + ") ";
             st.executeUpdate(query);
         } catch (Exception ex) {
 
@@ -25,7 +24,7 @@ public class KasaDAO extends DBConnection {
     public void update(Kasa k) {
         try {
             Statement st = this.getConnection().createStatement();
-            String query = "update kasa set kampanya_id = " + k.getKampanya().getKampanya_id() + ", boyut =" + k.getBoyut() + ", marka = '" + k.getMarka() + "', fiyat = " + k.getFiyat() + ", stok = " + k.getStok();
+            String query = "update kasa set kampanya_id = " + k.getKampanya().getKampanya_id() + ", boyut ='" + k.getBoyut() + "', marka = '" + k.getMarka() + "', fiyat = " + k.getFiyat() + ", stok = " + k.getStok();
             st.executeUpdate(query);
         } catch (Exception ex) {
 
@@ -53,7 +52,8 @@ public class KasaDAO extends DBConnection {
             ResultSet rs = st.executeQuery(query);
 
             while (rs.next()) {
-                list.add(new Kasa(rs.getInt("urun_id"), rs.getString("boyut"), rs.getString("marka"), rs.getFloat("fiyat"), rs.getInt("stok"), this.getKampanyaDAO().findById(rs.getInt("kampanya_id"))));
+                list.add(new Kasa(this.getKampanyaDAO().findById(rs.getInt("kampanya_id")), rs.getString("boyut"), rs.getString("marka"), rs.getFloat("fiyat"), rs.getInt("stok")));
+
             }
         } catch (Exception ex) {
 
@@ -63,7 +63,7 @@ public class KasaDAO extends DBConnection {
     }
 
     public KampanyaDAO getKampanyaDAO() {
-        if (this.kampanyaDAO == null) {
+        if(this.kampanyaDAO == null){
             this.kampanyaDAO = new KampanyaDAO();
         }
         return kampanyaDAO;
