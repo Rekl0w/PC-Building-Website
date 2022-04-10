@@ -12,7 +12,7 @@ public class KasaDAO extends DBConnection {
     public void create(Kasa k) {
         try {
             Statement st = this.getConnection().createStatement();
-            String query = "insert into kasa (kampanya_id, boyut, marka, fiyat, stok) values('" + k.getKampanya().getKampanya_id() + "', '" + k.getBoyut() + "', '" + k.getMarka() + "', '" + k.getFiyat() + "', '" + k.getStok() + "') ";
+            String query = "insert into kasa (kampanya_id, boyut, marka, fiyat, stok) values(" + k.getKampanya().getKampanya_id() + ", '" + k.getBoyut() + "', '" + k.getMarka() + "', " + k.getFiyat() + ", " + k.getStok() + ") ";
             st.executeUpdate(query);
         } catch (Exception ex) {
 
@@ -24,7 +24,7 @@ public class KasaDAO extends DBConnection {
     public void update(Kasa k) {
         try {
             Statement st = this.getConnection().createStatement();
-            String query = "update kasa set kampanya_id = '" + k.getKampanya().getKampanya_id() + "', boyut ='" + k.getBoyut() + "', marka = '" + k.getMarka() + "', fiyat = '" + k.getFiyat() + "', stok = '" + k.getStok() + "' ";
+            String query = "update kasa set kampanya_id = " + k.getKampanya().getKampanya_id() + ", boyut ='" + k.getBoyut() + "', marka = '" + k.getMarka() + "', fiyat = " + k.getFiyat() + ", stok = " + k.getStok();
             st.executeUpdate(query);
         } catch (Exception ex) {
 
@@ -36,7 +36,7 @@ public class KasaDAO extends DBConnection {
     public void delete(Kasa k) {
         try {
             Statement st = this.getConnection().createStatement();
-            String query = "delete from kasa where urun_id = '" + k.getUrun_id() + "'";
+            String query = "delete from kasa where urun_id = " + k.getUrun_id();
             st.executeUpdate(query);
         } catch (Exception ex) {
 

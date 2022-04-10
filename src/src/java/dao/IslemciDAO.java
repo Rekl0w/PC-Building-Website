@@ -12,7 +12,7 @@ public class IslemciDAO extends DBConnection {
     public void create(Islemci a) {
         try {
             Statement st = this.getConnection().createStatement();
-            String query = "insert into islemci (cekirdek_sayisi, hiz, kampanya_id, marka, fiyat, stok) values('" + a.getCekirdek_sayisi() + "','" + a.getHiz() + "','" + a.getKampanya().getKampanya_id() + "', '" + a.getMarka() + "', '" + a.getFiyat() + "', '" + a.getStok() + "' ";
+            String query = "insert into islemci (cekirdek_sayisi, hiz, kampanya_id, marka, fiyat, stok) values(" + a.getCekirdek_sayisi() + "," + a.getHiz() + "," + a.getKampanya().getKampanya_id() + ", '" + a.getMarka() + "', " + a.getFiyat() + ", " + a.getStok();
             st.executeUpdate(query);
         } catch (Exception ex) {
 
@@ -24,7 +24,7 @@ public class IslemciDAO extends DBConnection {
     public void update(Islemci a) {
         try {
             Statement st = this.getConnection().createStatement();
-            String query = "update islemci set cekirdek_sayisi ='" + a.getCekirdek_sayisi() + "', hiz ='" + a.getHiz() + "', kampanya_id = '" + a.getKampanya().getKampanya_id() + "', marka ='" + a.getMarka() + "', fiyat = '" + a.getFiyat() + "', stok = '" + a.getStok() + "' ";
+            String query = "update islemci set cekirdek_sayisi =" + a.getCekirdek_sayisi() + ", hiz =" + a.getHiz() + ", kampanya_id = " + a.getKampanya().getKampanya_id() + ", marka ='" + a.getMarka() + "', fiyat = " + a.getFiyat() + ", stok = " + a.getStok();
             st.executeUpdate(query);
         } catch (Exception ex) {
 
@@ -36,7 +36,7 @@ public class IslemciDAO extends DBConnection {
     public void delete(Islemci a) {
         try {
             Statement st = this.getConnection().createStatement();
-            String query = "delete from islemci where urun_id = '" + a.getUrun_id() + "'";
+            String query = "delete from islemci where urun_id = " + a.getUrun_id() + "";
             st.executeUpdate(query);
         } catch (Exception ex) {
 

@@ -12,7 +12,7 @@ public class EkranKartiDAO extends DBConnection {
     public void create(EkranKarti a) {
         try {
             Statement st = this.getConnection().createStatement();
-            String query = "insert into ekran_karti (model, bellek, kampanya_id, marka, fiyat, stok) values('" + a.getModel() + "','" + a.getBellek() + "','" + a.getKampanya().getKampanya_id() + "', '" + a.getMarka() + "', '" + a.getFiyat() + "', '" + a.getStok() + "' ";
+            String query = "insert into ekran_karti (model, bellek, kampanya_id, marka, fiyat, stok) values('" + a.getModel() + "'," + a.getBellek() + "," + a.getKampanya().getKampanya_id() + ", '" + a.getMarka() + "', " + a.getFiyat() + ", " + a.getStok();
             st.executeUpdate(query);
         } catch (Exception ex) {
 
@@ -24,7 +24,7 @@ public class EkranKartiDAO extends DBConnection {
     public void update(EkranKarti a) {
         try {
             Statement st = this.getConnection().createStatement();
-            String query = "update ekran_karti set model = '" + a.getModel() + "',bellek = '" + a.getBellek() + "', kampanya_id = '" + a.getKampanya().getKampanya_id() + "', marka ='" + a.getMarka() + "', fiyat = '" + a.getFiyat() + "', stok = '" + a.getStok() + "' ";
+            String query = "update ekran_karti set model = '" + a.getModel() + "',bellek = " + a.getBellek() + ", kampanya_id = " + a.getKampanya().getKampanya_id() + ", marka ='" + a.getMarka() + "', fiyat = " + a.getFiyat() + ", stok = " + a.getStok();
             st.executeUpdate(query);
         } catch (Exception ex) {
 
@@ -36,7 +36,7 @@ public class EkranKartiDAO extends DBConnection {
     public void delete(EkranKarti a) {
         try {
             Statement st = this.getConnection().createStatement();
-            String query = "delete from ekran_karti where urun_id = '" + a.getUrun_id() + "'";
+            String query = "delete from ekran_karti where urun_id = " + a.getUrun_id();
             st.executeUpdate(query);
         } catch (Exception ex) {
 
