@@ -11,7 +11,7 @@ public class KullaniciDAO extends DBConnection {
     public void create(Kullanici k) {
         try {
             Statement st = this.getConnection().createStatement();
-            String query = "insert into kullanici (kullanici_id, ad_soyad, sifre) values('" + k.getKullanici_id() + "', '" + k.getAd_soyad() + "', '" + k.getSifre() + "') ";
+            String query = "insert into kullanici (ad_soyad, sifre) values('"+ k.getAd_soyad() + "', '" + k.getSifre() + "') ";
             st.executeUpdate(query);
         } catch (Exception ex) {
 
@@ -59,6 +59,24 @@ public class KullaniciDAO extends DBConnection {
             System.out.println(ex.getMessage());
         }
         return list;
+    }
+    
+    public Kullanici findById(int id){
+        Kullanici k = null;
+         try {
+            Statement st = this.getConnection().createStatement();
+            String query = "select * from kullanici";
+            ResultSet rs = st.executeQuery(query);
+
+            while (rs.next()) {
+                k = new Kullanici(rs.getString("ad_soyad"), rs.getString("sifre"));
+            }
+        } catch (Exception ex) {
+
+            System.out.println(ex.getMessage());
+        }
+        
+        return k;
     }
 
 }
