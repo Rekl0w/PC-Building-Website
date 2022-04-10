@@ -3,11 +3,11 @@ package controller;
 import dao.KullaniciDAO;
 import entity.Kullanici;
 import jakarta.inject.Named;
-import jakarta.faces.bean.SessionScoped;
+import jakarta.enterprise.context.SessionScoped;
 import java.io.Serializable;
 import java.util.List;
 
-@Named
+@Named(value ="kullaniciController")
 @SessionScoped
 public class KullaniciController implements Serializable {
 

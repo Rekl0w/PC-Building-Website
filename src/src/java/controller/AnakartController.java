@@ -3,11 +3,11 @@ package controller;
 import dao.AnakartDAO;
 import entity.Anakart;
 import jakarta.inject.Named;
-import jakarta.faces.bean.SessionScoped;
+import jakarta.enterprise.context.SessionScoped;
 import java.io.Serializable;
 import java.util.List;
 
-@Named
+@Named(value ="anakartController")
 @SessionScoped
 public class AnakartController implements Serializable {
 

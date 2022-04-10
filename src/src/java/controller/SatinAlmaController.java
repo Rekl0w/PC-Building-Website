@@ -3,11 +3,11 @@ package controller;
 import dao.SatinAlmaDAO;
 import entity.SatinAlma;
 import jakarta.inject.Named;
-import jakarta.faces.bean.SessionScoped;
+import jakarta.enterprise.context.SessionScoped;
 import java.io.Serializable;
 import java.util.List;
 
-@Named
+@Named(value ="satinAlmaController")
 @SessionScoped
 public class SatinAlmaController implements Serializable {
 

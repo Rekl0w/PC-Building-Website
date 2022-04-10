@@ -3,11 +3,11 @@ package controller;
 import dao.KlavyeDAO;
 import entity.Klavye;
 import jakarta.inject.Named;
-import jakarta.faces.bean.SessionScoped;
+import jakarta.enterprise.context.SessionScoped;
 import java.io.Serializable;
 import java.util.List;
 
-@Named
+@Named(value ="klavyeController")
 @SessionScoped
 public class KlavyeController implements Serializable {
 

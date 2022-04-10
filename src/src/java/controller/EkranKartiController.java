@@ -3,11 +3,11 @@ package controller;
 import dao.EkranKartiDAO;
 import entity.EkranKarti;
 import jakarta.inject.Named;
-import jakarta.faces.bean.SessionScoped;
+import jakarta.enterprise.context.SessionScoped;
 import java.io.Serializable;
 import java.util.List;
 
-@Named
+@Named(value ="EkranKartiController")
 @SessionScoped
 public class EkranKartiController implements Serializable {
 

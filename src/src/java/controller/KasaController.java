@@ -3,11 +3,11 @@ package controller;
 import dao.KasaDAO;
 import entity.Kasa;
 import jakarta.inject.Named;
-import jakarta.faces.bean.SessionScoped;
+import jakarta.enterprise.context.SessionScoped;
 import java.io.Serializable;
 import java.util.List;
 
-@Named
+@Named(value ="kasaController")
 @SessionScoped
 public class KasaController implements Serializable {
 
