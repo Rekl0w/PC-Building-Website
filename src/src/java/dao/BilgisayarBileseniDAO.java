@@ -16,7 +16,7 @@ public class BilgisayarBileseniDAO extends DBConnection {
     public void create(BilgisayarBileseni a) {
         try {
             Statement st = this.getConnection().createStatement();
-            String query = "insert into bilgisayar_bileseni (kampanya_id, marka, fiyat, stok) values('" + a.getKampanya().getKampanya_id() + "', '" + a.getMarka() + "', '" + a.getFiyat() + "', '" + a.getStok() + "' ";
+            String query = "insert into bilgisayar_bileseni (marka, fiyat, stok) values('" + a.getMarka() + "', '" + a.getFiyat() + "', '" + a.getStok() + "' ";
             st.executeUpdate(query);
 
             ResultSet rs = st.executeQuery("select max(urun_id) as mid from bilgisayar_bileseni");
@@ -39,8 +39,7 @@ public class BilgisayarBileseniDAO extends DBConnection {
     public void update(BilgisayarBileseni a) {
         try {
             Statement st = this.getConnection().createStatement();
-            String query = "update bilgisayar_bileseni set kampanya_id = '" + a.getKampanya().getKampanya_id() + "', marka ='" + a.getMarka() + "', fiyat = '" + a.getFiyat() + "', stok = '" + a.getStok() + "' ";
-            st.executeUpdate(query);
+            String query = "update bilgisayar_bileseni set marka ='" + a.getMarka() + "', fiyat = '" + a.getFiyat() + "', stok = '" + a.getStok() + "' ";            st.executeUpdate(query);
 
             st.executeUpdate("delete from siparis_verir where urun_id = " + a.getUrun_id());
             for (Kullanici k : a.getKullanicilar()) {
