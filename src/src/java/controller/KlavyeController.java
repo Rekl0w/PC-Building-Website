@@ -27,8 +27,8 @@ public class KlavyeController implements Serializable {
 
     }
 
-    public void delete() {
-        this.getDao().delete(entity);
+    public void delete(Klavye k) {
+        this.getDao().delete(k);
         entity = new Klavye();
         
     }

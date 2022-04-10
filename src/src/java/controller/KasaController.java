@@ -27,8 +27,8 @@ public class KasaController implements Serializable {
 
     }
 
-    public void delete() {
-        this.getDao().delete(entity);
+    public void delete(Kasa k) {
+        this.getDao().delete(k);
         entity = new Kasa();
         
     }

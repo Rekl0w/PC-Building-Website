@@ -27,8 +27,8 @@ public class RamController implements Serializable {
 
     }
 
-    public void delete() {
-        this.getDao().delete(entity);
+    public void delete(Ram r) {
+        this.getDao().delete(r);
         entity = new Ram();
 
     }

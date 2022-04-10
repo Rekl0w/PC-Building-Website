@@ -20,8 +20,8 @@ public class Islemci extends BilgisayarBileseni {
         this.hiz = hiz;
     }
 
-    public Islemci(int cekirdek_sayisi, float hiz, String marka, float fiyat, int stok, int kampanya_id) {
-        super(marka, fiyat, stok, kampanya_id);
+    public Islemci(int cekirdek_sayisi, float hiz, String marka, float fiyat, int stok, Kampanya kampanya) {
+        super(marka, fiyat, stok, kampanya);
         this.cekirdek_sayisi = cekirdek_sayisi;
         this.hiz = hiz;
     }

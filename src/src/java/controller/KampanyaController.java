@@ -27,8 +27,8 @@ public class KampanyaController implements Serializable {
 
     }
 
-    public void delete() {
-        this.getDao().delete(entity);
+    public void delete(Kampanya k) {
+        this.getDao().delete(k);
         entity = new Kampanya();
 
     }

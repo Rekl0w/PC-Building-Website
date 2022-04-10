@@ -27,8 +27,8 @@ public class SatinAlmaController implements Serializable {
 
     }
 
-    public void delete() {
-        this.getDao().delete(entity);
+    public void delete(SatinAlma sa) {
+        this.getDao().delete(sa);
         entity = new SatinAlma();
 
     }

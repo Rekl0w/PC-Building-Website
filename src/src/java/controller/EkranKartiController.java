@@ -27,8 +27,8 @@ public class EkranKartiController implements Serializable {
 
     }
 
-    public void delete() {
-        this.getDao().delete(entity);
+    public void delete(EkranKarti e) {
+        this.getDao().delete(e);
         entity = new EkranKarti();
         
     }

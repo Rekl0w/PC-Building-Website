@@ -27,8 +27,8 @@ public class MouseController implements Serializable {
 
     }
 
-    public void delete() {
-        this.getDao().delete(entity);
+    public void delete(Mouse m) {
+        this.getDao().delete(m);
         entity = new Mouse();
 
     }

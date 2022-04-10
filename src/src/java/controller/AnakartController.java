@@ -27,8 +27,8 @@ public class AnakartController implements Serializable {
 
     }
 
-    public void delete() {
-        this.getDao().delete(entity);
+    public void delete(Anakart a) {
+        this.getDao().delete(a);
         entity = new Anakart();
         
     }

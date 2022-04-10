@@ -27,8 +27,8 @@ public class MonitorController implements Serializable {
 
     }
 
-    public void delete() {
-        this.getDao().delete(entity);
+    public void delete(Monitor m) {
+        this.getDao().delete(m);
         entity = new Monitor();
 
     }

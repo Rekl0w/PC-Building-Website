@@ -3,21 +3,20 @@ package entity;
 public class Kasa extends BilgisayarBileseni {
 
     private String boyut;
-    private int kampanya_id;
+    private Kampanya kampanya;
 
     public Kasa() {
     }
 
-    public Kasa(int kampanya_id, String boyut, String marka, float fiyat, int stok) {
+    public Kasa(Kampanya kampanya, String boyut, String marka, float fiyat, int stok) {
         super(marka, fiyat, stok);
         this.boyut = boyut;
-        this.kampanya_id = kampanya_id;
+        this.kampanya = kampanya;
     }
 
     public Kasa(String boyut, String marka, float fiyat) {
         super(marka, fiyat);
         this.boyut = boyut;
-        this.kampanya_id = kampanya_id;
     }
 
     public String getBoyut() {
@@ -28,12 +27,12 @@ public class Kasa extends BilgisayarBileseni {
         this.boyut = boyut;
     }
 
-    public int getKampanya_id() {
-        return kampanya_id;
+    public Kampanya getKampanya() {
+        return kampanya;
     }
 
-    public void setKampanya_id(int kampanya_id) {
-        this.kampanya_id = kampanya_id;
+    public void setKampanya(Kampanya kampanya) {
+        this.kampanya = kampanya;
     }
 
 }

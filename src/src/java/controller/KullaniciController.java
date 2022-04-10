@@ -27,8 +27,8 @@ public class KullaniciController implements Serializable {
 
     }
 
-    public void delete() {
-        this.getDao().delete(entity);
+    public void delete(Kullanici k) {
+        this.getDao().delete(k);
         entity = new Kullanici();
 
     }

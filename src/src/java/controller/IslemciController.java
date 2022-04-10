@@ -27,8 +27,8 @@ public class IslemciController implements Serializable {
 
     }
 
-    public void delete() {
-        this.getDao().delete(entity);
+    public void delete(Islemci i) {
+        this.getDao().delete(i);
         entity = new Islemci();
 
     }

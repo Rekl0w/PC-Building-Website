@@ -7,6 +7,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class KampanyaDAO extends DBConnection {
+    
+    
 
     public void create(Kampanya k) {
         try {
@@ -41,6 +43,25 @@ public class KampanyaDAO extends DBConnection {
 
             System.out.println(ex.getMessage());
         }
+    }
+    
+    public Kampanya findById(int id){
+        Kampanya k = null;
+         try {
+            Statement st = this.connect().createStatement();
+            String query = "select * from kampanya";
+            ResultSet rs = st.executeQuery(query);
+
+            while (rs.next()) {
+                k = new Kampanya(rs.getInt("id"), rs.getFloat("indirim_yuzdesi"));
+
+            }
+        } catch (Exception ex) {
+
+            System.out.println(ex.getMessage());
+        }
+        
+        return k;
     }
 
     public List<Kampanya> getList() {

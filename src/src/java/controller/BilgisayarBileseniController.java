@@ -27,8 +27,8 @@ public class BilgisayarBileseniController implements Serializable {
 
     }
 
-    public void delete() {
-        this.getDao().delete(entity);
+    public void delete(BilgisayarBileseni b) {
+        this.getDao().delete(b);
         entity = new BilgisayarBileseni();
 
     }
