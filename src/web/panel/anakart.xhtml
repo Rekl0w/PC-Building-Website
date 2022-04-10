@@ -10,13 +10,13 @@
         <h:form>
             
             
-            urun id =  <h:inputText value = "#{anakartController.entity.urun_id}"/>
-            kampanya =  <h:inputText value = "#{anakartController.entity.kampanya}" converter ="kampanyaConverter" />
-            Cpu Soketi=  <h:inputText value = "#{anakartController.entity.cpu_soketi}" />
-            Bellek Saat Hızı=  <h:inputText value = "#{anakartController.entity.bellek_saat_hizi}" />
-            Marka=  <h:inputText value = "#{anakartController.entity.marka}" />
-            Fiyat=  <h:inputText value = "#{anakartController.entity.fiyat}" />
-            Stok = <h:inputText value = "#{anakartController.entity.stok}" />
+            Urun ID:  <h:inputText value = "#{anakartController.entity.urun_id}"/>
+            Kampanya ID:  <h:inputText value = "#{anakartController.entity.kampanya}" converter ="kampanyaConverter" />
+            Cpu Soketi:  <h:inputText value = "#{anakartController.entity.cpu_soketi}" />
+            Bellek Saat Hızı:  <h:inputText value = "#{anakartController.entity.bellek_saat_hizi}" />
+            Marka: <h:inputText value = "#{anakartController.entity.marka}" />
+            Fiyat: <h:inputText value = "#{anakartController.entity.fiyat}" />
+            Stok: <h:inputText value = "#{anakartController.entity.stok}" />
 
             <h:commandButton rendered = "#{anakartController.entity.urun_id == 0}" action = "#{anakartController.create()}" value = "create"/>
             <h:commandButton rendered = "#{anakartController.entity.urun_id != 0}" action = "#{anakartController.update()}" value = "update"/>
@@ -27,32 +27,37 @@
         <h:form>
             <h:dataTable value = "#{anakartController.list}" var = "k" border = "1">
                 <h:column>
-                    <f:facet name ="header" >ID</f:facet>
+                    <f:facet name ="header" >Urun ID</f:facet>
                     #{k.urun_id}
+                </h:column>
+                
+                <h:column>
+                    <f:facet name ="header" >Kampanya ID</f:facet>
+                    #{k.kampanya_id}
                 </h:column>
 
                 <h:column>
-                    <f:facet name ="header" >Ad - Soyad</f:facet>
+                    <f:facet name ="header" >Cpu Soketi</f:facet>
                      #{k.cpu_soketi}
                 </h:column>
 
                 <h:column>
-                    <f:facet name ="header" >Sifre</f:facet>
+                    <f:facet name ="header" >Bellek Saat Hizi</f:facet>
                      #{k.bellek_saat_hizi}
                 </h:column>
 
                 <h:column>
-                    <f:facet name ="header" >Sifre</f:facet>
+                    <f:facet name ="header" >Marka</f:facet>
                      #{k.marka}
                 </h:column>
                 
                 <h:column>
-                    <f:facet name ="header" >Sifre</f:facet>
+                    <f:facet name ="header" >Fiyat</f:facet>
                      #{k.fiyat}
                 </h:column>
                 
                 <h:column>
-                    <f:facet name ="header" >Sifre</f:facet>
+                    <f:facet name ="header" >Stok</f:facet>
                      #{k.stok}
                 </h:column>
                 
