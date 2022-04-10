@@ -88,6 +88,26 @@ public class BilgisayarBileseniDAO extends DBConnection {
 
     }
 
+    public List<Kullanici> getKullanicis(int urun_id) {
+
+        List<Kullanici> list = new ArrayList<>();
+        try {
+            Statement st = this.getConnection().createStatement();
+            String query = "select * from kullanici where id in (select kullanici_id from kullanici where urun_id="+urun_id+")";
+            ResultSet rs = st.executeQuery(query);
+
+            while (rs.next()) {
+                list.add(new Kullanici(rs.getInt("kullanici_id"), rs.getString("ad_soyad"), rs.getString("sifre")));
+
+            }
+        } catch (Exception ex) {
+
+            System.out.println(ex.getMessage());
+        }
+        return list;
+
+    }
+
     public KampanyaDAO getKampanyaDAO() {
         if (this.kampanyaDAO == null) {
             this.kampanyaDAO = new KampanyaDAO();
