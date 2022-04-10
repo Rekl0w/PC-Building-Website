@@ -5,8 +5,8 @@ public class EkranKarti extends BilgisayarBileseni {
     private String model;
     private int bellek;
 
-    public EkranKarti(String model, int bellek, String marka, float fiyat, int stok, Kampanya kampanya) {
-        super(marka, fiyat, stok, kampanya);
+    public EkranKarti(int urun_id, String model, int bellek, String marka, float fiyat, int stok, Kampanya kampanya) {
+        super(urun_id, marka, fiyat, stok, kampanya);
         this.model = model;
         this.bellek = bellek;
     }

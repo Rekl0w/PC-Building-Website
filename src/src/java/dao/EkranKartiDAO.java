@@ -12,7 +12,7 @@ public class EkranKartiDAO extends DBConnection {
     public void create(EkranKarti a) {
         try {
             Statement st = this.getConnection().createStatement();
-            String query = "insert into ekran_karti (model, bellek, kampanya_id, marka, fiyat, stok) values('" + a.getModel() + "'," + a.getBellek() + "," + a.getKampanya().getKampanya_id() + ", '" + a.getMarka() + "', " + a.getFiyat() + ", " + a.getStok();
+            String query = "insert into ekran_karti (urun_id, model, bellek, kampanya_id, marka, fiyat, stok) values("+a.getUrun_id()+",'" + a.getModel() + "'," + a.getBellek() + "," + a.getKampanya().getKampanya_id() + ", '" + a.getMarka() + "', " + a.getFiyat() + ", " + a.getStok();
             st.executeUpdate(query);
         } catch (Exception ex) {
 
@@ -52,7 +52,7 @@ public class EkranKartiDAO extends DBConnection {
             ResultSet rs = st.executeQuery(query);
 
             while (rs.next()) {
-                list.add(new EkranKarti(rs.getString("model"), rs.getInt("bellek"), rs.getString("marka"), rs.getFloat("fiyat"), rs.getInt("stok"), this.getKampanyaDAO().findById(rs.getInt("kampanya_id"))));
+                list.add(new EkranKarti(rs.getInt("urun_id"),rs.getString("model"), rs.getInt("bellek"), rs.getString("marka"), rs.getFloat("fiyat"), rs.getInt("stok"), this.getKampanyaDAO().findById(rs.getInt("kampanya_id"))));
 
             }
         } catch (Exception ex) {
