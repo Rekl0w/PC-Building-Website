@@ -11,7 +11,7 @@ public class SatinAlmaDAO extends DBConnection {
     public void create(SatinAlma s) {
         try {
             Statement st = this.getConnection().createStatement();
-            String query = "insert into SatinAlma (kullanici_id,urun_id,tutar,tarih ) values('" + s.getKullanici_id() + "','" + s.getUrun_id() + "','" + s.getTutar() + "','" + s.getTarih() + "')";
+            String query = "insert into siparis_verir (kullanici_id,urun_id,tutar,tarih ) values(" + s.getKullanici_id() + "," + s.getUrun_id() + "," + s.getTutar() + ",'" + s.getTarih() + "')";
             st.executeUpdate(query);
 
         } catch (Exception e) {
@@ -24,7 +24,7 @@ public class SatinAlmaDAO extends DBConnection {
 
         try {
             Statement st = this.getConnection().createStatement();
-            String query = "update Monitor set kullanici_id='" + s.getKullanici_id() + "',urun_id='" + s.getUrun_id() + "',Tutar='" + s.getTutar() + "',Tarih='" + s.getTarih() + "')";
+            String query = "update siparis_verir set kullanici_id=" + s.getKullanici_id() + ",urun_id=" + s.getUrun_id() + ",tutar=" + s.getTutar() + ",tarih='" + s.getTarih() + "')";
             st.executeUpdate(query);
 
         } catch (Exception e) {
@@ -36,7 +36,7 @@ public class SatinAlmaDAO extends DBConnection {
     public void delete(SatinAlma s) {
         try {
             Statement st = this.getConnection().createStatement();
-            String query = "delete from SatinAlma where urun_id=" + s.getUrun_id();
+            String query = "delete from siparis_verir where urun_id=" + s.getUrun_id();
             st.executeUpdate(query);
 
         } catch (Exception e) {
@@ -51,11 +51,11 @@ public class SatinAlmaDAO extends DBConnection {
 
         try {
             Statement st = this.getConnection().createStatement();
-            String query = "Select * from SatinAlma";
+            String query = "Select * from siparis_verir";
             ResultSet rs = st.executeQuery(query);
 
             while (rs.next()) {
-                list.add(new SatinAlma(rs.getInt("Kullanici_id"), rs.getInt("urun_id"), rs.getFloat("tutar"), rs.getString("tarih")));
+                list.add(new SatinAlma(rs.getInt("kullanici_id"), rs.getInt("urun_id"), rs.getFloat("tutar"), rs.getString("tarih")));
 
             }
 

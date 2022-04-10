@@ -12,7 +12,7 @@ public class RamDAO extends DBConnection {
     public void create(Ram r) {
         try {
             Statement st = this.getConnection().createStatement();
-            String query = "insert into Ram (kampanya_id,Bellek,Marka,fiyat,stok ) values('" + r.getKampanya().getKampanya_id()+ "','" + r.getBellek() + "','" + r.getFiyat() + "','" + r.getStok() + "')";
+            String query = "insert into ram (kampanya_id,Bellek,Marka,fiyat,stok ) values(" + r.getKampanya().getKampanya_id()+ "," + r.getBellek() + "," + r.getFiyat() + "," + r.getStok() + ")";
             st.executeUpdate(query);
 
         } catch (Exception e) {
@@ -25,7 +25,7 @@ public class RamDAO extends DBConnection {
 
         try {
             Statement st = this.getConnection().createStatement();
-            String query = "update Monitor set ram='" +r.getKampanya().getKampanya_id()+ "',Marka='" + r.getMarka() + "',Bellek='" + r.getBellek() + "',Fiyat='" + r.getFiyat() + "',Stok='" + r.getStok() + "')";
+            String query = "update monitor set kampanya_id=" +r.getKampanya().getKampanya_id()+ ",marka='" + r.getMarka() + "',bellek=" + r.getBellek() + ",fiyat=" + r.getFiyat() + ",stok=" + r.getStok() + ")";
             st.executeUpdate(query);
 
         } catch (Exception e) {
@@ -37,7 +37,7 @@ public class RamDAO extends DBConnection {
     public void delete(Ram r) {
         try {
             Statement st = this.getConnection().createStatement();
-            String query = "delete from Ram where urund_id=" + r.getUrun_id();
+            String query = "delete from ram where urund_id=" + r.getUrun_id();
             st.executeUpdate(query);
 
         } catch (Exception e) {
@@ -52,11 +52,11 @@ public class RamDAO extends DBConnection {
 
         try {
             Statement st = this.getConnection().createStatement();
-            String query = "Select * from Ram";
+            String query = "Select * from ram";
             ResultSet rs = st.executeQuery(query);
 
             while (rs.next()) {
-                list.add(new Ram(rs.getInt("Bellek"), rs.getString("Marka"), rs.getFloat("fiyat"), rs.getInt("stok"), this.kampanyaDAO.findById(rs.getInt("kampanya_id"))));
+                list.add(new Ram(rs.getInt("bellek"), rs.getString("marka"), rs.getFloat("fiyat"), rs.getInt("stok"), this.kampanyaDAO.findById(rs.getInt("kampanya_id"))));
 
             }
 

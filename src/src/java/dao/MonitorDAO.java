@@ -12,7 +12,7 @@ public class MonitorDAO extends DBConnection {
     public void create(Monitor m) {
         try {
             Statement st = this.getConnection().createStatement();
-            String query = "insert into Monitor (kampanya_id,ekran_yenileme_hizi,Marka,fiyat,stok ) values('" + m.getKampanya().getKampanya_id() + "','" + m.getEkran_yenileme_hizi() + "','" + m.getFiyat() + "','" + m.getStok() + "')";
+            String query = "insert into monitor (kampanya_id,ekran_yenileme_hizi,Marka,fiyat,stok ) values(" + m.getKampanya().getKampanya_id() + "," + m.getEkran_yenileme_hizi() + "," + m.getFiyat() + "," + m.getStok() + ")";
             st.executeUpdate(query);
 
         } catch (Exception e) {
@@ -25,7 +25,7 @@ public class MonitorDAO extends DBConnection {
 
         try {
             Statement st = this.getConnection().createStatement();
-            String query = "update Monitor set kampanya_id='" + m.getKampanya().getKampanya_id() + "',Marka='" + m.getMarka() + "',Ekran_yenileme_hizi='" + m.getEkran_yenileme_hizi() + "',Fiyat='" + m.getFiyat() + "',Stok='" + m.getStok() + "')";
+            String query = "update monitor set kampanya_id=" + m.getKampanya().getKampanya_id() + ",marka='" + m.getMarka() + "',ekran_yenileme_hizi=" + m.getEkran_yenileme_hizi() + ",fiyat=" + m.getFiyat() + ",stok=" + m.getStok() + ")";
             st.executeUpdate(query);
 
         } catch (Exception e) {
@@ -37,7 +37,7 @@ public class MonitorDAO extends DBConnection {
     public void delete(Monitor m) {
         try {
             Statement st = this.getConnection().createStatement();
-            String query = "delete from Monitor where urun_id=" + m.getUrun_id();
+            String query = "delete from monitor where urun_id=" + m.getUrun_id();
             st.executeUpdate(query);
 
         } catch (Exception e) {
@@ -52,11 +52,11 @@ public class MonitorDAO extends DBConnection {
 
         try {
             Statement st = this.getConnection().createStatement();
-            String query = "Select * from Monitor";
+            String query = "Select * from monitor";
             ResultSet rs = st.executeQuery(query);
 
             while (rs.next()) {
-                list.add(new Monitor(rs.getInt("Ekran_yenileme_hizi"), rs.getString("Marka"), rs.getFloat("fiyat"), rs.getInt("stok"), this.kampanyaDAO.findById(rs.getInt("kampanya_id"))));
+                list.add(new Monitor(rs.getInt("ekran_yenileme_hizi"), rs.getString("marka"), rs.getFloat("fiyat"), rs.getInt("stok"), this.kampanyaDAO.findById(rs.getInt("kampanya_id"))));
 
             }
 
