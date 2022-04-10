@@ -3,6 +3,7 @@ package dao;
 import entity.Anakart;
 import entity.BilgisayarBileseni;
 import entity.Kampanya;
+import entity.Kullanici;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
@@ -17,6 +18,17 @@ public class BilgisayarBileseniDAO extends DBConnection {
             Statement st = this.getConnection().createStatement();
             String query = "insert into bilgisayar_bileseni (kampanya_id, marka, fiyat, stok) values('" + a.getKampanya().getKampanya_id() + "', '" + a.getMarka() + "', '" + a.getFiyat() + "', '" + a.getStok() + "' ";
             st.executeUpdate(query);
+
+            ResultSet rs = st.executeQuery("select max(urun_id) as mid from bilgisayar_bileseni");
+            rs.next();
+
+            int urun_id = rs.getInt("mid");
+
+            for (Kullanici k : a.getKullanicilar()) {
+                query = "insert into siparis_verir (urun_id, kullanici_id) values (" + urun_id + ", " + k.getKullanici_id() + ")";
+                st.executeUpdate(query);
+            }
+
         } catch (Exception ex) {
 
             System.out.println(ex.getMessage());
@@ -29,6 +41,12 @@ public class BilgisayarBileseniDAO extends DBConnection {
             Statement st = this.getConnection().createStatement();
             String query = "update bilgisayar_bileseni set kampanya_id = '" + a.getKampanya().getKampanya_id() + "', marka ='" + a.getMarka() + "', fiyat = '" + a.getFiyat() + "', stok = '" + a.getStok() + "' ";
             st.executeUpdate(query);
+
+            st.executeUpdate("delete from siparis_verir where urun_id = " + a.getUrun_id());
+            for (Kullanici k : a.getKullanicilar()) {
+                query = "insert into siparis_verir (urun_id, kullanici_id) values (" + a.getUrun_id() + ", " + k.getKullanici_id() + ")";
+                st.executeUpdate(query);
+            }
         } catch (Exception ex) {
 
             System.out.println(ex.getMessage());
@@ -41,6 +59,9 @@ public class BilgisayarBileseniDAO extends DBConnection {
             Statement st = this.getConnection().createStatement();
             String query = "delete from bilgisayar_bileseni where urun_id = '" + a.getUrun_id() + "'";
             st.executeUpdate(query);
+
+            st.executeUpdate("delete from siparis_verir where urun_id = " + a.getUrun_id());
+
         } catch (Exception ex) {
 
             System.out.println(ex.getMessage());
@@ -66,9 +87,9 @@ public class BilgisayarBileseniDAO extends DBConnection {
         return list;
 
     }
-    
+
     public KampanyaDAO getKampanyaDAO() {
-        if(this.kampanyaDAO == null){
+        if (this.kampanyaDAO == null) {
             this.kampanyaDAO = new KampanyaDAO();
         }
         return kampanyaDAO;

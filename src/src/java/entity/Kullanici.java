@@ -19,7 +19,7 @@ public class Kullanici {
         this.ad_soyad = ad_soyad;
         this.sifre = sifre;
     }
-
+    
     public int getKullanici_id() {
         return kullanici_id;
     }

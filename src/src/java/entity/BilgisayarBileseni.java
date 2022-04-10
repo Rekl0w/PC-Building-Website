@@ -1,5 +1,7 @@
 package entity;
 
+import java.util.List;
+
 public class BilgisayarBileseni {
 
     private int urun_id;
@@ -7,12 +9,23 @@ public class BilgisayarBileseni {
     private float fiyat;
     private int stok;
     private Kampanya kampanya;
+    private List<Kullanici> kullanicilar;
+
+    
 
     public BilgisayarBileseni(int urun_id, String marka, float fiyat, int stok) {
         this.urun_id = urun_id;
         this.marka = marka;
         this.fiyat = fiyat;
         this.stok = stok;
+    }
+
+    public BilgisayarBileseni(int urun_id, String marka, float fiyat, int stok, List<Kullanici> kullanicilar) {
+        this.urun_id = urun_id;
+        this.marka = marka;
+        this.fiyat = fiyat;
+        this.stok = stok;
+        this.kullanicilar = kullanicilar;
     }
 
     public BilgisayarBileseni() {
@@ -83,5 +96,14 @@ public class BilgisayarBileseni {
     public Kampanya getKampanya() {
         return kampanya;
     }
+    
+    public List<Kullanici> getKullanicilar() {
+        return kullanicilar;
+    }
+
+    public void setKullanicilar(List<Kullanici> kullanicilar) {
+        this.kullanicilar = kullanicilar;
+    }
+    
 
 }
