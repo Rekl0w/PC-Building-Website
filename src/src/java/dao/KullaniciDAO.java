@@ -23,7 +23,7 @@ public class KullaniciDAO extends DBConnection {
     public void update(Kullanici k) {
         try {
             Statement st = this.getConnection().createStatement();
-            String query = "update kullanici set kullanici_id = '" + k.getKullanici_id() + "', ad_soyad ='" + k.getAd_soyad() + "', sifre = '" + k.getSifre() + "' ";
+            String query = "update kullanici set ad_soyad ='" + k.getAd_soyad() + "', sifre = '" + k.getSifre() + "' where kullanici_id = " +k.getKullanici_id();
             st.executeUpdate(query);
         } catch (Exception ex) {
 
