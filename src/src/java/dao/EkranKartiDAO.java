@@ -52,7 +52,7 @@ public class EkranKartiDAO extends DBConnection {
             ResultSet rs = st.executeQuery(query);
 
             while (rs.next()) {
-                list.add(new EkranKarti(rs.getString("model"), rs.getInt("bellek"), rs.getString("marka"), rs.getFloat("fiyat"), rs.getInt("stok"), kampanyaDAO.findById(rs.getInt("kampanya_id"))));
+                list.add(new EkranKarti(rs.getString("model"), rs.getInt("bellek"), rs.getString("marka"), rs.getFloat("fiyat"), rs.getInt("stok"), this.getKampanyaDAO().findById(rs.getInt("kampanya_id"))));
 
             }
         } catch (Exception ex) {

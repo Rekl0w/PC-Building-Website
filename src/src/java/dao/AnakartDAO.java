@@ -52,7 +52,7 @@ public class AnakartDAO extends DBConnection {
             ResultSet rs = st.executeQuery(query);
 
             while (rs.next()) {
-                list.add(new Anakart(kampanyaDAO.findById(rs.getInt("kampanya_id")), rs.getString("cpu_soketi"), rs.getInt("bellek_saat_hizi"), rs.getString("marka"), rs.getFloat("fiyat"), rs.getInt("stok")));
+                list.add(new Anakart(this.getKampanyaDAO().findById(rs.getInt("kampanya_id")), rs.getString("cpu_soketi"), rs.getInt("bellek_saat_hizi"), rs.getString("marka"), rs.getFloat("fiyat"), rs.getInt("stok")));
 
             }
         } catch (Exception ex) {

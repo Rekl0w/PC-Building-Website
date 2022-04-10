@@ -52,7 +52,7 @@ public class KasaDAO extends DBConnection {
             ResultSet rs = st.executeQuery(query);
 
             while (rs.next()) {
-                list.add(new Kasa(kampanyaDAO.findById(rs.getInt("kampanya_id")), rs.getString("boyut"), rs.getString("marka"), rs.getFloat("fiyat"), rs.getInt("stok")));
+                list.add(new Kasa(this.getKampanyaDAO().findById(rs.getInt("kampanya_id")), rs.getString("boyut"), rs.getString("marka"), rs.getFloat("fiyat"), rs.getInt("stok")));
 
             }
         } catch (Exception ex) {

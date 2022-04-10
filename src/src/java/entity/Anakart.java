@@ -25,7 +25,6 @@ public class Anakart extends BilgisayarBileseni {
         this.cpu_soketi = cpu_soketi;
         this.bellek_saat_hizi = bellek_saat_hizi;
     }
-    publiv
 
     public String getCpu_soketi() {
         return cpu_soketi;

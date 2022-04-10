@@ -52,7 +52,7 @@ public class IslemciDAO extends DBConnection {
             ResultSet rs = st.executeQuery(query);
 
             while (rs.next()) {
-                list.add(new Islemci(rs.getInt("cekirdek_sayisi"), rs.getFloat("hiz"), rs.getString("marka"), rs.getFloat("fiyat"), rs.getInt("stok"), kampanyaDAO.findById(rs.getInt("kampanya_id"))));
+                list.add(new Islemci(rs.getInt("cekirdek_sayisi"), rs.getFloat("hiz"), rs.getString("marka"), rs.getFloat("fiyat"), rs.getInt("stok"), this.getKampanyaDAO().findById(rs.getInt("kampanya_id"))));
 
             }
         } catch (Exception ex) {
