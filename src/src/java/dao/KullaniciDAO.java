@@ -35,7 +35,7 @@ public class KullaniciDAO extends DBConnection {
     public void delete(Kullanici k) {
         try {
             Statement st = this.getConnection().createStatement();
-            String query = "delete from kullanici where kullanici_id = '" + k.getKullanici_id() + "'";
+            String query = "delete from kullanici where kullanici_id = " + k.getKullanici_id() ;
             st.executeUpdate(query);
         } catch (Exception ex) {
 
@@ -65,7 +65,7 @@ public class KullaniciDAO extends DBConnection {
         Kullanici k = null;
          try {
             Statement st = this.getConnection().createStatement();
-            String query = "select * from kullanici";
+            String query = "select * from kullanici where kullanici_id" + id;
             ResultSet rs = st.executeQuery(query);
 
             while (rs.next()) {
