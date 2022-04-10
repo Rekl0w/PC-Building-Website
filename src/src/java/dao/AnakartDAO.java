@@ -12,7 +12,7 @@ public class AnakartDAO extends DBConnection {
     public void create(Anakart a) {
         try {
             Statement st = this.getConnection().createStatement();
-            String query = "insert into anakart (kampanya_id, cpu_soketi, bellek_saat_hizi, marka, fiyat, stok) values(" + a.getKampanya().getKampanya_id()+ ", '" + a.getCpu_soketi() + "', " + a.getBellek_saat_hizi() + ", '" + a.getMarka() + "', " + a.getFiyat() + ", " + a.getStok() + ") ";
+            String query = "insert into anakart (urun_id, kampanya_id, cpu_soketi, bellek_saat_hizi, marka, fiyat, stok) values(" +a.getUrun_id()+ "," + a.getKampanya().getKampanya_id()+ ", '" + a.getCpu_soketi() + "', " + a.getBellek_saat_hizi() + ", '" + a.getMarka() + "', " + a.getFiyat() + ", " + a.getStok() + ") ";
             st.executeUpdate(query);
         } catch (Exception ex) {
 
@@ -52,7 +52,7 @@ public class AnakartDAO extends DBConnection {
             ResultSet rs = st.executeQuery(query);
 
             while (rs.next()) {
-                list.add(new Anakart(this.getKampanyaDAO().findById(rs.getInt("kampanya_id")), rs.getString("cpu_soketi"), rs.getInt("bellek_saat_hizi"), rs.getString("marka"), rs.getFloat("fiyat"), rs.getInt("stok")));
+                list.add(new Anakart(rs.getInt("urun_id"), rs.getString("cpu_soketi"), rs.getInt("bellek_saat_hizi"),rs.getString("marka"), rs.getFloat("fiyat"), rs.getInt("stok"),this.getKampanyaDAO().findById(rs.getInt("kampanya_id"))));
 
             }
         } catch (Exception ex) {

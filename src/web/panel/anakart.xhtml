@@ -8,6 +8,10 @@
     </h:head>
     <h:body>
         <h:form>
+            
+            
+            urun id =  <h:inputText value = "#{anakartController.entity.urun_id}"/>
+            kampanya =  <h:inputText value = "#{anakartController.entity.kampanya}" converter ="kampanyaConverter" />
             Cpu Soketi=  <h:inputText value = "#{anakartController.entity.cpu_soketi}" />
             Bellek Saat Hızı=  <h:inputText value = "#{anakartController.entity.bellek_saat_hizi}" />
             Marka=  <h:inputText value = "#{anakartController.entity.marka}" />
