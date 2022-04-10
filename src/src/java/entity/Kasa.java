@@ -8,8 +8,8 @@ public class Kasa extends BilgisayarBileseni {
     public Kasa() {
     }
 
-    public Kasa(Kampanya kampanya, String boyut, String marka, float fiyat, int stok) {
-        super(marka, fiyat, stok);
+    public Kasa(int urun_id, String boyut, String marka, float fiyat, int stok,Kampanya kampanya) {
+        super(urun_id,marka, fiyat, stok);
         this.boyut = boyut;
         this.kampanya = kampanya;
     }
