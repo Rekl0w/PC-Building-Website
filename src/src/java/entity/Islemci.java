@@ -8,6 +8,12 @@ public class Islemci extends BilgisayarBileseni {
     public Islemci() {
     }
 
+    public Islemci(int urun_id, int cekirdek_sayisi, float hiz, String marka, float fiyat, int stok, Kampanya kampanya) {
+        super(urun_id, marka, fiyat, stok, kampanya);
+        this.cekirdek_sayisi = cekirdek_sayisi;
+        this.hiz = hiz;
+    }
+
     public Islemci(int cekirdek_sayisi, float hiz, String marka, float fiyat, int stok) {
         super(marka, fiyat, stok);
         this.cekirdek_sayisi = cekirdek_sayisi;

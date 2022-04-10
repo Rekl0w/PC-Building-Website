@@ -12,7 +12,7 @@ public class KlavyeDAO extends DBConnection {
     public void create(Klavye k) {
         try {
             Statement st = this.getConnection().createStatement();
-            String query = "insert into klavye (urun_id, kampanya_id,marka, fiyat, switch_modeli,stok ) values(" + k.getKampanya().getKampanya_id() + ",'" + k.getMarka() + "'," + k.getFiyat() + ",'" + k.getSwitch_modeli() + "'," + k.getStok() + ")";
+            String query = "insert into klavye (urun_id, kampanya_id,marka, fiyat, switch_modeli,stok ) values(" + k.getUrun_id() + "," + k.getKampanya().getKampanya_id() + ",'" + k.getMarka() + "'," + k.getFiyat() + ",'" + k.getSwitch_modeli() + "'," + k.getStok() + ")";
             st.executeUpdate(query);
 
         } catch (Exception e) {
@@ -56,7 +56,7 @@ public class KlavyeDAO extends DBConnection {
             ResultSet rs = st.executeQuery(query);
 
             while (rs.next()) {
-                list.add(new Klavye(rs.getString("marka"), rs.getString("switch_modeli"), rs.getFloat("fiyat"), rs.getInt("stok"), this.kampanyaDAO.findById(rs.getInt("kampanya_id"))));
+                list.add(new Klavye(rs.getInt("urun_id"), rs.getString("marka"), rs.getString("switch_modeli"), rs.getFloat("fiyat"), rs.getInt("stok"), this.kampanyaDAO.findById(rs.getInt("kampanya_id"))));
 
             }
 
