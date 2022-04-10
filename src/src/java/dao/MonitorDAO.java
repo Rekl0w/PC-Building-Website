@@ -4,15 +4,15 @@ import entity.Monitor;
 import java.sql.Statement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 public class MonitorDAO extends DBConnection {
 
+    private KampanyaDAO kampanyaDAO;
     public void create(Monitor m) {
         try {
             Statement st = this.connect().createStatement();
-            String query = "insert into Monitor (kampanya_id,ekran_yenileme_hizi,Marka,fiyat,stok ) values('" + m.getKampanya_id() + "','" + m.getEkran_yenileme_hizi() + "','" + m.getFiyat() + "','" + m.getStok() + "')";
+            String query = "insert into Monitor (kampanya_id,ekran_yenileme_hizi,Marka,fiyat,stok ) values('" + m.getKampanya().getKampanya_id() + "','" + m.getEkran_yenileme_hizi() + "','" + m.getFiyat() + "','" + m.getStok() + "')";
             st.executeUpdate(query);
 
         } catch (Exception e) {
@@ -25,7 +25,7 @@ public class MonitorDAO extends DBConnection {
 
         try {
             Statement st = this.connect().createStatement();
-            String query = "update Monitor set kampanya_id='" + m.getKampanya_id() + "',Marka='" + m.getMarka() + "',Ekran_yenileme_hizi='" + m.getEkran_yenileme_hizi() + "',Fiyat='" + m.getFiyat() + "',Stok='" + m.getStok() + "')";
+            String query = "update Monitor set kampanya_id='" + m.getKampanya().getKampanya_id() + "',Marka='" + m.getMarka() + "',Ekran_yenileme_hizi='" + m.getEkran_yenileme_hizi() + "',Fiyat='" + m.getFiyat() + "',Stok='" + m.getStok() + "')";
             st.executeUpdate(query);
 
         } catch (Exception e) {
@@ -56,7 +56,7 @@ public class MonitorDAO extends DBConnection {
             ResultSet rs = st.executeQuery(query);
 
             while (rs.next()) {
-                list.add(new Monitor(rs.getInt("Ekran_yenileme_hizi"), rs.getString("Marka"), rs.getFloat("fiyat"), rs.getInt("stok")));
+                list.add(new Monitor(rs.getInt("Ekran_yenileme_hizi"), rs.getString("Marka"), rs.getFloat("fiyat"), rs.getInt("stok"), this.kampanyaDAO.findById(rs.getInt("kampanya_id"))));
 
             }
 

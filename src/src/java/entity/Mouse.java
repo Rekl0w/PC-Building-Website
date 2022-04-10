@@ -17,6 +17,10 @@ public class Mouse extends BilgisayarBileseni {
         this.baglanma_sekli = baglanma_sekli;
     }
 
+    public Mouse(String string, String string0, float aFloat, int aInt, Kampanya findById) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
     public String getBaglanma_sekli() {
         return baglanma_sekli;
     }

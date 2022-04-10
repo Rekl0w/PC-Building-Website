@@ -7,11 +7,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class RamDAO extends DBConnection {
-
+    
+    private KampanyaDAO kampanyaDAO;
     public void create(Ram r) {
         try {
             Statement st = this.connect().createStatement();
-            String query = "insert into Ram (kampanya_id,Bellek,Marka,fiyat,stok ) values('" + r.getKampanya_id() + "','" + r.getBellek() + "','" + r.getFiyat() + "','" + r.getStok() + "')";
+            String query = "insert into Ram (kampanya_id,Bellek,Marka,fiyat,stok ) values('" + r.getKampanya().getKampanya_id()+ "','" + r.getBellek() + "','" + r.getFiyat() + "','" + r.getStok() + "')";
             st.executeUpdate(query);
 
         } catch (Exception e) {
@@ -24,7 +25,7 @@ public class RamDAO extends DBConnection {
 
         try {
             Statement st = this.connect().createStatement();
-            String query = "update Monitor set ram='" + r.getKampanya_id() + "',Marka='" + r.getMarka() + "',Bellek='" + r.getBellek() + "',Fiyat='" + r.getFiyat() + "',Stok='" + r.getStok() + "')";
+            String query = "update Monitor set ram='" +r.getKampanya().getKampanya_id()+ "',Marka='" + r.getMarka() + "',Bellek='" + r.getBellek() + "',Fiyat='" + r.getFiyat() + "',Stok='" + r.getStok() + "')";
             st.executeUpdate(query);
 
         } catch (Exception e) {
@@ -55,7 +56,7 @@ public class RamDAO extends DBConnection {
             ResultSet rs = st.executeQuery(query);
 
             while (rs.next()) {
-                list.add(new Ram(rs.getInt("Bellek"), rs.getString("Marka"), rs.getFloat("fiyat"), rs.getInt("stok")));
+                list.add(new Ram(rs.getInt("Bellek"), rs.getString("Marka"), rs.getFloat("fiyat"), rs.getInt("stok"), this.kampanyaDAO.findById(rs.getInt("kampanya_id"))));
 
             }
 

@@ -18,6 +18,10 @@ public class Monitor extends BilgisayarBileseni {
         this.ekran_yenileme_hizi = ekran_yenileme_hizi;
     }
 
+    public Monitor(int aInt, String string, float aFloat, int aInt0, Kampanya findById) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
     public int getEkran_yenileme_hizi() {
         return ekran_yenileme_hizi;
     }

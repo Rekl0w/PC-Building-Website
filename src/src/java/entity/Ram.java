@@ -17,6 +17,10 @@ public class Ram extends BilgisayarBileseni {
         this.bellek = bellek;
     }
 
+    public Ram(int aInt, String string, float aFloat, int aInt0, Kampanya findById) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
     public int getBellek() {
         return bellek;
     }
