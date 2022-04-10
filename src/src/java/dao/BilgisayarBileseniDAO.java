@@ -16,7 +16,7 @@ public class BilgisayarBileseniDAO extends DBConnection {
     public void create(BilgisayarBileseni a) {
         try {
             Statement st = this.getConnection().createStatement();
-            String query = "insert into bilgisayar_bileseni (marka, fiyat, stok) values('" + a.getMarka() + "', '" + a.getFiyat() + "', '" + a.getStok() + "' ";
+            String query = "insert into bilgisayar_bileseni (kampanya_id, marka, stok) values('" + a.getKampanya().getKampanya_id()+ "', '" + a.getMarka() + "', '" + a.getStok() + "' )";
             st.executeUpdate(query);
 
             ResultSet rs = st.executeQuery("select max(urun_id) as mid from bilgisayar_bileseni");
@@ -39,7 +39,8 @@ public class BilgisayarBileseniDAO extends DBConnection {
     public void update(BilgisayarBileseni a) {
         try {
             Statement st = this.getConnection().createStatement();
-            String query = "update bilgisayar_bileseni set marka ='" + a.getMarka() + "', fiyat = '" + a.getFiyat() + "', stok = '" + a.getStok() + "' ";            st.executeUpdate(query);
+            String query = "update bilgisayar_bileseni set marka ='" + a.getMarka() + "', kampanya_id ='" + a.getKampanya().getKampanya_id()+ "', stok = '" + a.getStok() + "' where urun_id = " +a.getUrun_id();            
+            st.executeUpdate(query);
 
             st.executeUpdate("delete from siparis_verir where urun_id = " + a.getUrun_id());
             for (Kullanici k : a.getKullanicilar()) {
@@ -58,7 +59,7 @@ public class BilgisayarBileseniDAO extends DBConnection {
             Statement st = this.getConnection().createStatement();
             st.executeUpdate("delete from siparis_verir where urun_id = " + a.getUrun_id());
 
-            String query = "delete from bilgisayar_bileseni where urun_id = '" + a.getUrun_id() + "'";
+            String query = "delete from bilgisayar_bileseni where urun_id = " + a.getUrun_id();
             st.executeUpdate(query);
 
         } catch (Exception ex) {
@@ -75,7 +76,7 @@ public class BilgisayarBileseniDAO extends DBConnection {
             ResultSet rs = st.executeQuery(query);
 
             while (rs.next()) {
-                list.add(new BilgisayarBileseni(rs.getString("marka"), rs.getFloat("fiyat"), rs.getInt("stok"), this.getKampanyaDAO().findById(rs.getInt("kampanya_id")), this.getKullanicis(rs.getInt("urun_id"))));
+                list.add(new BilgisayarBileseni(rs.getString("marka"), rs.getInt("stok"), this.getKampanyaDAO().findById(rs.getInt("kampanya_id"))));
 
             }
         } catch (Exception ex) {

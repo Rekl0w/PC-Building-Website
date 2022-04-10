@@ -55,4 +55,9 @@ public class Kampanya {
         this.indirim_yuzdesi = indirim_yuzdesi;
     }
 
+    @Override
+    public String toString() {
+        return String.valueOf(this.getIndirim_yuzdesi()); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/OverriddenMethodBody
+    }
+
 }
