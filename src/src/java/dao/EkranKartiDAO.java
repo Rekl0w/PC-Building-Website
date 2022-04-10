@@ -8,6 +8,7 @@ import java.sql.ResultSet;
 
 public class EkranKartiDAO extends DBConnection {
 
+    private KampanyaDAO kampanyaDAO;
     public void create(EkranKarti a) {
         try {
             Statement st = this.connect().createStatement();
@@ -51,7 +52,7 @@ public class EkranKartiDAO extends DBConnection {
             ResultSet rs = st.executeQuery(query);
 
             while (rs.next()) {
-                list.add(new EkranKarti(rs.getString("model"), rs.getInt("bellek"), rs.getString("marka"), rs.getFloat("fiyat"), rs.getInt("stok"), rs.getInt("kampanya_id")));
+                list.add(new EkranKarti(rs.getString("model"), rs.getInt("bellek"), rs.getString("marka"), rs.getFloat("fiyat"), rs.getInt("stok"), kampanyaDAO.findById(rs.getInt("kampanya_id"))));
 
             }
         } catch (Exception ex) {
@@ -59,6 +60,17 @@ public class EkranKartiDAO extends DBConnection {
             System.out.println(ex.getMessage());
         }
         return list;
+    }
+    
+    public KampanyaDAO getKampanyaDAO() {
+        if(this.kampanyaDAO == null){
+            this.kampanyaDAO = new KampanyaDAO();
+        }
+        return kampanyaDAO;
+    }
+
+    public void setKampanyaDAO(KampanyaDAO kampanyaDAO) {
+        this.kampanyaDAO = kampanyaDAO;
     }
 
 }

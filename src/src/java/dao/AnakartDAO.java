@@ -7,7 +7,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class AnakartDAO extends DBConnection {
-
+    
+    private KampanyaDAO kampanyaDAO;
     public void create(Anakart a) {
         try {
             Statement st = this.connect().createStatement();
@@ -51,7 +52,7 @@ public class AnakartDAO extends DBConnection {
             ResultSet rs = st.executeQuery(query);
 
             while (rs.next()) {
-                list.add(new Anakart(rs.getInt("kampanya_id"), rs.getString("cpu_soketi"), rs.getInt("bellek_saat_hizi"), rs.getString("marka"), rs.getFloat("fiyat"), rs.getInt("stok")));
+                list.add(new Anakart(kampanyaDAO.findById(rs.getInt("kampanya_id")), rs.getString("cpu_soketi"), rs.getInt("bellek_saat_hizi"), rs.getString("marka"), rs.getFloat("fiyat"), rs.getInt("stok")));
 
             }
         } catch (Exception ex) {
@@ -61,4 +62,15 @@ public class AnakartDAO extends DBConnection {
         return list;
     }
 
+    public KampanyaDAO getKampanyaDAO() {
+        if(this.kampanyaDAO == null){
+            this.kampanyaDAO = new KampanyaDAO();
+        }
+        return kampanyaDAO;
+    }
+
+    public void setKampanyaDAO(KampanyaDAO kampanyaDAO) {
+        this.kampanyaDAO = kampanyaDAO;
+    }
+    
 }

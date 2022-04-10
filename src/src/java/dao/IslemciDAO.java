@@ -7,11 +7,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class IslemciDAO extends DBConnection {
-
+    
+    private KampanyaDAO kampanyaDAO;
     public void create(Islemci a) {
         try {
             Statement st = this.connect().createStatement();
-            String query = "insert into islemci (cekirdek_sayisi, hiz, kampanya_id, marka, fiyat, stok) values('" + a.getCekirdek_sayisi() + "','" + a.getHiz() + "','" + a.getKampanya_id() + "', '" + a.getMarka() + "', '" + a.getFiyat() + "', '" + a.getStok() + "' ";
+            String query = "insert into islemci (cekirdek_sayisi, hiz, kampanya_id, marka, fiyat, stok) values('" + a.getCekirdek_sayisi() + "','" + a.getHiz() + "','" + a.getKampanya().getKampanya_id() + "', '" + a.getMarka() + "', '" + a.getFiyat() + "', '" + a.getStok() + "' ";
             st.executeUpdate(query);
         } catch (Exception ex) {
 
@@ -23,7 +24,7 @@ public class IslemciDAO extends DBConnection {
     public void update(Islemci a) {
         try {
             Statement st = this.connect().createStatement();
-            String query = "update islemci set cekirdek_sayisi ='" + a.getCekirdek_sayisi() + "', hiz ='" + a.getHiz() + "', kampanya_id = '" + a.getKampanya_id() + "', marka ='" + a.getMarka() + "', fiyat = '" + a.getFiyat() + "', stok = '" + a.getStok() + "' ";
+            String query = "update islemci set cekirdek_sayisi ='" + a.getCekirdek_sayisi() + "', hiz ='" + a.getHiz() + "', kampanya_id = '" + a.getKampanya().getKampanya_id() + "', marka ='" + a.getMarka() + "', fiyat = '" + a.getFiyat() + "', stok = '" + a.getStok() + "' ";
             st.executeUpdate(query);
         } catch (Exception ex) {
 
@@ -51,7 +52,7 @@ public class IslemciDAO extends DBConnection {
             ResultSet rs = st.executeQuery(query);
 
             while (rs.next()) {
-                list.add(new Islemci(rs.getInt("cekirdek_sayisi"), rs.getFloat("hiz"), rs.getString("marka"), rs.getFloat("fiyat"), rs.getInt("stok"), rs.getInt("kampanya_id")));
+                list.add(new Islemci(rs.getInt("cekirdek_sayisi"), rs.getFloat("hiz"), rs.getString("marka"), rs.getFloat("fiyat"), rs.getInt("stok"), kampanyaDAO.findById(rs.getInt("kampanya_id"))));
 
             }
         } catch (Exception ex) {
@@ -61,4 +62,14 @@ public class IslemciDAO extends DBConnection {
         return list;
     }
 
+    public KampanyaDAO getKampanyaDAO() {
+        if(this.kampanyaDAO == null){
+            this.kampanyaDAO = new KampanyaDAO();
+        }
+        return kampanyaDAO;
+    }
+
+    public void setKampanyaDAO(KampanyaDAO kampanyaDAO) {
+        this.kampanyaDAO = kampanyaDAO;
+    }
 }

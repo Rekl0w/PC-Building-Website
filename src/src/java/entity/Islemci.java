@@ -42,4 +42,6 @@ public class Islemci extends BilgisayarBileseni {
         this.hiz = hiz;
     }
 
+   
+
 }
