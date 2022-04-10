@@ -25,7 +25,7 @@ public class KampanyaDAO extends DBConnection {
     public void update(Kampanya k) {
         try {
             Statement st = this.getConnection().createStatement();
-            String query = "update kampanya set kampanya_id = '" + k.getKampanya_id() + "', indirim_yuzdesi ='" + k.getIndirim_yuzdesi() + "' ";
+            String query = "update kampanya set indirim_yuzdesi ='" + k.getIndirim_yuzdesi() + "' where kampanya_id = " +k.getKampanya_id();
             st.executeUpdate(query);
         } catch (Exception ex) {
 
