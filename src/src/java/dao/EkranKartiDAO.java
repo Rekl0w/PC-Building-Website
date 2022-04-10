@@ -11,7 +11,7 @@ public class EkranKartiDAO extends DBConnection {
     private KampanyaDAO kampanyaDAO;
     public void create(EkranKarti a) {
         try {
-            Statement st = this.connect().createStatement();
+            Statement st = this.getConnection().createStatement();
             String query = "insert into ekran_karti (model, bellek, kampanya_id, marka, fiyat, stok) values('" + a.getModel() + "','" + a.getBellek() + "','" + a.getKampanya().getKampanya_id() + "', '" + a.getMarka() + "', '" + a.getFiyat() + "', '" + a.getStok() + "' ";
             st.executeUpdate(query);
         } catch (Exception ex) {
@@ -23,7 +23,7 @@ public class EkranKartiDAO extends DBConnection {
 
     public void update(EkranKarti a) {
         try {
-            Statement st = this.connect().createStatement();
+            Statement st = this.getConnection().createStatement();
             String query = "update ekran_karti set model = '" + a.getModel() + "',bellek = '" + a.getBellek() + "', kampanya_id = '" + a.getKampanya().getKampanya_id() + "', marka ='" + a.getMarka() + "', fiyat = '" + a.getFiyat() + "', stok = '" + a.getStok() + "' ";
             st.executeUpdate(query);
         } catch (Exception ex) {
@@ -35,7 +35,7 @@ public class EkranKartiDAO extends DBConnection {
 
     public void delete(EkranKarti a) {
         try {
-            Statement st = this.connect().createStatement();
+            Statement st = this.getConnection().createStatement();
             String query = "delete from ekran_karti where urun_id = '" + a.getUrun_id() + "'";
             st.executeUpdate(query);
         } catch (Exception ex) {
@@ -47,7 +47,7 @@ public class EkranKartiDAO extends DBConnection {
     public List<EkranKarti> getList() {
         List<EkranKarti> list = new ArrayList<>();
         try {
-            Statement st = this.connect().createStatement();
+            Statement st = this.getConnection().createStatement();
             String query = "select * from ekran_karti";
             ResultSet rs = st.executeQuery(query);
 

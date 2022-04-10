@@ -11,7 +11,7 @@ public class MonitorDAO extends DBConnection {
     private KampanyaDAO kampanyaDAO;
     public void create(Monitor m) {
         try {
-            Statement st = this.connect().createStatement();
+            Statement st = this.getConnection().createStatement();
             String query = "insert into Monitor (kampanya_id,ekran_yenileme_hizi,Marka,fiyat,stok ) values('" + m.getKampanya().getKampanya_id() + "','" + m.getEkran_yenileme_hizi() + "','" + m.getFiyat() + "','" + m.getStok() + "')";
             st.executeUpdate(query);
 
@@ -24,7 +24,7 @@ public class MonitorDAO extends DBConnection {
     public void update(Monitor m) {
 
         try {
-            Statement st = this.connect().createStatement();
+            Statement st = this.getConnection().createStatement();
             String query = "update Monitor set kampanya_id='" + m.getKampanya().getKampanya_id() + "',Marka='" + m.getMarka() + "',Ekran_yenileme_hizi='" + m.getEkran_yenileme_hizi() + "',Fiyat='" + m.getFiyat() + "',Stok='" + m.getStok() + "')";
             st.executeUpdate(query);
 
@@ -36,7 +36,7 @@ public class MonitorDAO extends DBConnection {
 
     public void delete(Monitor m) {
         try {
-            Statement st = this.connect().createStatement();
+            Statement st = this.getConnection().createStatement();
             String query = "delete from Monitor where urun_id=" + m.getUrun_id();
             st.executeUpdate(query);
 
@@ -51,7 +51,7 @@ public class MonitorDAO extends DBConnection {
         List<Monitor> list = new ArrayList<>();
 
         try {
-            Statement st = this.connect().createStatement();
+            Statement st = this.getConnection().createStatement();
             String query = "Select * from Monitor";
             ResultSet rs = st.executeQuery(query);
 

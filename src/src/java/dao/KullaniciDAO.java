@@ -10,7 +10,7 @@ public class KullaniciDAO extends DBConnection {
 
     public void create(Kullanici k) {
         try {
-            Statement st = this.connect().createStatement();
+            Statement st = this.getConnection().createStatement();
             String query = "insert into kullanici (kullanici_id, ad_soyad, sifre) values('" + k.getKullanici_id() + "', '" + k.getAd_soyad() + "', '" + k.getSifre() + "') ";
             st.executeUpdate(query);
         } catch (Exception ex) {
@@ -22,7 +22,7 @@ public class KullaniciDAO extends DBConnection {
 
     public void update(Kullanici k) {
         try {
-            Statement st = this.connect().createStatement();
+            Statement st = this.getConnection().createStatement();
             String query = "update kullanici set kullanici_id = '" + k.getKullanici_id() + "', ad_soyad ='" + k.getAd_soyad() + "', sifre = '" + k.getSifre() + "' ";
             st.executeUpdate(query);
         } catch (Exception ex) {
@@ -34,7 +34,7 @@ public class KullaniciDAO extends DBConnection {
 
     public void delete(Kullanici k) {
         try {
-            Statement st = this.connect().createStatement();
+            Statement st = this.getConnection().createStatement();
             String query = "delete from kullanici where kullanici_id = '" + k.getKullanici_id() + "'";
             st.executeUpdate(query);
         } catch (Exception ex) {
@@ -46,7 +46,7 @@ public class KullaniciDAO extends DBConnection {
     public List<Kullanici> getList() {
         List<Kullanici> list = new ArrayList<>();
         try {
-            Statement st = this.connect().createStatement();
+            Statement st = this.getConnection().createStatement();
             String query = "select * from kullanici";
             ResultSet rs = st.executeQuery(query);
 

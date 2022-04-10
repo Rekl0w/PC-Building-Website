@@ -10,7 +10,7 @@ public class SatinAlmaDAO extends DBConnection {
 
     public void create(SatinAlma s) {
         try {
-            Statement st = this.connect().createStatement();
+            Statement st = this.getConnection().createStatement();
             String query = "insert into SatinAlma (kullanici_id,urun_id,tutar,tarih ) values('" + s.getKullanici_id() + "','" + s.getUrun_id() + "','" + s.getTutar() + "','" + s.getTarih() + "')";
             st.executeUpdate(query);
 
@@ -23,7 +23,7 @@ public class SatinAlmaDAO extends DBConnection {
     public void update(SatinAlma s) {
 
         try {
-            Statement st = this.connect().createStatement();
+            Statement st = this.getConnection().createStatement();
             String query = "update Monitor set kullanici_id='" + s.getKullanici_id() + "',urun_id='" + s.getUrun_id() + "',Tutar='" + s.getTutar() + "',Tarih='" + s.getTarih() + "')";
             st.executeUpdate(query);
 
@@ -35,7 +35,7 @@ public class SatinAlmaDAO extends DBConnection {
 
     public void delete(SatinAlma s) {
         try {
-            Statement st = this.connect().createStatement();
+            Statement st = this.getConnection().createStatement();
             String query = "delete from SatinAlma where urun_id=" + s.getUrun_id();
             st.executeUpdate(query);
 
@@ -50,7 +50,7 @@ public class SatinAlmaDAO extends DBConnection {
         List<SatinAlma> list = new ArrayList<>();
 
         try {
-            Statement st = this.connect().createStatement();
+            Statement st = this.getConnection().createStatement();
             String query = "Select * from SatinAlma";
             ResultSet rs = st.executeQuery(query);
 

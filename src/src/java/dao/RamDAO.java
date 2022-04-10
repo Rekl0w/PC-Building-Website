@@ -11,7 +11,7 @@ public class RamDAO extends DBConnection {
     private KampanyaDAO kampanyaDAO;
     public void create(Ram r) {
         try {
-            Statement st = this.connect().createStatement();
+            Statement st = this.getConnection().createStatement();
             String query = "insert into Ram (kampanya_id,Bellek,Marka,fiyat,stok ) values('" + r.getKampanya().getKampanya_id()+ "','" + r.getBellek() + "','" + r.getFiyat() + "','" + r.getStok() + "')";
             st.executeUpdate(query);
 
@@ -24,7 +24,7 @@ public class RamDAO extends DBConnection {
     public void update(Ram r) {
 
         try {
-            Statement st = this.connect().createStatement();
+            Statement st = this.getConnection().createStatement();
             String query = "update Monitor set ram='" +r.getKampanya().getKampanya_id()+ "',Marka='" + r.getMarka() + "',Bellek='" + r.getBellek() + "',Fiyat='" + r.getFiyat() + "',Stok='" + r.getStok() + "')";
             st.executeUpdate(query);
 
@@ -36,7 +36,7 @@ public class RamDAO extends DBConnection {
 
     public void delete(Ram r) {
         try {
-            Statement st = this.connect().createStatement();
+            Statement st = this.getConnection().createStatement();
             String query = "delete from Ram where urund_id=" + r.getUrun_id();
             st.executeUpdate(query);
 
@@ -51,7 +51,7 @@ public class RamDAO extends DBConnection {
         List<Ram> list = new ArrayList<>();
 
         try {
-            Statement st = this.connect().createStatement();
+            Statement st = this.getConnection().createStatement();
             String query = "Select * from Ram";
             ResultSet rs = st.executeQuery(query);
 

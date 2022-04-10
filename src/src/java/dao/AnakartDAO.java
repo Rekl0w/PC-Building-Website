@@ -11,7 +11,7 @@ public class AnakartDAO extends DBConnection {
     private KampanyaDAO kampanyaDAO;
     public void create(Anakart a) {
         try {
-            Statement st = this.connect().createStatement();
+            Statement st = this.getConnection().createStatement();
             String query = "insert into anakart (kampanya_id, cpu_soketi, bellek_saat_hizi, marka, fiyat, stok) values('" + a.getKampanya().getKampanya_id()+ "', '" + a.getCpu_soketi() + "', '" + a.getBellek_saat_hizi() + "', '" + a.getMarka() + "', '" + a.getFiyat() + "', '" + a.getStok() + "') ";
             st.executeUpdate(query);
         } catch (Exception ex) {
@@ -23,7 +23,7 @@ public class AnakartDAO extends DBConnection {
 
     public void update(Anakart a) {
         try {
-            Statement st = this.connect().createStatement();
+            Statement st = this.getConnection().createStatement();
             String query = "update anakart set kampanya_id = '" + a.getKampanya().getKampanya_id() + "', cpu_soketi ='" + a.getCpu_soketi() + "', bellek_saat_hizi = '" + a.getBellek_saat_hizi() + "', marka = '" + a.getMarka() + "', fiyat = '" + a.getFiyat() + "', stok = '" + a.getStok() + "' ";
             st.executeUpdate(query);
         } catch (Exception ex) {
@@ -35,7 +35,7 @@ public class AnakartDAO extends DBConnection {
 
     public void delete(Anakart a) {
         try {
-            Statement st = this.connect().createStatement();
+            Statement st = this.getConnection().createStatement();
             String query = "delete from anakart where urun_id = '" + a.getUrun_id() + "'";
             st.executeUpdate(query);
         } catch (Exception ex) {
@@ -47,7 +47,7 @@ public class AnakartDAO extends DBConnection {
     public List<Anakart> getList() {
         List<Anakart> list = new ArrayList<>();
         try {
-            Statement st = this.connect().createStatement();
+            Statement st = this.getConnection().createStatement();
             String query = "select * from anakart";
             ResultSet rs = st.executeQuery(query);
 

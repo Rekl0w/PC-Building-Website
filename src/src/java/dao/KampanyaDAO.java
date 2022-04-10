@@ -12,7 +12,7 @@ public class KampanyaDAO extends DBConnection {
 
     public void create(Kampanya k) {
         try {
-            Statement st = this.connect().createStatement();
+            Statement st = this.getConnection().createStatement();
             String query = "insert into kampanya (kampanya_id, indirim_yuzdesi) values('" + k.getKampanya_id() + "', '" + k.getIndirim_yuzdesi() + "') ";
             st.executeUpdate(query);
         } catch (Exception ex) {
@@ -24,7 +24,7 @@ public class KampanyaDAO extends DBConnection {
 
     public void update(Kampanya k) {
         try {
-            Statement st = this.connect().createStatement();
+            Statement st = this.getConnection().createStatement();
             String query = "update kampanya set kampanya_id = '" + k.getKampanya_id() + "', indirim_yuzdesi ='" + k.getIndirim_yuzdesi() + "' ";
             st.executeUpdate(query);
         } catch (Exception ex) {
@@ -36,7 +36,7 @@ public class KampanyaDAO extends DBConnection {
 
     public void delete(Kampanya k) {
         try {
-            Statement st = this.connect().createStatement();
+            Statement st = this.getConnection().createStatement();
             String query = "delete from kampanya where kampanya_id = '" + k.getKampanya_id() + "'";
             st.executeUpdate(query);
         } catch (Exception ex) {
@@ -48,7 +48,7 @@ public class KampanyaDAO extends DBConnection {
     public Kampanya findById(int id){
         Kampanya k = null;
          try {
-            Statement st = this.connect().createStatement();
+            Statement st = this.getConnection().createStatement();
             String query = "select * from kampanya";
             ResultSet rs = st.executeQuery(query);
 
@@ -67,7 +67,7 @@ public class KampanyaDAO extends DBConnection {
     public List<Kampanya> getList() {
         List<Kampanya> list = new ArrayList<>();
         try {
-            Statement st = this.connect().createStatement();
+            Statement st = this.getConnection().createStatement();
             String query = "select * from kampanya";
             ResultSet rs = st.executeQuery(query);
 

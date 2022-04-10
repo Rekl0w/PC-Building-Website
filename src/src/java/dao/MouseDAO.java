@@ -12,7 +12,7 @@ public class MouseDAO extends DBConnection {
     private KampanyaDAO kampanyaDAO;
     public void create(Mouse m1) {
         try {
-            Statement st = this.connect().createStatement();
+            Statement st = this.getConnection().createStatement();
             String query = "insert into Mouse (kampanya_id,ekran_yenileme_hizi,Marka,fiyat,stok ) values('" + m1.getKampanya().getKampanya_id()+ "','" + m1.getBaglanma_sekli() + "','" + m1.getFiyat() + "','" + m1.getStok() + "')";
             st.executeUpdate(query);
 
@@ -25,7 +25,7 @@ public class MouseDAO extends DBConnection {
     public void update(Mouse m1) {
 
         try {
-            Statement st = this.connect().createStatement();
+            Statement st = this.getConnection().createStatement();
             String query = "update Mouse set mouse='" + m1.getKampanya().getKampanya_id()+ "',Marka='" + m1.getMarka() + "',Baglanma_sekli='" + m1.getBaglanma_sekli() + "',Fiyat='" + m1.getFiyat() + "',Stok='" + m1.getStok() + "')";
             st.executeUpdate(query);
 
@@ -37,7 +37,7 @@ public class MouseDAO extends DBConnection {
 
     public void delete(Mouse m1) {
         try {
-            Statement st = this.connect().createStatement();
+            Statement st = this.getConnection().createStatement();
             String query = "delete from Mouse where urun_id=" + m1.getUrun_id();
             st.executeUpdate(query);
 
@@ -52,7 +52,7 @@ public class MouseDAO extends DBConnection {
         List<Mouse> list = new ArrayList<>();
 
         try {
-            Statement st = this.connect().createStatement();
+            Statement st = this.getConnection().createStatement();
             String query = "Select * from Mouse";
             ResultSet rs = st.executeQuery(query);
 

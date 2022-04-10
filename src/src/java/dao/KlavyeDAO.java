@@ -11,7 +11,7 @@ public class KlavyeDAO extends DBConnection {
     private KampanyaDAO kampanyaDAO;
     public void create(Klavye k) {
         try {
-            Statement st = this.connect().createStatement();
+            Statement st = this.getConnection().createStatement();
             String query = "insert into Klavye (kampanya_id,Marka,fiyat,Switch_modeli,stok ) values('" + k.getKampanya().getKampanya_id() + "','" + k.getMarka() + "','" + k.getFiyat() + "','" + k.getSwitch_modeli() + "','" + k.getStok() + "')";
             st.executeUpdate(query);
 
@@ -24,7 +24,7 @@ public class KlavyeDAO extends DBConnection {
     public void update(Klavye k) {
 
         try {
-            Statement st = this.connect().createStatement();
+            Statement st = this.getConnection().createStatement();
             String query = "update Klavye set kampanya_id='" + k.getKampanya().getKampanya_id() + "',Marka='" + k.getMarka() + "',Fiyat='" + k.getFiyat() + "',Switch_Modeli'" + k.getSwitch_modeli() + "',Stok='" + k.getStok() + "')";
             st.executeUpdate(query);
 
@@ -36,7 +36,7 @@ public class KlavyeDAO extends DBConnection {
 
     public void delete(Klavye k) {
         try {
-            Statement st = this.connect().createStatement();
+            Statement st = this.getConnection().createStatement();
             String query = "delete from Klavye where urun_id=" + k.getUrun_id();
             st.executeUpdate(query);
 
@@ -51,7 +51,7 @@ public class KlavyeDAO extends DBConnection {
         List<Klavye> list = new ArrayList<>();
 
         try {
-            Statement st = this.connect().createStatement();
+            Statement st = this.getConnection().createStatement();
             String query = "Select * from Klavye";
             ResultSet rs = st.executeQuery(query);
 
