@@ -17,6 +17,28 @@ public class Kampanya {
         return kampanya_id;
     }
 
+    @Override
+    public int hashCode() {
+        int hash = 3;
+        hash = 47 * hash + this.kampanya_id;
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Kampanya other = (Kampanya) obj;
+        return this.kampanya_id == other.kampanya_id;
+    }
+
     public void setKampanya_id(int kampanya_id) {
         this.kampanya_id = kampanya_id;
     }
