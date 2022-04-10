@@ -1,0 +1,43 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Bilgisayar Bileşeni</title>
+    </h:head>
+    <h:body>
+        <h:form>
+            <h:commandButton action="/index" value="Home" />
+        <h:form>
+            <hr/>
+            <h:form>
+                Kampanya:
+                <h:selectOneMenu value="#{bilgisayar_bileseni.entity.list}" converter="kampanyaConverter">
+                    <f:selectItems value="#{kampanyaController.list}" var="k" itemValue="#{k}" itemLabel="#{k.indirim_yuzdesi}" />
+                </h:selectOneMenu>
+                <br />
+                İndirim Yüzdesi: <h:inputText value="#{BilgisayarBileseniController.entity.indirim_yuzdesi}" /><br />
+                <h:commandButton rendered="#{BillgisayarBileseniController.entity.urun_id==0}" action="#{BilgisayarBileseniController.create()}" value="Create" />
+                <h:commandButton rendered="#{BillgisayarBileseniController.entity.urun_id!=0}" action="#{BilgisayarBileseniController.update()}" value="Update" />
+                
+            </h:form>
+            <hr />
+            
+            <h:form>
+               <h:dataTable value="#{BilgisayarBileseniController.list}" var="entity"><br/>
+                   <h:column> 
+                       <f:facet name="header">ID</f:facet>
+                            #{entity.urun_id}
+                   
+                   </h:column>
+                   <h:column>
+                       <f:facet name="header">İndirim Yüzdesi</f:facet>
+                            #{entity.kampanya.indirim_yuzdesi}                       
+                   </h:column>
+                   
+                   
+            </h:form>
+    </h:body>
+</html>
+
