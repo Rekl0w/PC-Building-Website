@@ -11,6 +11,14 @@ public class BilgisayarBileseni {
     private Kampanya kampanya;
     private List<Kullanici> kullanicilar;
 
+    public BilgisayarBileseni(String marka, float fiyat, int stok, Kampanya kampanya, List<Kullanici> kullanicilar) {
+        this.marka = marka;
+        this.fiyat = fiyat;
+        this.stok = stok;
+        this.kampanya = kampanya;
+        this.kullanicilar = kullanicilar;
+    }
+
     
 
     public BilgisayarBileseni(int urun_id, String marka, float fiyat, int stok) {

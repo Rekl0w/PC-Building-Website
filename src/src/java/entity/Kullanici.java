@@ -19,7 +19,7 @@ public class Kullanici {
         this.ad_soyad = ad_soyad;
         this.sifre = sifre;
     }
-    
+
     public int getKullanici_id() {
         return kullanici_id;
     }
@@ -38,6 +38,11 @@ public class Kullanici {
 
     public void setSifre(String sifre) {
         this.sifre = sifre;
+    }
+
+    @Override
+    public String toString() {
+        return this.ad_soyad;
     }
 
 }

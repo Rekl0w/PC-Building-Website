@@ -57,10 +57,10 @@ public class BilgisayarBileseniDAO extends DBConnection {
     public void delete(BilgisayarBileseni a) {
         try {
             Statement st = this.getConnection().createStatement();
+            st.executeUpdate("delete from siparis_verir where urun_id = " + a.getUrun_id());
+
             String query = "delete from bilgisayar_bileseni where urun_id = '" + a.getUrun_id() + "'";
             st.executeUpdate(query);
-
-            st.executeUpdate("delete from siparis_verir where urun_id = " + a.getUrun_id());
 
         } catch (Exception ex) {
 
@@ -76,7 +76,7 @@ public class BilgisayarBileseniDAO extends DBConnection {
             ResultSet rs = st.executeQuery(query);
 
             while (rs.next()) {
-                list.add(new BilgisayarBileseni(rs.getString("marka"), rs.getFloat("fiyat"), rs.getInt("stok"), this.getKampanyaDAO().findById(rs.getInt("kampanya_id"))));
+                list.add(new BilgisayarBileseni(rs.getString("marka"), rs.getFloat("fiyat"), rs.getInt("stok"), this.getKampanyaDAO().findById(rs.getInt("kampanya_id")), this.getKullanicis(rs.getInt("urun_id"))));
 
             }
         } catch (Exception ex) {
@@ -93,7 +93,7 @@ public class BilgisayarBileseniDAO extends DBConnection {
         List<Kullanici> list = new ArrayList<>();
         try {
             Statement st = this.getConnection().createStatement();
-            String query = "select * from kullanici where id in (select kullanici_id from kullanici where urun_id="+urun_id+")";
+            String query = "select * from kullanici where kullanici_id in (select kullanici_id from kullanici where urun_id=" + urun_id + ")";
             ResultSet rs = st.executeQuery(query);
 
             while (rs.next()) {
