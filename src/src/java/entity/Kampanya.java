@@ -17,6 +17,10 @@ public class Kampanya {
         return kampanya_id;
     }
 
+    public Kampanya(float indirim_yuzdesi) {
+        this.indirim_yuzdesi = indirim_yuzdesi;
+    }
+
     @Override
     public int hashCode() {
         int hash = 3;

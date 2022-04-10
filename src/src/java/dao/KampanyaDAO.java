@@ -13,7 +13,7 @@ public class KampanyaDAO extends DBConnection {
     public void create(Kampanya k) {
         try {
             Statement st = this.getConnection().createStatement();
-            String query = "insert into kampanya (kampanya_id, indirim_yuzdesi) values('" + k.getKampanya_id() + "', '" + k.getIndirim_yuzdesi() + "') ";
+            String query = "insert into kampanya (indirim_yuzdesi) values('" + k.getIndirim_yuzdesi() + "') ";
             st.executeUpdate(query);
         } catch (Exception ex) {
 
@@ -53,7 +53,7 @@ public class KampanyaDAO extends DBConnection {
             ResultSet rs = st.executeQuery(query);
 
             while (rs.next()) {
-                k = new Kampanya(rs.getInt("id"), rs.getFloat("indirim_yuzdesi"));
+                k = new Kampanya(rs.getInt("kampanya_id"), rs.getFloat("indirim_yuzdesi"));
 
             }
         } catch (Exception ex) {

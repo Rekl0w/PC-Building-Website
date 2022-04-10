@@ -1,0 +1,49 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Anakart</title>
+    </h:head>
+    <h:body>
+        <h:form>
+            Ad - Soyad=  <h:inputText value = "#{kullaniciController.entity.ad_soyad}" />
+            Sifre = <h:inputText value = "#{kullaniciController.entity.sifre}" />
+
+            <h:commandButton rendered = "#{kullaniciController.entity.kullanici_id == 0}" action = "#{kullaniciController.create()}" value = "create"/>
+            <h:commandButton rendered = "#{kullaniciController.entity.kullanici_id != 0}" action = "#{kullaniciController.update()}" value = "update"/>
+
+
+        </h:form>
+        <hr />
+        <h:form>
+            <h:dataTable value = "#{kullaniciController.list}" var = "k" border = "1">
+                <h:column>
+                    <f:facet name ="header" >ID</f:facet>
+                    #{k.kullanici_id}
+                </h:column>
+
+                <h:column>
+                    <f:facet name ="header" >Ad - Soyad</f:facet>
+                     #{k.ad_soyad}
+                </h:column>
+
+                <h:column>
+                    <f:facet name ="header" >Sifre</f:facet>
+                     #{k.sifre}
+                </h:column>
+
+                <h:column>
+                    <f:facet name ="header" >Administration</f:facet>
+                    <h:commandButton action = "#{kullaniciController.delete(k)}" value ="delete"/>
+                    <h:commandButton action = "#{kullaniciController.setEntity(k)}" value ="update"/>
+                        
+                </h:column>
+                
+                
+            </h:dataTable>
+
+        </h:form>
+    </h:body>
+</html>
