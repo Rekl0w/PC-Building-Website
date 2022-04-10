@@ -13,7 +13,7 @@ public class KampanyaDAO extends DBConnection {
     public void create(Kampanya k) {
         try {
             Statement st = this.getConnection().createStatement();
-            String query = "insert into kampanya (indirim_yuzdesi) values('" + k.getIndirim_yuzdesi() + "') ";
+            String query = "insert into kampanya (indirim_yuzdesi) values(" + k.getIndirim_yuzdesi() + ")";
             st.executeUpdate(query);
         } catch (Exception ex) {
 
@@ -25,7 +25,7 @@ public class KampanyaDAO extends DBConnection {
     public void update(Kampanya k) {
         try {
             Statement st = this.getConnection().createStatement();
-            String query = "update kampanya set indirim_yuzdesi ='" + k.getIndirim_yuzdesi() + "' where kampanya_id = " +k.getKampanya_id();
+            String query = "update kampanya set indirim_yuzdesi =" + k.getIndirim_yuzdesi() + " where kampanya_id = " +k.getKampanya_id();
             st.executeUpdate(query);
         } catch (Exception ex) {
 
@@ -37,7 +37,7 @@ public class KampanyaDAO extends DBConnection {
     public void delete(Kampanya k) {
         try {
             Statement st = this.getConnection().createStatement();
-            String query = "delete from kampanya where kampanya_id = '" + k.getKampanya_id() + "'";
+            String query = "delete from kampanya where kampanya_id = " + k.getKampanya_id();
             st.executeUpdate(query);
         } catch (Exception ex) {
 
@@ -49,7 +49,7 @@ public class KampanyaDAO extends DBConnection {
         Kampanya k = null;
          try {
             Statement st = this.getConnection().createStatement();
-            String query = "select * from kampanya";
+            String query = "select * from kampanya where kampanya_id = " + id;
             ResultSet rs = st.executeQuery(query);
 
             while (rs.next()) {

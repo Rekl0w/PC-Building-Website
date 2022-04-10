@@ -19,7 +19,8 @@ public class BilgisayarBileseni {
         this.kullanicilar = kullanicilar;
     }
 
-    public BilgisayarBileseni(String marka, int stok, Kampanya kampanya) {
+    public BilgisayarBileseni(int urun_id, String marka, int stok, Kampanya kampanya) {
+        this.urun_id = urun_id;
         this.marka = marka;
         this.stok = stok;
         this.kampanya = kampanya;
