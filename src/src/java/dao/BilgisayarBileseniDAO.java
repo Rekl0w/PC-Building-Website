@@ -11,6 +11,7 @@ import java.util.List;
 public class BilgisayarBileseniDAO extends DBConnection {
 
     private KampanyaDAO kampanyaDAO;
+
     public void create(BilgisayarBileseni a) {
         try {
             Statement st = this.connect().createStatement();
@@ -64,6 +65,17 @@ public class BilgisayarBileseniDAO extends DBConnection {
         }
         return list;
 
+    }
+    
+    public KampanyaDAO getKampanyaDAO() {
+        if(this.kampanyaDAO == null){
+            this.kampanyaDAO = new KampanyaDAO();
+        }
+        return kampanyaDAO;
+    }
+
+    public void setKampanyaDAO(KampanyaDAO kampanyaDAO) {
+        this.kampanyaDAO = kampanyaDAO;
     }
 
 }
