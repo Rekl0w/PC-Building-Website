@@ -8,7 +8,7 @@ public class Monitor extends BilgisayarBileseni {
     public Monitor() {
     }
 
-    public Monitor(int urun_id, Kampanya kampanya, int boyut, int ekran_yenileme_hizi, String marka, float fiyat, int stok ) {
+    public Monitor(int urun_id,int boyut, int ekran_yenileme_hizi, String marka, float fiyat, int stok, Kampanya kampanya) {
         super(urun_id, marka, fiyat, stok, kampanya);
         this.ekran_yenileme_hizi = ekran_yenileme_hizi;
         this.boyut = boyut;
@@ -24,9 +24,6 @@ public class Monitor extends BilgisayarBileseni {
         this.ekran_yenileme_hizi = ekran_yenileme_hizi;
     }
 
-    public Monitor(int aInt, String string, float aFloat, int aInt0, Kampanya findById) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
 
     public int getEkran_yenileme_hizi() {
         return ekran_yenileme_hizi;

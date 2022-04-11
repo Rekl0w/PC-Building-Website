@@ -5,24 +5,13 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
         <title>Kullanici Islemleri</title>
+        <h:outputStylesheet library ="css" name ="bootstrap.min.css"/>
     </h:head>
-    <h:form>
-            <h:commandButton action="/index" value="Index" />
-            <h:commandButton action="/panel/anakart" value="Anakart" />
-            <h:commandButton action="/panel/bilgisayar-bileseni" value="Bilgisayar Bileseni" />
-            <h:commandButton action="/panel/ekran-karti" value="Ekran Karti" />
-            <h:commandButton action="/panel/islemci" value="Islemci" />
-            <h:commandButton action="/panel/monitor" value="Monitor" />
-            <h:commandButton action="/panel/mouse" value="Mouse" />
-            <h:commandButton action="/panel/ram" value="Ram" />
-            <h:commandButton action="/panel/kampanya" value="Kampanya" />
-            <h:commandButton action="/panel/satin-alma" value="Satin Alma" />
-            <h:commandButton action="/panel/kasa" value="Kasa" />
-            <h:commandButton action="/panel/klavye" value="Klavye" />    
-        </h:form>
-        
     <h:body>
+        
+
         <h:form>
+            <h:commandButton action="/index" value="HOME" />
             Ad - Soyad=  <h:inputText value = "#{kullaniciController.entity.ad_soyad}" />
             Sifre = <h:inputText value = "#{kullaniciController.entity.sifre}" />
 
@@ -36,27 +25,27 @@
             <h:dataTable value = "#{kullaniciController.list}" var = "k" border = "1">
                 <h:column>
                     <f:facet name ="header" >ID</f:facet>
-                    #{k.kullanici_id}
+                        #{k.kullanici_id}
                 </h:column>
 
                 <h:column>
                     <f:facet name ="header" >Ad - Soyad</f:facet>
-                     #{k.ad_soyad}
+                        #{k.ad_soyad}
                 </h:column>
 
                 <h:column>
                     <f:facet name ="header" >Sifre</f:facet>
-                     #{k.sifre}
+                        #{k.sifre}
                 </h:column>
 
                 <h:column>
                     <f:facet name ="header" >Administration</f:facet>
                     <h:commandButton action = "#{kullaniciController.delete(k)}" value ="delete"/>
                     <h:commandButton action = "#{kullaniciController.setEntity(k)}" value ="update"/>
-                        
+
                 </h:column>
-                
-                
+
+
             </h:dataTable>
 
         </h:form>

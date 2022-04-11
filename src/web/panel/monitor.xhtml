@@ -5,27 +5,12 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
         <title>Monitor</title>
+        <h:outputStylesheet library ="css" name ="bootstrap.min.css"/>
     </h:head>
     <h:body>
+
         <h:form>
-            <h:commandButton action="/panel/kullanici" value="Kullanici Islemleri" />
-            <h:commandButton action="/panel/anakart" value="Anakart" />
-            <h:commandButton action="/panel/bilgisayar-bileseni" value="Bilgisayar Bileseni" />
-            <h:commandButton action="/panel/ekran-karti" value="Ekran Karti" />
-            <h:commandButton action="/panel/islemci" value="Islemci" />
-            <h:commandButton action="/index" value="Index" />
-            <h:commandButton action="/panel/mouse" value="Mouse" />
-            <h:commandButton action="/panel/ram" value="Ram" />
-            <h:commandButton action="/panel/kampanya" value="Kampanya" />
-            <h:commandButton action="/panel/satin-alma" value="Satin Alma" />
-            <h:commandButton action="/panel/kasa" value="Kasa" />
-            <h:commandButton action="/panel/klavye" value="Klavye" />    
-        </h:form>
-        
-        <h:form>
-            
-            
-            Urun ID:  <h:inputText value = "#{monitorController.entity.urun_id}"/>
+            <h:commandButton action="/index" value="HOME" />
             Kampanya ID:  <h:inputText value = "#{monitorController.entity.kampanya}" converter ="kampanyaConverter" />
             Boyut:  <h:inputText value = "#{monitorController.entity.boyut}" />
             Ekran Yenileme Hızı:  <h:inputText value = "#{monitorController.entity.ekran_yenileme_hizi}" />
@@ -43,47 +28,47 @@
             <h:dataTable value = "#{monitorController.list}" var = "k" border = "1">
                 <h:column>
                     <f:facet name ="header" >Urun ID</f:facet>
-                    #{k.urun_id}
+                        #{k.urun_id}
                 </h:column>
-                
+
                 <h:column>
                     <f:facet name ="header" >Kampanya ID</f:facet>
-                    #{k.kampanya.kampanya_id}
+                        #{k.kampanya}
                 </h:column>
 
                 <h:column>
                     <f:facet name ="header" >Boyut</f:facet>
-                     #{k.boyut}
+                        #{k.boyut}
                 </h:column>
-                
+
                 <h:column>
                     <f:facet name ="header" >Ekran Yenileme Hizi</f:facet>
-                     #{k.ekran_yenileme_hizi}
+                        #{k.ekran_yenileme_hizi}
                 </h:column>
 
                 <h:column>
                     <f:facet name ="header" >Marka</f:facet>
-                     #{k.marka}
+                        #{k.marka}
                 </h:column>
-                
+
                 <h:column>
                     <f:facet name ="header" >Fiyat</f:facet>
-                     #{k.fiyat}
+                        #{k.fiyat}
                 </h:column>
-                
+
                 <h:column>
                     <f:facet name ="header" >Stok</f:facet>
-                     #{k.stok}
+                        #{k.stok}
                 </h:column>
-                
+
                 <h:column>
                     <f:facet name ="header" >Administration</f:facet>
                     <h:commandButton action = "#{monitorController.delete(k)}" value ="delete"/>
                     <h:commandButton action = "#{monitorController.setEntity(k)}" value ="update"/>
-                        
+
                 </h:column>
-                
-                
+
+
             </h:dataTable>
 
         </h:form>

@@ -5,28 +5,16 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
         <title>Bilgisayar Bileşeni</title>
+        <h:outputStylesheet library ="css" name ="bootstrap.min.css"/>
     </h:head>
     <h:body>
+
         <h:form>
-            <h:commandButton action="/panel/kullanici" value="Kullanici Islemleri" />
-            <h:commandButton action="/panel/anakart" value="Anakart" />
-            <h:commandButton action="/index" value="Index" />
-            <h:commandButton action="/panel/ekran-karti" value="Ekran Karti" />
-            <h:commandButton action="/panel/islemci" value="Islemci" />
-            <h:commandButton action="/panel/monitor" value="Monitor" />
-            <h:commandButton action="/panel/mouse" value="Mouse" />
-            <h:commandButton action="/panel/ram" value="Ram" />
-            <h:commandButton action="/panel/kampanya" value="Kampanya" />
-            <h:commandButton action="/panel/satin-alma" value="Satin Alma" />
-            <h:commandButton action="/panel/kasa" value="Kasa" />
-            <h:commandButton action="/panel/klavye" value="Klavye" />    
-        </h:form>
-        
-        
-        <h:form>
+            <h:commandButton action="index" value="HOME" />
+
             Kampanya : <h:inputText value = "#{bilgisayarBileseniController.entity.kampanya}" converter = "kampanyaConverter"/>
             Marka: <h:inputText value = "#{bilgisayarBileseniController.entity.marka}" />
-            
+
             Stok: <h:inputText value = "#{bilgisayarBileseniController.entity.stok}" />
 
             <h:commandButton rendered = "#{bilgisayarBileseniController.entity.urun_id == 0}" action = "#{bilgisayarBileseniController.create()}" value = "create"/>
@@ -39,33 +27,33 @@
             <h:dataTable value = "#{bilgisayarBileseniController.list}" var = "k" border = "1">
                 <h:column>
                     <f:facet name ="header" >Urun ID</f:facet>
-                    #{k.urun_id}
+                        #{k.urun_id}
                 </h:column>
-                
+
                 <h:column>
                     <f:facet name ="header" >Kampanya</f:facet>
-                    #{k.kampanya.kampanya_id}
+                        #{k.kampanya.kampanya_id}
                 </h:column>
 
                 <h:column>
                     <f:facet name ="header" >Marka</f:facet>
-                     #{k.marka}
+                        #{k.marka}
                 </h:column>
-           
+
                 <h:column>
                     <f:facet name ="header" >Stok</f:facet>
-                     #{k.stok}
+                        #{k.stok}
                 </h:column>
-                
+
 
                 <h:column>
                     <f:facet name ="header" >Administration</f:facet>
                     <h:commandButton action = "#{bilgisayarBileseniController.delete(k)}" value ="delete"/>
                     <h:commandButton action = "#{bilgisayarBileseniController.setEntity(k)}" value ="update"/>
-                        
+
                 </h:column>
-                
-                
+
+
             </h:dataTable>
 
         </h:form>

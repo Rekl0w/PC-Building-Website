@@ -1,19 +1,43 @@
 package dao;
 
 import entity.Kasa;
-import java.sql.ResultSet;
+import entity.BilgisayarBileseni;
 import java.sql.Statement;
+import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
 public class KasaDAO extends DBConnection {
 
     private KampanyaDAO kampanyaDAO;
-    public void create(Kasa k) {
+    private BilgisayarBileseniDAO bbDao;
+
+    public BilgisayarBileseniDAO getBbDao() {
+        if (this.bbDao == null) {
+            bbDao = new BilgisayarBileseniDAO();
+        }
+        return bbDao;
+    }
+
+    public void setBbDao(BilgisayarBileseniDAO bbDao) {
+        this.bbDao = bbDao;
+    }
+
+    public void create(Kasa a) {
         try {
             Statement st = this.getConnection().createStatement();
-            String query = "insert into kasa (urun_id, kampanya_id, boyut, marka, fiyat, stok) values(" + k.getUrun_id() +", "+ k.getKampanya().getKampanya_id() + ", '" + k.getBoyut() + "', '" + k.getMarka() + "', " + k.getFiyat() + ", " + k.getStok() + ") ";
+            String query = "insert into kasa (kampanya_id, boyut, marka, fiyat, stok) values(" + a.getKampanya().getKampanya_id() + ", '" + a.getBoyut()+ "', '" + a.getMarka() + "', " + a.getFiyat() + ", " + a.getStok() + ") ";
             st.executeUpdate(query);
+
+            ResultSet rs = st.executeQuery("select max(urun_id) as mid from kasa");
+            
+            rs.next();
+            int id = rs.getInt("mid");
+
+            BilgisayarBileseni bb = new BilgisayarBileseni(id , a.getMarka(), a.getFiyat(), a.getStok(), a.getKampanya());
+
+            this.getBbDao().create(bb);
+
         } catch (Exception ex) {
 
             System.out.println(ex.getMessage());
@@ -21,11 +45,20 @@ public class KasaDAO extends DBConnection {
 
     }
 
-    public void update(Kasa k) {
+    public void update(Kasa a) {
         try {
             Statement st = this.getConnection().createStatement();
-            String query = "update kasa set kampanya_id = " + k.getKampanya().getKampanya_id() + ", boyut ='" + k.getBoyut() + "', marka = '" + k.getMarka() + "', fiyat = " + k.getFiyat() + ", stok = " + k.getStok();
+            String query = "update kasa set kampanya_id = '" + a.getKampanya().getKampanya_id() + "', boyut = '" + a.getBoyut()+ "', marka = '" + a.getMarka() + "', fiyat = " + a.getFiyat() + ", stok = " + a.getStok()+ "where urun_id = " + a.getUrun_id();
             st.executeUpdate(query);
+            
+            ResultSet rs = st.executeQuery("select * from kasa where urun_id = " + a.getUrun_id());
+            
+            rs.next();
+            int id = rs.getInt("urun_id");
+
+            BilgisayarBileseni bb = new BilgisayarBileseni(id , a.getMarka(), a.getFiyat(), a.getStok(), a.getKampanya());
+
+            this.getBbDao().update(bb);
         } catch (Exception ex) {
 
             System.out.println(ex.getMessage());
@@ -33,11 +66,25 @@ public class KasaDAO extends DBConnection {
 
     }
 
-    public void delete(Kasa k) {
+    public void delete(Kasa a) {
         try {
             Statement st = this.getConnection().createStatement();
-            String query = "delete from kasa where urun_id = " + k.getUrun_id();
+            
+            ResultSet rs = st.executeQuery("select * from kasa where urun_id = " + a.getUrun_id());
+            rs.next();
+            int id = rs.getInt("urun_id");
+            
+            BilgisayarBileseni bb = new BilgisayarBileseni(id , a.getMarka(), a.getFiyat(), a.getStok(), a.getKampanya());
+            this.getBbDao().delete(bb);
+            
+            
+            String query = "delete from kasa where urun_id = " + a.getUrun_id();
             st.executeUpdate(query);
+            
+            
+            
+
+            
         } catch (Exception ex) {
 
             System.out.println(ex.getMessage());
@@ -52,7 +99,7 @@ public class KasaDAO extends DBConnection {
             ResultSet rs = st.executeQuery(query);
 
             while (rs.next()) {
-                list.add(new Kasa(rs.getInt("urun_id"), rs.getString("marka"), rs.getFloat("fiyat"), rs.getString("boyut"), rs.getInt("stok"), this.getKampanyaDAO().findById(rs.getInt("kampanya_id"))));
+                list.add(new Kasa(rs.getInt("urun_id"), rs.getString("boyut"), rs.getString("marka"), rs.getFloat("fiyat"), rs.getInt("stok"), this.getKampanyaDAO().findById(rs.getInt("kampanya_id"))));
 
             }
         } catch (Exception ex) {
@@ -63,7 +110,7 @@ public class KasaDAO extends DBConnection {
     }
 
     public KampanyaDAO getKampanyaDAO() {
-        if(this.kampanyaDAO == null){
+        if (this.kampanyaDAO == null) {
             this.kampanyaDAO = new KampanyaDAO();
         }
         return kampanyaDAO;
@@ -72,4 +119,5 @@ public class KasaDAO extends DBConnection {
     public void setKampanyaDAO(KampanyaDAO kampanyaDAO) {
         this.kampanyaDAO = kampanyaDAO;
     }
+
 }

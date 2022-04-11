@@ -12,7 +12,7 @@ public abstract class DBConnection {
             try {
 
                 Class.forName("org.postgresql.Driver");
-                this.connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/pc_toplama", "postgres", "12345");
+                this.connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/PCTOPLAMA", "postgres", "12345");
 
             } catch (Exception e) {
                 System.out.println(e.getMessage());

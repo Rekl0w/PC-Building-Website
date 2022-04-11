@@ -12,16 +12,16 @@ import java.util.List;
 public class BilgisayarBileseniDAO extends DBConnection {
 
     private KampanyaDAO kampanyaDAO;
-
+    
     public void create(BilgisayarBileseni a) {
         try {
             Statement st = this.getConnection().createStatement();
-            String query = "insert into bilgisayar_bileseni (kampanya_id, marka, stok) values(" + a.getKampanya().getKampanya_id() + ", '" + a.getMarka() + "', " + a.getStok() + ")";
+            String query = "insert into bilgisayar_bileseni (urun_id, kampanya_id, marka,fiyat, stok) values("+a.getUrun_id()+" , " + a.getKampanya().getKampanya_id() + ",'"+ a.getMarka() +  "', "  +a.getFiyat()+", " + a.getStok() + ")";
             st.executeUpdate(query);
 
             ResultSet rs = st.executeQuery("select max(urun_id) as mid from bilgisayar_bileseni");
-            //rs.next();
-
+            
+            rs.next();
             int id = rs.getInt("mid");
 
             for (Kullanici k : a.getKullanicilar()) {
@@ -60,8 +60,8 @@ public class BilgisayarBileseniDAO extends DBConnection {
             String query1 = "delete from siparis_verir where urun_id = " + a.getUrun_id();
             st.executeUpdate(query1);
 
-            String query = "delete from bilgisayar_bileseni where urun_id = " + a.getUrun_id();
-            st.executeUpdate(query);
+            String query2 = "delete from bilgisayar_bileseni where urun_id = " + a.getUrun_id();
+            st.executeUpdate(query2);
 
         } catch (Exception ex) {
 
