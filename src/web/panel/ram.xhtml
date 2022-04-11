@@ -9,23 +9,21 @@
     <h:body>
         <h:form>
             
-            
-            Urun ID:  <h:inputText value = "#{anakartController.entity.urun_id}"/>
-            Kampanya ID:  <h:inputText value = "#{anakartController.entity.kampanya}" converter ="kampanyaConverter" />
-            Cpu Soketi:  <h:inputText value = "#{anakartController.entity.cpu_soketi}" />
-            Bellek Saat Hızı:  <h:inputText value = "#{anakartController.entity.bellek_saat_hizi}" />
-            Marka: <h:inputText value = "#{anakartController.entity.marka}" />
-            Fiyat: <h:inputText value = "#{anakartController.entity.fiyat}" />
-            Stok: <h:inputText value = "#{anakartController.entity.stok}" />
+            Urun ID:  <h:inputText value = "#{ramController.entity.urun_id}"/>
+            Kampanya ID:  <h:inputText value = "#{ramController.entity.kampanya}" converter ="kampanyaConverter" />
+            Bellek:  <h:inputText value = "#{ramController.entity.bellek}" />
+            Marka: <h:inputText value = "#{ramController.entity.marka}" />
+            Fiyat: <h:inputText value = "#{ramController.entity.fiyat}" />
+            Stok: <h:inputText value = "#{ramController.entity.stok}" />
 
-            <h:commandButton rendered = "#{anakartController.entity.urun_id == 0}" action = "#{anakartController.create()}" value = "create"/>
-            <h:commandButton rendered = "#{anakartController.entity.urun_id != 0}" action = "#{anakartController.update()}" value = "update"/>
+            <h:commandButton rendered = "#{ramController.entity.urun_id == 0}" action = "#{ramController.create()}" value = "create"/>
+            <h:commandButton rendered = "#{ramController.entity.urun_id != 0}" action = "#{ramController.update()}" value = "update"/>
 
 
         </h:form>
         <hr />
         <h:form>
-            <h:dataTable value = "#{anakartController.list}" var = "k" border = "1">
+            <h:dataTable value = "#{ramController.list}" var = "k" border = "1">
                 <h:column>
                     <f:facet name ="header" >Urun ID</f:facet>
                     #{k.urun_id}
@@ -37,13 +35,8 @@
                 </h:column>
 
                 <h:column>
-                    <f:facet name ="header" >Cpu Soketi</f:facet>
-                     #{k.cpu_soketi}
-                </h:column>
-
-                <h:column>
-                    <f:facet name ="header" >Bellek Saat Hizi</f:facet>
-                     #{k.bellek_saat_hizi}
+                    <f:facet name ="header" >Bellek</f:facet>
+                     #{k.bellek}
                 </h:column>
 
                 <h:column>
@@ -63,8 +56,8 @@
                 
                 <h:column>
                     <f:facet name ="header" >Administration</f:facet>
-                    <h:commandButton action = "#{anakartController.delete(k)}" value ="delete"/>
-                    <h:commandButton action = "#{anakartController.setEntity(k)}" value ="update"/>
+                    <h:commandButton action = "#{ramController.delete(k)}" value ="delete"/>
+                    <h:commandButton action = "#{ramController.setEntity(k)}" value ="update"/>
                         
                 </h:column>
                 
