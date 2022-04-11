@@ -57,7 +57,7 @@ public class MouseDAO extends DBConnection {
             ResultSet rs = st.executeQuery(query);
 
             while (rs.next()) {
-                list.add(new Mouse(rs.getString("baglanma_sekli"), rs.getInt("urun_id"), rs.getString("marka"), rs.getFloat("fiyat"), rs.getInt("stok"),this.kampanyaDAO.findById(rs.getInt("kampanya_id"))));
+                list.add(new Mouse(rs.getString("baglanma_sekli"), rs.getInt("urun_id"), rs.getString("marka"), rs.getFloat("fiyat"), rs.getInt("stok"),this.getKampanyaDAO().findById(rs.getInt("kampanya_id"))));
 
             }
 
@@ -65,6 +65,17 @@ public class MouseDAO extends DBConnection {
             System.out.println(e.getMessage());
         }
         return list;
+    }
+    
+    public KampanyaDAO getKampanyaDAO() {
+        if(this.kampanyaDAO == null){
+            this.kampanyaDAO = new KampanyaDAO();
+        }
+        return kampanyaDAO;
+    }
+
+    public void setKampanyaDAO(KampanyaDAO kampanyaDAO) {
+        this.kampanyaDAO = kampanyaDAO;
     }
 
 }
