@@ -7,7 +7,7 @@ import jakarta.enterprise.context.SessionScoped;
 import java.io.Serializable;
 import java.util.List;
 
-@Named(value ="EkranKartiController")
+@Named(value ="ekranKartiController")
 @SessionScoped
 public class EkranKartiController implements Serializable {
 
