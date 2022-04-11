@@ -13,7 +13,7 @@ public class MouseDAO extends DBConnection {
     public void create(Mouse m1) {
         try {
             Statement st = this.getConnection().createStatement();
-            String query = "insert into mouse (urun_id, kampanya_id, baglanma_sekli, marka, fiyat, stok ) values(" + m1.getUrun_id() + "," + m1.getKampanya().getKampanya_id() + ",'" + m1.getBaglanma_sekli() + "','"+ m1.getMarka() + "'," + m1.getFiyat() + "," + m1.getStok() + ")";
+            String query = "insert into mouse (kampanya_id,ekran_yenileme_hizi,Marka,fiyat,stok ) values(" + m1.getKampanya().getKampanya_id()+ ",'" + m1.getBaglanma_sekli() + "'," + m1.getFiyat() + "," + m1.getStok() + ")";
             st.executeUpdate(query);
 
         } catch (Exception e) {
@@ -57,7 +57,7 @@ public class MouseDAO extends DBConnection {
             ResultSet rs = st.executeQuery(query);
 
             while (rs.next()) {
-                list.add(new Mouse(rs.getString("baglanma_sekli"), rs.getInt("urun_id"), rs.getString("marka"), rs.getFloat("fiyat"), rs.getInt("stok"),this.getKampanyaDAO().findById(rs.getInt("kampanya_id"))));
+                list.add(new Mouse(rs.getString("baglanma_sekli"), rs.getString("marka"), rs.getFloat("fiyat"), rs.getInt("stok"),this.kampanyaDAO.findById(rs.getInt("kampanya_id"))));
 
             }
 
@@ -65,17 +65,6 @@ public class MouseDAO extends DBConnection {
             System.out.println(e.getMessage());
         }
         return list;
-    }
-    
-    public KampanyaDAO getKampanyaDAO() {
-        if(this.kampanyaDAO == null){
-            this.kampanyaDAO = new KampanyaDAO();
-        }
-        return kampanyaDAO;
-    }
-
-    public void setKampanyaDAO(KampanyaDAO kampanyaDAO) {
-        this.kampanyaDAO = kampanyaDAO;
     }
 
 }

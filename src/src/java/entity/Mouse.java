@@ -7,11 +7,6 @@ public class Mouse extends BilgisayarBileseni {
     public Mouse() {
     }
 
-    public Mouse(String baglanma_sekli, int urun_id, String marka, float fiyat, int stok, Kampanya kampanya) {
-        super(urun_id, marka, fiyat, stok, kampanya);
-        this.baglanma_sekli = baglanma_sekli;
-    }
-
     public Mouse(String baglanma_sekli, String marka, float fiyat, int stok) {
         super(marka, fiyat, stok);
         this.baglanma_sekli = baglanma_sekli;

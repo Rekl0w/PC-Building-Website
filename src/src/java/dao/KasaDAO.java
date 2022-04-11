@@ -12,7 +12,7 @@ public class KasaDAO extends DBConnection {
     public void create(Kasa k) {
         try {
             Statement st = this.getConnection().createStatement();
-            String query = "insert into kasa (urun_id, kampanya_id, boyut, marka, fiyat, stok) values(" + k.getUrun_id() +", "+ k.getKampanya().getKampanya_id() + ", '" + k.getBoyut() + "', '" + k.getMarka() + "', " + k.getFiyat() + ", " + k.getStok() + ") ";
+            String query = "insert into kasa (kampanya_id, boyut, marka, fiyat, stok) values(" + k.getKampanya().getKampanya_id() + ", '" + k.getBoyut() + "', '" + k.getMarka() + "', " + k.getFiyat() + ", " + k.getStok() + ") ";
             st.executeUpdate(query);
         } catch (Exception ex) {
 
@@ -52,7 +52,7 @@ public class KasaDAO extends DBConnection {
             ResultSet rs = st.executeQuery(query);
 
             while (rs.next()) {
-                list.add(new Kasa(rs.getInt("urun_id"), rs.getString("marka"), rs.getFloat("fiyat"), rs.getString("boyut"), rs.getInt("stok"), this.getKampanyaDAO().findById(rs.getInt("kampanya_id"))));
+                list.add(new Kasa(this.getKampanyaDAO().findById(rs.getInt("kampanya_id")), rs.getString("boyut"), rs.getString("marka"), rs.getFloat("fiyat"), rs.getInt("stok")));
 
             }
         } catch (Exception ex) {

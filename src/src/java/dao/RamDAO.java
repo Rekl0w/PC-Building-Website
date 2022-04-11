@@ -12,7 +12,7 @@ public class RamDAO extends DBConnection {
     public void create(Ram r) {
         try {
             Statement st = this.getConnection().createStatement();
-            String query = "insert into ram (urun_id, kampanya_id, bellek, marka, fiyat, stok ) values(" + r.getUrun_id() + "," + r.getKampanya().getKampanya_id() + "," + r.getBellek() + ",'" + r.getMarka() + "',"+ r.getFiyat() + "," + r.getStok() + ")";
+            String query = "insert into ram (kampanya_id,Bellek,Marka,fiyat,stok ) values(" + r.getKampanya().getKampanya_id()+ "," + r.getBellek() + "," + r.getFiyat() + "," + r.getStok() + ")";
             st.executeUpdate(query);
 
         } catch (Exception e) {
@@ -56,7 +56,7 @@ public class RamDAO extends DBConnection {
             ResultSet rs = st.executeQuery(query);
 
             while (rs.next()) {
-                list.add(new Ram(rs.getInt("urun_id"), rs.getInt("bellek"), rs.getString("marka"), rs.getFloat("fiyat"), rs.getInt("stok"), this.getKampanyaDAO().findById(rs.getInt("kampanya_id"))));
+                list.add(new Ram(rs.getInt("bellek"), rs.getString("marka"), rs.getFloat("fiyat"), rs.getInt("stok"), this.kampanyaDAO.findById(rs.getInt("kampanya_id"))));
 
             }
 
@@ -66,14 +66,4 @@ public class RamDAO extends DBConnection {
         return list;
     }
 
-    public KampanyaDAO getKampanyaDAO() {
-        if(this.kampanyaDAO == null){
-            this.kampanyaDAO = new KampanyaDAO();
-        }
-        return kampanyaDAO;
-    }
-
-    public void setKampanyaDAO(KampanyaDAO kampanyaDAO) {
-        this.kampanyaDAO = kampanyaDAO;
-    }
 }

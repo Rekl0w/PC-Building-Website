@@ -7,11 +7,6 @@ public class Ram extends BilgisayarBileseni {
     public Ram() {
     }
 
-    public Ram(int urun_id, int bellek, String marka, float fiyat, int stok, Kampanya kampanya) {
-        super(urun_id, marka, fiyat, stok, kampanya);
-        this.bellek = bellek;
-    }
-
     public Ram(int bellek, String marka, float fiyat, int stok) {
         super(marka, fiyat, stok);
         this.bellek = bellek;
@@ -20,6 +15,10 @@ public class Ram extends BilgisayarBileseni {
     public Ram(int bellek, String marka, float fiyat) {
         super(marka, fiyat);
         this.bellek = bellek;
+    }
+
+    public Ram(int aInt, String string, float aFloat, int aInt0, Kampanya findById) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     public int getBellek() {

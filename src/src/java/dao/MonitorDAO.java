@@ -52,11 +52,11 @@ public class MonitorDAO extends DBConnection {
 
         try {
             Statement st = this.getConnection().createStatement();
-            String query = "select * from monitor";
+            String query = "Select * from monitor";
             ResultSet rs = st.executeQuery(query);
 
             while (rs.next()) {
-                list.add(new Monitor(rs.getInt("urun_id"), this.getKampanyaDAO().findById(rs.getInt("kampanya_id")), rs.getInt("boyut"), rs.getInt("ekran_yenileme_hizi"), rs.getString("marka"), rs.getFloat("fiyat"), rs.getInt("stok")));
+                list.add(new Monitor(rs.getInt("urun_id"), this.kampanyaDAO.findById(rs.getInt("kampanya_id")), rs.getInt("boyut"), rs.getInt("ekran_yenileme_hizi"), rs.getString("marka"), rs.getFloat("fiyat"), rs.getInt("stok")));
 
             }
 
@@ -65,15 +65,5 @@ public class MonitorDAO extends DBConnection {
         }
         return list;
     }
-    
-    public KampanyaDAO getKampanyaDAO() {
-        if(this.kampanyaDAO == null){
-            this.kampanyaDAO = new KampanyaDAO();
-        }
-        return kampanyaDAO;
-    }
 
-    public void setKampanyaDAO(KampanyaDAO kampanyaDAO) {
-        this.kampanyaDAO = kampanyaDAO;
-    }
 }

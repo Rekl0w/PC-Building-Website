@@ -8,12 +8,6 @@ public class Kasa extends BilgisayarBileseni {
     public Kasa() {
     }
 
-    public Kasa(int urun_id, String marka, float fiyat, String boyut, int stok, Kampanya kampanya) {
-        super(urun_id, marka, stok, kampanya);
-        this.boyut = boyut;
-        this.kampanya = kampanya;
-    }
-
     public Kasa(Kampanya kampanya, String boyut, String marka, float fiyat, int stok) {
         super(marka, fiyat, stok);
         this.boyut = boyut;
