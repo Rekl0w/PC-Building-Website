@@ -8,6 +8,12 @@ public class Monitor extends BilgisayarBileseni {
     public Monitor() {
     }
 
+    public Monitor(int urun_id, Kampanya kampanya, int boyut, int ekran_yenileme_hizi, String marka, float fiyat, int stok ) {
+        super(urun_id, marka, fiyat, stok, kampanya);
+        this.ekran_yenileme_hizi = ekran_yenileme_hizi;
+        this.boyut = boyut;
+    }
+
     public Monitor(int ekran_yenileme_hizi, String marka, float fiyat, int stok) {
         super(marka, fiyat, stok);
         this.ekran_yenileme_hizi = ekran_yenileme_hizi;

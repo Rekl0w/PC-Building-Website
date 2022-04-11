@@ -12,7 +12,7 @@ public class MonitorDAO extends DBConnection {
     public void create(Monitor m) {
         try {
             Statement st = this.getConnection().createStatement();
-            String query = "insert into monitor (kampanya_id,ekran_yenileme_hizi,Marka,fiyat,stok ) values(" + m.getKampanya().getKampanya_id() + "," + m.getEkran_yenileme_hizi() + "," + m.getFiyat() + "," + m.getStok() + ")";
+            String query = "insert into monitor (urun_id, kampanya_id, boyut, ekran_yenileme_hizi, marka, fiyat, stok) values(" + m.getUrun_id() + "," + m.getKampanya().getKampanya_id() + "," + m.getBoyut() + "," + m.getEkran_yenileme_hizi() + ", '" + m.getMarka() + "'," + m.getFiyat() + "," + m.getStok() + ")";
             st.executeUpdate(query);
 
         } catch (Exception e) {
@@ -56,7 +56,7 @@ public class MonitorDAO extends DBConnection {
             ResultSet rs = st.executeQuery(query);
 
             while (rs.next()) {
-                list.add(new Monitor(rs.getInt("ekran_yenileme_hizi"), rs.getString("marka"), rs.getFloat("fiyat"), rs.getInt("stok"), this.kampanyaDAO.findById(rs.getInt("kampanya_id"))));
+                list.add(new Monitor(rs.getInt("urun_id"), this.kampanyaDAO.findById(rs.getInt("kampanya_id")), rs.getInt("boyut"), rs.getInt("ekran_yenileme_hizi"), rs.getString("marka"), rs.getFloat("fiyat"), rs.getInt("stok")));
 
             }
 
