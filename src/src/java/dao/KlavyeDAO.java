@@ -56,7 +56,7 @@ public class KlavyeDAO extends DBConnection {
             ResultSet rs = st.executeQuery(query);
 
             while (rs.next()) {
-                list.add(new Klavye(rs.getInt("urun_id"), rs.getString("marka"), rs.getString("switch_modeli"), rs.getFloat("fiyat"), rs.getInt("stok"), this.kampanyaDAO.findById(rs.getInt("kampanya_id"))));
+                list.add(new Klavye(rs.getInt("urun_id"), rs.getString("marka"), rs.getString("switch_modeli"), rs.getFloat("fiyat"), rs.getInt("stok"), this.getKampanyaDAO().findById(rs.getInt("kampanya_id"))));
 
             }
 
@@ -66,4 +66,15 @@ public class KlavyeDAO extends DBConnection {
         return list;
     }
 
+    public KampanyaDAO getKampanyaDAO() {
+        if(this.kampanyaDAO == null){
+            this.kampanyaDAO = new KampanyaDAO();
+        }
+        return kampanyaDAO;
+    }
+
+    public void setKampanyaDAO(KampanyaDAO kampanyaDAO) {
+        this.kampanyaDAO = kampanyaDAO;
+    }
+    
 }

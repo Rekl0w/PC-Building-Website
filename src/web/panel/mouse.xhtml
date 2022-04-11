@@ -4,7 +4,7 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
-        <title>Islemci</title>
+        <title>Mouse</title>
     </h:head>
     <h:body>
         
@@ -13,9 +13,9 @@
             <h:commandButton action="/panel/anakart" value="Anakart" />
             <h:commandButton action="/panel/bilgisayar-bileseni" value="Bilgisayar Bileseni" />
             <h:commandButton action="/panel/ekran-karti" value="Ekran Karti" />
-            <h:commandButton action="/index" value="Index" />
+            <h:commandButton action="/panel/islemci" value="Islemci" />
             <h:commandButton action="/panel/monitor" value="Monitor" />
-            <h:commandButton action="/panel/mouse" value="Mouse" />
+            <h:commandButton action="/index" value="Index" />
             <h:commandButton action="/panel/ram" value="Ram" />
             <h:commandButton action="/panel/kampanya" value="Kampanya" />
             <h:commandButton action="/panel/satin-alma" value="Satin Alma" />
@@ -26,22 +26,21 @@
         <h:form>
             
             
-            Urun ID:  <h:inputText value = "#{islemciController.entity.urun_id}"/>
-            Kampanya ID:  <h:inputText value = "#{islemciController.entity.kampanya}" converter ="kampanyaConverter" />
-            Cekirdek Sayisi:  <h:inputText value = "#{islemciController.entity.cekirdek_sayisi}" />
-            Hız:  <h:inputText value = "#{islemciController.entity.hiz}" />
-            Marka: <h:inputText value = "#{islemciController.entity.marka}" />
-            Fiyat: <h:inputText value = "#{islemciController.entity.fiyat}" />
-            Stok: <h:inputText value = "#{islemciController.entity.stok}" />
+            Urun ID:  <h:inputText value = "#{mouseController.entity.urun_id}"/>
+            Kampanya ID:  <h:inputText value = "#{mouseController.entity.kampanya}" converter ="kampanyaConverter" />
+            Baglanma Sekli:  <h:inputText value = "#{mouseController.entity.baglanma_sekli}" />
+            Marka: <h:inputText value = "#{mouseController.entity.marka}" />
+            Fiyat: <h:inputText value = "#{mouseController.entity.fiyat}" />
+            Stok: <h:inputText value = "#{mouseController.entity.stok}" />
 
-            <h:commandButton rendered = "#{islemciController.entity.urun_id == 0}" action = "#{islemciController.create()}" value = "create"/>
-            <h:commandButton rendered = "#{islemciController.entity.urun_id != 0}" action = "#{islemciController.update()}" value = "update"/>
+            <h:commandButton rendered = "#{mouseController.entity.urun_id == 0}" action = "#{mouseController.create()}" value = "create"/>
+            <h:commandButton rendered = "#{mouseController.entity.urun_id != 0}" action = "#{mouseController.update()}" value = "update"/>
 
 
         </h:form>
         <hr />
         <h:form>
-            <h:dataTable value = "#{islemciController.list}" var = "k" border = "1">
+            <h:dataTable value = "#{mouseController.list}" var = "k" border = "1">
                 <h:column>
                     <f:facet name ="header" >Urun ID</f:facet>
                     #{k.urun_id}
@@ -49,17 +48,12 @@
                 
                 <h:column>
                     <f:facet name ="header" >Kampanya ID</f:facet>
-                    #{k.kampanya.kampanya_id}
+                    #{k.kampanya}
                 </h:column>
 
                 <h:column>
-                    <f:facet name ="header" >Cekirdek Sayisi</f:facet>
-                     #{k.cekirdek_sayisi}
-                </h:column>
-
-                <h:column>
-                    <f:facet name ="header" >Hiz</f:facet>
-                     #{k.hiz}
+                    <f:facet name ="header" >Baglanma Sekli</f:facet>
+                     #{k.baglanma_sekli}
                 </h:column>
 
                 <h:column>
@@ -79,8 +73,8 @@
                 
                 <h:column>
                     <f:facet name ="header" >Administration</f:facet>
-                    <h:commandButton action = "#{islemciController.delete(k)}" value ="delete"/>
-                    <h:commandButton action = "#{islemciController.setEntity(k)}" value ="update"/>
+                    <h:commandButton action = "#{mouseController.delete(k)}" value ="delete"/>
+                    <h:commandButton action = "#{mouseController.setEntity(k)}" value ="update"/>
                         
                 </h:column>
                 

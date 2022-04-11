@@ -6,13 +6,28 @@
     <h:head>
         <title>Kasa</title>
     </h:head>
+    <h:form>
+            <h:commandButton action="/panel/kullanici" value="Kullanici Islemleri" />
+            <h:commandButton action="/panel/anakart" value="Anakart" />
+            <h:commandButton action="/panel/bilgisayar-bileseni" value="Bilgisayar Bileseni" />
+            <h:commandButton action="/panel/ekran-karti" value="Ekran Karti" />
+            <h:commandButton action="/panel/islemci" value="Islemci" />
+            <h:commandButton action="/panel/monitor" value="Monitor" />
+            <h:commandButton action="/panel/mouse" value="Mouse" />
+            <h:commandButton action="/panel/ram" value="Ram" />
+            <h:commandButton action="/panel/kampanya" value="Kampanya" />
+            <h:commandButton action="/panel/satin-alma" value="Satin Alma" />
+            <h:commandButton action="/index" value="Index" />
+            <h:commandButton action="/panel/klavye" value="Klavye" />    
+        </h:form>
+        
     <h:body>
         <h:form>
-            urun id =  <h:inputText value = "#{anakartController.entity.urun_id}"/>
+            Urun ID =  <h:inputText value = "#{kasaController.entity.urun_id}"/>
             Kampanya : <h:inputText value = "#{kasaController.entity.kampanya}" converter = "kampanyaConverter"/>
-            boyut: <h:inputText value = "#{kasaController.entity.boyut}" />
-            marka: <h:inputText value = "#{kasaController.entity.marka}" />
-            fiyat: <h:inputText value = "#{kasaController.entity.fiyat}" />
+            Boyut: <h:inputText value = "#{kasaController.entity.boyut}" />
+            Marka: <h:inputText value = "#{kasaController.entity.marka}" />
+            Fiyat: <h:inputText value = "#{kasaController.entity.fiyat}" />
             Stok: <h:inputText value = "#{kasaController.entity.stok}" />
 
             <h:commandButton rendered = "#{kasaController.entity.urun_id == 0}" action = "#{kasaController.create()}" value = "create"/>
@@ -30,9 +45,14 @@
                 
                 <h:column>
                     <f:facet name ="header" >Kampanya</f:facet>
-                    #{k.kampanya.kampanya_id}
+                    #{k.kampanya}
                 </h:column>
 
+                <h:column>
+                    <f:facet name ="header" >Boyut</f:facet>
+                    #{k.boyut}
+                </h:column>
+                
                 <h:column>
                     <f:facet name ="header" >Marka</f:facet>
                      #{k.marka}

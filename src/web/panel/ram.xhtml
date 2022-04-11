@@ -4,7 +4,7 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
-        <title>Islemci</title>
+        <title>Ram</title>
     </h:head>
     <h:body>
         
@@ -13,10 +13,10 @@
             <h:commandButton action="/panel/anakart" value="Anakart" />
             <h:commandButton action="/panel/bilgisayar-bileseni" value="Bilgisayar Bileseni" />
             <h:commandButton action="/panel/ekran-karti" value="Ekran Karti" />
-            <h:commandButton action="/index" value="Index" />
+            <h:commandButton action="/panel/islemci" value="Islemci" />
             <h:commandButton action="/panel/monitor" value="Monitor" />
             <h:commandButton action="/panel/mouse" value="Mouse" />
-            <h:commandButton action="/panel/ram" value="Ram" />
+            <h:commandButton action="/index" value="Index" />
             <h:commandButton action="/panel/kampanya" value="Kampanya" />
             <h:commandButton action="/panel/satin-alma" value="Satin Alma" />
             <h:commandButton action="/panel/kasa" value="Kasa" />
@@ -25,23 +25,21 @@
         
         <h:form>
             
-            
-            Urun ID:  <h:inputText value = "#{islemciController.entity.urun_id}"/>
-            Kampanya ID:  <h:inputText value = "#{islemciController.entity.kampanya}" converter ="kampanyaConverter" />
-            Cekirdek Sayisi:  <h:inputText value = "#{islemciController.entity.cekirdek_sayisi}" />
-            Hız:  <h:inputText value = "#{islemciController.entity.hiz}" />
-            Marka: <h:inputText value = "#{islemciController.entity.marka}" />
-            Fiyat: <h:inputText value = "#{islemciController.entity.fiyat}" />
-            Stok: <h:inputText value = "#{islemciController.entity.stok}" />
+            Urun ID:  <h:inputText value = "#{ramController.entity.urun_id}"/>
+            Kampanya ID:  <h:inputText value = "#{ramController.entity.kampanya}" converter ="kampanyaConverter" />
+            Bellek:  <h:inputText value = "#{ramController.entity.bellek}" />
+            Marka: <h:inputText value = "#{ramController.entity.marka}" />
+            Fiyat: <h:inputText value = "#{ramController.entity.fiyat}" />
+            Stok: <h:inputText value = "#{ramController.entity.stok}" />
 
-            <h:commandButton rendered = "#{islemciController.entity.urun_id == 0}" action = "#{islemciController.create()}" value = "create"/>
-            <h:commandButton rendered = "#{islemciController.entity.urun_id != 0}" action = "#{islemciController.update()}" value = "update"/>
+            <h:commandButton rendered = "#{ramController.entity.urun_id == 0}" action = "#{ramController.create()}" value = "create"/>
+            <h:commandButton rendered = "#{ramController.entity.urun_id != 0}" action = "#{ramController.update()}" value = "update"/>
 
 
         </h:form>
         <hr />
         <h:form>
-            <h:dataTable value = "#{islemciController.list}" var = "k" border = "1">
+            <h:dataTable value = "#{ramController.list}" var = "k" border = "1">
                 <h:column>
                     <f:facet name ="header" >Urun ID</f:facet>
                     #{k.urun_id}
@@ -49,17 +47,12 @@
                 
                 <h:column>
                     <f:facet name ="header" >Kampanya ID</f:facet>
-                    #{k.kampanya.kampanya_id}
+                    #{k.kampanya}
                 </h:column>
 
                 <h:column>
-                    <f:facet name ="header" >Cekirdek Sayisi</f:facet>
-                     #{k.cekirdek_sayisi}
-                </h:column>
-
-                <h:column>
-                    <f:facet name ="header" >Hiz</f:facet>
-                     #{k.hiz}
+                    <f:facet name ="header" >Bellek</f:facet>
+                     #{k.bellek}
                 </h:column>
 
                 <h:column>
@@ -79,8 +72,8 @@
                 
                 <h:column>
                     <f:facet name ="header" >Administration</f:facet>
-                    <h:commandButton action = "#{islemciController.delete(k)}" value ="delete"/>
-                    <h:commandButton action = "#{islemciController.setEntity(k)}" value ="update"/>
+                    <h:commandButton action = "#{ramController.delete(k)}" value ="delete"/>
+                    <h:commandButton action = "#{ramController.setEntity(k)}" value ="update"/>
                         
                 </h:column>
                 

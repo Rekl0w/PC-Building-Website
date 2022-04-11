@@ -6,6 +6,21 @@
     <h:head>
         <title>Kullanici Islemleri</title>
     </h:head>
+    <h:form>
+            <h:commandButton action="/index" value="Index" />
+            <h:commandButton action="/panel/anakart" value="Anakart" />
+            <h:commandButton action="/panel/bilgisayar-bileseni" value="Bilgisayar Bileseni" />
+            <h:commandButton action="/panel/ekran-karti" value="Ekran Karti" />
+            <h:commandButton action="/panel/islemci" value="Islemci" />
+            <h:commandButton action="/panel/monitor" value="Monitor" />
+            <h:commandButton action="/panel/mouse" value="Mouse" />
+            <h:commandButton action="/panel/ram" value="Ram" />
+            <h:commandButton action="/panel/kampanya" value="Kampanya" />
+            <h:commandButton action="/panel/satin-alma" value="Satin Alma" />
+            <h:commandButton action="/panel/kasa" value="Kasa" />
+            <h:commandButton action="/panel/klavye" value="Klavye" />    
+        </h:form>
+        
     <h:body>
         <h:form>
             Ad - Soyad=  <h:inputText value = "#{kullaniciController.entity.ad_soyad}" />
