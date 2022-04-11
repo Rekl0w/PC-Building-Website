@@ -1,0 +1,70 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Mouse</title>
+    </h:head>
+    <h:body>
+        <h:form>
+            
+            
+            Urun ID:  <h:inputText value = "#{mouseController.entity.urun_id}"/>
+            Kampanya ID:  <h:inputText value = "#{mouseController.entity.kampanya}" converter ="kampanyaConverter" />
+            Baglanma Sekli:  <h:inputText value = "#{mouseController.entity.baglanma_sekli}" />
+            Marka: <h:inputText value = "#{mouseController.entity.marka}" />
+            Fiyat: <h:inputText value = "#{mouseController.entity.fiyat}" />
+            Stok: <h:inputText value = "#{mouseController.entity.stok}" />
+
+            <h:commandButton rendered = "#{mouseController.entity.urun_id == 0}" action = "#{mouseController.create()}" value = "create"/>
+            <h:commandButton rendered = "#{mouseController.entity.urun_id != 0}" action = "#{mouseController.update()}" value = "update"/>
+
+
+        </h:form>
+        <hr />
+        <h:form>
+            <h:dataTable value = "#{mouseController.list}" var = "k" border = "1">
+                <h:column>
+                    <f:facet name ="header" >Urun ID</f:facet>
+                    #{k.urun_id}
+                </h:column>
+                
+                <h:column>
+                    <f:facet name ="header" >Kampanya ID</f:facet>
+                    #{k.kampanya}
+                </h:column>
+
+                <h:column>
+                    <f:facet name ="header" >Baglanma Sekli</f:facet>
+                     #{k.baglanma_sekli}
+                </h:column>
+
+                <h:column>
+                    <f:facet name ="header" >Marka</f:facet>
+                     #{k.marka}
+                </h:column>
+                
+                <h:column>
+                    <f:facet name ="header" >Fiyat</f:facet>
+                     #{k.fiyat}
+                </h:column>
+                
+                <h:column>
+                    <f:facet name ="header" >Stok</f:facet>
+                     #{k.stok}
+                </h:column>
+                
+                <h:column>
+                    <f:facet name ="header" >Administration</f:facet>
+                    <h:commandButton action = "#{mouseController.delete(k)}" value ="delete"/>
+                    <h:commandButton action = "#{mouseController.setEntity(k)}" value ="update"/>
+                        
+                </h:column>
+                
+                
+            </h:dataTable>
+
+        </h:form>
+    </h:body>
+</html>
