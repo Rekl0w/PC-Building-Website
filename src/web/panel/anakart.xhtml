@@ -5,10 +5,10 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
         <title>Anakart</title>
-        <h:outputStylesheet library ="css" name ="bootstrap.min.css"/>Ï
+        <h:outputStylesheet library ="css" name ="bootstrap.min.css"/>
     </h:head>
     <h:body>
-
+        
         <h:form>
             <h:commandButton action = "/index" value="HOME" />
 
@@ -18,7 +18,7 @@
             Marka: <h:inputText value = "#{anakartController.entity.marka}" />
             Fiyat: <h:inputText value = "#{anakartController.entity.fiyat}" />
             Stok: <h:inputText value = "#{anakartController.entity.stok}" />
-
+ 
             <h:commandButton rendered = "#{anakartController.entity.urun_id == 0}" action = "#{anakartController.create()}" value = "create"/>
             <h:commandButton rendered = "#{anakartController.entity.urun_id != 0}" action = "#{anakartController.update()}" value = "update"/>
 
