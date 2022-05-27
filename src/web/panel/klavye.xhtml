@@ -8,9 +8,11 @@
         <h:outputStylesheet library ="css" name ="bootstrap.min.css"/>
     </h:head>
     <h:body>
-
         <h:form>
             <h:commandButton action="/index" value="HOME" />
+        </h:form>
+
+        <h:form>
             Kampanya ID:  <h:inputText value = "#{klavyeController.entity.kampanya}" converter ="kampanyaConverter" />
             Switch Modeli:  <h:inputText value = "#{klavyeController.entity.switch_modeli}" />
             Marka: <h:inputText value = "#{klavyeController.entity.marka}" />

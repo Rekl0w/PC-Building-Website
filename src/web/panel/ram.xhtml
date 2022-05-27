@@ -10,6 +10,10 @@
         <h:outputStylesheet library ="css" name ="bootstrap.min.css"/>
         <h:form>
             <h:commandButton action="/index" value="HOME" />
+        </h:form>
+
+        <h:form>
+
             Kampanya ID:  <h:inputText value = "#{ramController.entity.kampanya}" converter ="kampanyaConverter" />
 
             Bellek  <h:inputText value = "#{ramController.entity.bellek}" />

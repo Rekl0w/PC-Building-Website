@@ -8,9 +8,11 @@
         <h:outputStylesheet library ="css" name ="bootstrap.min.css"/>
     </h:head>
     <h:body>
-
         <h:form>
             <h:commandButton action="/index" value="HOME" />
+        </h:form>
+
+        <h:form>
 
             Kampanya : <h:inputText value = "#{ekranKartiController.entity.kampanya}" converter = "kampanyaConverter"/>
             Model : <h:inputText value = "#{ekranKartiController.entity.model}" />

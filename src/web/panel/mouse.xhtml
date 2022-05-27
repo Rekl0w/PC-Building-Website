@@ -8,9 +8,11 @@
         <h:outputStylesheet library ="css" name ="bootstrap.min.css"/>
     </h:head>
     <h:body>
-
         <h:form>
             <h:commandButton action="/index" value="HOME" />
+        </h:form>
+
+        <h:form>
             Kampanya ID:  <h:inputText value = "#{mouseController.entity.kampanya}" converter ="kampanyaConverter" />
 
             Baglanma sekli:  <h:inputText value = "#{mouseController.entity.baglanma_sekli}" />

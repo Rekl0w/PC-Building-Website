@@ -8,10 +8,11 @@
         <h:outputStylesheet library ="css" name ="bootstrap.min.css"/>
     </h:head>
     <h:body>
-        
-
         <h:form>
             <h:commandButton action="/index" value="HOME" />
+        </h:form>
+
+        <h:form>
             Ad - Soyad=  <h:inputText value = "#{kullaniciController.entity.ad_soyad}" />
             Sifre = <h:inputText value = "#{kullaniciController.entity.sifre}" />
 

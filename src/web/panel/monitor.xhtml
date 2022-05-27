@@ -11,6 +11,9 @@
 
         <h:form>
             <h:commandButton action="/index" value="HOME" />
+        </h:form>
+
+        <h:form>
             Kampanya ID:  <h:inputText value = "#{monitorController.entity.kampanya}" converter ="kampanyaConverter" />
             Boyut:  <h:inputText value = "#{monitorController.entity.boyut}" />
             Ekran Yenileme Hızı:  <h:inputText value = "#{monitorController.entity.ekran_yenileme_hizi}" />
