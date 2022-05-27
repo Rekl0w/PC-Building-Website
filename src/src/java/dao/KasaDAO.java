@@ -108,7 +108,7 @@ public class KasaDAO extends DBConnection {
         }
         return list;
     }
-
+    
     public KampanyaDAO getKampanyaDAO() {
         if (this.kampanyaDAO == null) {
             this.kampanyaDAO = new KampanyaDAO();

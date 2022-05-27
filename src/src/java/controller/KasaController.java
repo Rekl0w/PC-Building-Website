@@ -14,7 +14,7 @@ public class KasaController implements Serializable {
     private Kasa entity;
     private KasaDAO dao;
     private List<Kasa> list;
-
+    
     public void create() {
         this.getDao().create(entity);
         entity = new Kasa();
@@ -67,4 +67,4 @@ public class KasaController implements Serializable {
     public KasaController() {
     }
 
-}
+    }
