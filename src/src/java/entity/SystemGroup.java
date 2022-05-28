@@ -13,13 +13,13 @@ import java.util.Date;
  */
 public class SystemGroup implements Serializable{
     private Long id;
-    private String mname;
+    private String gname;
     private Date created;
     private Date updated;
 
-    public SystemGroup(Long id, String mname, Date created, Date updated) {
+    public SystemGroup(Long id, String gname, Date created, Date updated) {
         this.id = id;
-        this.mname = mname;
+        this.gname = gname;
         this.created = created;
         this.updated = updated;
     }
@@ -32,12 +32,12 @@ public class SystemGroup implements Serializable{
         this.id = id;
     }
 
-    public String getMname() {
-        return mname;
+    public String getGname() {
+        return gname;
     }
 
-    public void setMname(String mname) {
-        this.mname = mname;
+    public void setGname(String gname) {
+        this.gname = gname;
     }
 
     public Date getCreated() {

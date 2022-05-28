@@ -10,16 +10,16 @@ package entity;
  */
 public class Privileges {
     private Long id;
-    private String mname;
+    private String gname;
     private boolean icreate;
     private boolean iread;
     private boolean iupdate;
     private boolean idelete;
     private boolean irshow;
 
-    public Privileges(Long id, String mname, boolean icreate, boolean iread, boolean iupdate, boolean idelete, boolean irshow) {
+    public Privileges(Long id, String gname, boolean icreate, boolean iread, boolean iupdate, boolean idelete, boolean irshow) {
         this.id = id;
-        this.mname = mname;
+        this.gname = gname;
         this.icreate = icreate;
         this.iread = iread;
         this.iupdate = iupdate;
@@ -38,12 +38,12 @@ public class Privileges {
         this.id = id;
     }
 
-    public String getMname() {
-        return mname;
+    public String getGname() {
+        return gname;
     }
 
-    public void setMname(String mname) {
-        this.mname = mname;
+    public void setGname(String gname) {
+        this.gname = gname;
     }
 
     public boolean isIcreate() {

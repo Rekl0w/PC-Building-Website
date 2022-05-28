@@ -2,7 +2,7 @@ package entity;
 
 public class Document {
 
-    private long id;
+    private Long id;
     private String filePath;
     private String fileName;
     private String fileType;
