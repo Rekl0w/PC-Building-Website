@@ -75,7 +75,7 @@ public class KullaniciController implements Serializable {
         this.getDao().create(entity);
         entity = new Kullanici();
 
-        System.out.println("--------------REGİSTERED-----------");
+        System.out.println("--------------REGISTERED-----------");
 
     }
 
