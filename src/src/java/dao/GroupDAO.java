@@ -1,13 +1,35 @@
 package dao;
 
 import entity.SystemGroup;
-import entity.BilgisayarBileseni;
 import java.sql.Statement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
 public class GroupDAO extends DBConnection {
+
+    public GroupDAO() {
+        
+    }
+    
+    
+    public SystemGroup getById(Long id){
+        SystemGroup sg = null;
+        
+        try{
+            Statement st = this.getConnection().createStatement();
+            String query = "select * from systemgroup where id=" + id;
+            ResultSet rs = st.executeQuery(query);
+            rs.next();
+            
+            sg = new SystemGroup(rs.getLong("id"), rs.getString("gname"), rs.getDate("created"), rs.getDate("updated"));
+            
+        } catch (Exception e){
+            System.out.println(e.getMessage());
+        }
+        
+        return sg;
+    }
     
     public void create(SystemGroup a) {
         try {

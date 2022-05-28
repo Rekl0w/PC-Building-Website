@@ -1,16 +1,11 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package entity;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.Objects;
 
-/**
- *
- * @author musabeytekin
- */
+
 public class SystemGroup implements Serializable{
     private Long id;
     private String gname;
@@ -58,5 +53,28 @@ public class SystemGroup implements Serializable{
 
     public SystemGroup() {
     }
+
+    @Override
+    public int hashCode() {
+        int hash = 5;
+        hash = 59 * hash + Objects.hashCode(this.id);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final SystemGroup other = (SystemGroup) obj;
+        return Objects.equals(this.id, other.id);
+    }
+    
     
 }
