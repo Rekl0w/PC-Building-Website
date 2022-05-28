@@ -2,6 +2,7 @@ package dao;
 
 import entity.Anakart;
 import entity.BilgisayarBileseni;
+import java.sql.PreparedStatement;
 import java.sql.Statement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
@@ -81,23 +82,19 @@ public class AnakartDAO extends DBConnection {
             String query = "delete from anakart where urun_id = " + a.getUrun_id();
             st.executeUpdate(query);
             
-            
-            
-
-            
         } catch (Exception ex) {
 
             System.out.println(ex.getMessage());
         }
     }
 
-    public List<Anakart> getList() {
+    public List<Anakart> getList(int page , int pageSize) {
         List<Anakart> list = new ArrayList<>();
+        int start = (page-1)*pageSize;
         try {
-            Statement st = this.getConnection().createStatement();
-            String query = "select * from anakart";
-            ResultSet rs = st.executeQuery(query);
-
+            PreparedStatement pst = this.getConnection().prepareStatement("select * from anakart order by fiyat asc limit"+start+", "+pageSize);
+            ResultSet rs = pst.executeQuery();
+            rs.next();
             while (rs.next()) {
                 list.add(new Anakart(rs.getInt("urun_id"), rs.getString("cpu_soketi"), rs.getInt("bellek_saat_hizi"), rs.getString("marka"), rs.getFloat("fiyat"), rs.getInt("stok"), this.getKampanyaDAO().findById(rs.getInt("kampanya_id"))));
 
@@ -108,6 +105,23 @@ public class AnakartDAO extends DBConnection {
         }
         return list;
     }
+    
+    
+    public int count() {
+        int count = 0;
+        try {
+            PreparedStatement pst = this.getConnection().prepareStatement("select count(fiyat) as anakart_count from anakart");
+            ResultSet rs = pst.executeQuery();
+            rs.next();
+            count=rs.getInt("anakart_count");
+            
+        } catch (Exception ex) {
+
+            System.out.println(ex.getMessage());
+        }
+        return count;
+    }
+    
 
     public KampanyaDAO getKampanyaDAO() {
         if (this.kampanyaDAO == null) {

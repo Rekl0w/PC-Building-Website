@@ -4,6 +4,10 @@ public class Anakart extends BilgisayarBileseni {
 
     private String cpu_soketi;
     private int bellek_saat_hizi;
+    
+    
+    
+    
 
     public Anakart() {
     }
