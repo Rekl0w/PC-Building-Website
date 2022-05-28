@@ -35,7 +35,7 @@ public class DocumentDAO extends DBConnection{
     }
     
     public void insert(Document d){
-        String query = "insert into document (path,name,type) values (?,?,?)";
+        String query = "insert into document (path, name, type) values (?,?,?)";
         try{
         
             PreparedStatement pst = this.getConnection().prepareStatement(query);

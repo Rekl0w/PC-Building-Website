@@ -2,9 +2,18 @@ package entity;
 
 public class Document {
 
+    private long id;
     private String filePath;
     private String fileName;
     private String fileType;
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
 
     public String getFilePath() {
         return filePath;
