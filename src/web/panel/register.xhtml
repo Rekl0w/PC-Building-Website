@@ -14,11 +14,9 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/XHtml.xhtml to edit t
         <h:form id="form">
             <br/>
             İsim:<h:inputText id="isim" validator="#{kullaniciController.validateUser}" value="#{kullaniciController.entity.ad_soyad}" required="true" requiredMessage="Bu alan boş bırakılamaz."/><br/>
-
-
             <h:message for="isim" style="color : red; font-size: 10pt" /> <br />
-            Sifre:<h:inputText id="password" validator="#{kullaniciController.validatePassword}" value="#{kullaniciController.entity.sifre}" required="true" requiredMessage="Bu alan boş bırakılamaz."/><br/>
 
+            Sifre:<h:inputText id="password" validator="#{kullaniciController.validatePassword}" value="#{kullaniciController.entity.sifre}" required="true" requiredMessage="Bu alan boş bırakılamaz."/><br/>
             <h:message for="password" style="color : red; font-size: 10pt"  /> <br/>
 
 
