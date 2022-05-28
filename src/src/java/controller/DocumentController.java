@@ -27,6 +27,14 @@ public class DocumentController implements Serializable {
             InputStream input = doc.getInputStream();
             File f = new File(uploadTo + doc.getSubmittedFileName());
             Files.copy(input, f.toPath());
+            
+            document = this.getDocument();
+            document.setFilePath(f.getParent());
+            document.setFileName(f.getName());
+            document.setFileType(doc.getContentType());
+            
+            this.getDocumentDAO().insert(document);
+            
 
         } catch (Exception e) {
             System.out.println(e.getMessage());
