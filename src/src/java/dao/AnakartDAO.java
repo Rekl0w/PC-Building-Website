@@ -90,9 +90,9 @@ public class AnakartDAO extends DBConnection {
 
     public List<Anakart> getList(int page , int pageSize) {
         List<Anakart> list = new ArrayList<>();
-        int start = (page-1)*pageSize;
+        int offset = (page-1)*5;
         try {
-            PreparedStatement pst = this.getConnection().prepareStatement("select * from anakart order by fiyat asc limit"+start+", "+pageSize);
+            PreparedStatement pst = this.getConnection().prepareStatement("select * from anakart limit 5 offset"+offset);
             ResultSet rs = pst.executeQuery();
             rs.next();
             while (rs.next()) {
