@@ -205,7 +205,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/XHtml.xhtml to edit t
                     <h:inputText  value="#{loginController.kullanici.ad_soyad}"/><br/>
                     sifre:
                     <h:inputText  value="#{loginController.kullanici.sifre}"/><br/>
-                    <h:commandButton class="btn" action="#{loginController.login()}" value="LOGIN"/>
+                    <h:commandButton action="#{loginController.login()}" value="LOGIN"/>
                 </h:form>
                 <h:panelGroup rendered="#{validUser!=null}" layout="block" > 
                     UserName: #{validUser.ad_soyad}<br/><!-- comment -->
