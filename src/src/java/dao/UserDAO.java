@@ -1,5 +1,6 @@
 package dao;
 
+import entity.SystemGroup;
 import entity.SystemUser;
 import java.sql.Statement;
 import java.sql.ResultSet;
@@ -7,13 +8,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class UserDAO extends DBConnection {
-    
+
     private GroupDAO gdao;
-    
+
     public void create(SystemUser a) {
         try {
             Statement st = this.getConnection().createStatement();
-            String query = "insert into systemuser (email,pass,ugroup) values(" + a.getEmail() + "', '"+a.getPass()+"', '"+ a.getGroup().getId()+ ") ";
+            String query = "insert into systemuser (email,pass,ugroup) values(" + a.getEmail() + "', '" + a.getPass() + "', '" + a.getGroup().getId() + ") ";
             st.executeUpdate(query);
 
         } catch (Exception ex) {
@@ -26,9 +27,9 @@ public class UserDAO extends DBConnection {
     public void update(SystemUser a) {
         try {
             Statement st = this.getConnection().createStatement();
-            String query = "update systemuser set pass = '" + a.getPass()+ "', ugroup="+ a.getGroup().getId() + " where id =" + a.getId();
+            String query = "update systemuser set pass = '" + a.getPass() + "', ugroup=" + a.getGroup().getId() + " where id =" + a.getId();
             st.executeUpdate(query);
- 
+
         } catch (Exception ex) {
 
             System.out.println(ex.getMessage());
@@ -39,15 +40,10 @@ public class UserDAO extends DBConnection {
     public void delete(SystemUser a) {
         try {
             Statement st = this.getConnection().createStatement();
-            
-            
+
             String query = "delete from systemuser where id = " + a.getId();
             st.executeUpdate(query);
-            
-            
-            
 
-            
         } catch (Exception ex) {
 
             System.out.println(ex.getMessage());
@@ -62,8 +58,8 @@ public class UserDAO extends DBConnection {
             ResultSet rs = st.executeQuery(query);
 
             while (rs.next()) {
-                list.add(new SystemUser(rs.getLong("id"), rs.getString("gname"), rs.getDate("created"), rs.getDate("updated")));
-
+                SystemGroup g = this.getGdao().getById(rs.getLong("ugroup"));
+                list.add(new SystemUser(rs.getLong("id"), rs.getString("email"), rs.getString("pass"), g));
             }
         } catch (Exception ex) {
 
@@ -73,7 +69,7 @@ public class UserDAO extends DBConnection {
     }
 
     public GroupDAO getGdao() {
-        if(this.gdao == null){
+        if (this.gdao == null) {
             this.gdao = new GroupDAO();
         }
         return gdao;
