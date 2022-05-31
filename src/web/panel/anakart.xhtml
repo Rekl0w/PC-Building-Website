@@ -12,7 +12,7 @@
             <h:commandButton action="/index" value="HOME" />
         </h:form>
 
-        <h:form>
+        <h:form id = "anakart-form">
 
             Kampanya ID:  <h:inputText value = "#{anakartController.entity.kampanya}" converter ="kampanyaConverter" />
             Cpu Soketi:  <h:inputText value = "#{anakartController.entity.cpu_soketi}" />
@@ -21,23 +21,26 @@
             Fiyat: <h:inputText value = "#{anakartController.entity.fiyat}" />
             Stok: <h:inputText value = "#{anakartController.entity.stok}" />
 
-            <h:commandButton rendered = "#{anakartController.entity.urun_id == 0}" action = "#{anakartController.create()}" value = "create"/>
-            <h:commandButton rendered = "#{anakartController.entity.urun_id != 0}" action = "#{anakartController.update()}" value = "update"/>
-
+            <h:commandButton rendered = "#{anakartController.entity.urun_id == 0}" action = "#{anakartController.create()}" value = "create">
+                <f:ajax execute = "anakart-form" render = "anakart-form anakart-table"/>
+            </h:commandButton> 
+            <h:commandButton rendered = "#{anakartController.entity.urun_id != 0}" action = "#{anakartController.update()}" value = "update">
+                <f:ajax execute = "anakart-form" render = "anakart-form anakart-table"/>
+            </h:commandButton> 
 
         </h:form>
         <hr />
-        <h:form>
+        <h:form id = "anakart-table">
             <pre>Page #{anakartController.page} of #{anakartController.pageCount}</pre>
             <div class="btn-group">
                 <h:commandButton action="#{anakartController.previous()}" value="Previous" styleClass="btn btn-outline-dark"/>
                 <h:commandButton action="#{anakartController.next()}" value="Next" styleClass="btn btn-outline-dark"/>
 
-                
+
             </div>
-            
-            
-            
+
+
+
             <h:dataTable value = "#{anakartController.list}" var = "k" border = "1">
                 <h:column>
                     <f:facet name ="header" >Urun ID</f:facet>
@@ -76,8 +79,12 @@
 
                 <h:column>
                     <f:facet name ="header" >Administration</f:facet>
-                    <h:commandButton action = "#{anakartController.delete(k)}" value ="delete"/>
-                    <h:commandButton action = "#{anakartController.setEntity(k)}" value ="update"/>
+                    <h:commandButton action = "#{anakartController.delete(k)}" value ="delete">
+                        <f:ajax execute = "anakart-form" render = "anakart-form anakart-table"/>
+                    </h:commandButton> 
+                    <h:commandButton action = "#{anakartController.setEntity(k)}" value ="update">
+                        <f:ajax execute = "anakart-form" render = "anakart-form anakart-table"/>
+                    </h:commandButton> 
 
                 </h:column>
 

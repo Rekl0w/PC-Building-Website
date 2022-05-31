@@ -11,8 +11,8 @@
         <h:form>
             <h:commandButton action="/index" value="HOME" />
         </h:form>
-        
-        <h:form>
+
+        <h:form id ="kasa-form">
 
             Kampanya : <h:inputText value = "#{kasaController.entity.kampanya}" converter = "kampanyaConverter"/>
             boyut: <h:inputText value = "#{kasaController.entity.boyut}" />
@@ -20,13 +20,18 @@
             fiyat: <h:inputText value = "#{kasaController.entity.fiyat}" />
             Stok: <h:inputText value = "#{kasaController.entity.stok}" />
 
-            <h:commandButton rendered = "#{kasaController.entity.urun_id == 0}" action = "#{kasaController.create()}" value = "create"/>
-            <h:commandButton rendered = "#{kasaController.entity.urun_id != 0}" action = "#{kasaController.update()}" value = "update"/>
+            <h:commandButton rendered = "#{kasaController.entity.urun_id == 0}" action = "#{kasaController.create()}" value = "create">
+                <f:ajax execute = "kasa-form" render = "kasa-form kasa-table"/>
+            </h:commandButton> 
+            <h:commandButton rendered = "#{kasaController.entity.urun_id != 0}" action = "#{kasaController.update()}" value = "update">
+                <f:ajax execute = "kasa-form" render = "kasa-form kasa-table"/>
+            </h:commandButton> 
+
 
 
         </h:form>
         <hr />
-        <h:form>
+        <h:form id = "kasa-table">
             <h:dataTable value = "#{kasaController.list}" var = "k" border = "1">
                 <h:column>
                     <f:facet name ="header" >Urun ID</f:facet>
@@ -56,8 +61,12 @@
 
                 <h:column>
                     <f:facet name ="header" >Administration</f:facet>
-                    <h:commandButton action = "#{kasaController.delete(k)}" value ="delete"/>
-                    <h:commandButton action = "#{kasaController.setEntity(k)}" value ="update"/>
+                    <h:commandButton action = "#{kasaController.delete(k)}" value ="delete">
+                        <f:ajax execute = "kasa-form" render = "kasa-form kasa-table"/>
+                    </h:commandButton> 
+                    <h:commandButton action = "#{kasaController.setEntity(k)}" value ="update">
+                        <f:ajax execute = "kasa-form" render = "kasa-form kasa-table"/>
+                    </h:commandButton> 
 
                 </h:column>
 

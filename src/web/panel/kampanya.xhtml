@@ -12,17 +12,22 @@
             <h:commandButton action="/index" value="HOME" />
         </h:form>
 
-        <h:form>
+        <h:form id = "kampanya-form">
 
             İndirim Yüzdesi=  <h:inputText value = "#{kampanyaController.entity.indirim_yuzdesi}" />
 
-            <h:commandButton rendered = "#{kampanyaController.entity.kampanya_id == 0}" action = "#{kampanyaController.create()}" value = "create"/>
-            <h:commandButton rendered = "#{kampanyaController.entity.kampanya_id != 0}" action = "#{kampanyaController.update()}" value = "update"/>
+            <h:commandButton rendered = "#{kampanyaController.entity.kampanya_id == 0}" action = "#{kampanyaController.create()}" value = "create">
+                <f:ajax execute = "kampanya-form" render = "kampanya-form kampanya-table"/>
+            </h:commandButton> 
+            <h:commandButton rendered = "#{kampanyaController.entity.kampanya_id != 0}" action = "#{kampanyaController.update()}" value = "update">
+                <f:ajax execute = "kampanya-form" render = "kampanya-form kampanya-table"/>
+            </h:commandButton> 
+
 
 
         </h:form>
         <hr />
-        <h:form>
+        <h:form id = "kampanya-table">
             <h:dataTable value = "#{kampanyaController.list}" var = "k" border = "1">
                 <h:column>
                     <f:facet name ="header" >ID</f:facet>
@@ -36,8 +41,12 @@
 
                 <h:column>
                     <f:facet name ="header" >Administration</f:facet>
-                    <h:commandButton action = "#{kampanyaController.delete(k)}" value ="delete"/>
-                    <h:commandButton action = "#{kampanyaController.setEntity(k)}" value ="update"/>
+                    <h:commandButton action = "#{kampanyaController.delete(k)}" value ="delete">
+                        <f:ajax execute = "kampanya-form" render = "kampanya-form kampanya-table"/>
+                    </h:commandButton> 
+                    <h:commandButton action = "#{kampanyaController.setEntity(k)}" value ="update">
+                        <f:ajax execute = "kampanya-form" render = "kampanya-form kampanya-table"/>
+                    </h:commandButton> 
 
                 </h:column>
 
