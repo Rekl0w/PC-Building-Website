@@ -21,10 +21,10 @@
             Fiyat: <h:inputText value = "#{anakartController.entity.fiyat}" />
             Stok: <h:inputText value = "#{anakartController.entity.stok}" />
 
-            <h:commandButton rendered = "#{anakartController.entity.urun_id == 0}" action = "#{anakartController.create()}" value = "create">
+            <h:commandButton rendered = "#{anakartController.entity.urun_id == 0}" action = "#{anakartController.create()}" value = "create" styleClass="btn btn-primary">
                 <f:ajax execute = "anakart-form" render = "anakart-form anakart-table"/>
             </h:commandButton> 
-            <h:commandButton rendered = "#{anakartController.entity.urun_id != 0}" action = "#{anakartController.update()}" value = "update">
+            <h:commandButton rendered = "#{anakartController.entity.urun_id != 0}" action = "#{anakartController.update()}" value = "update" styleClass="btn btn-secondary">
                 <f:ajax execute = "anakart-form" render = "anakart-form anakart-table"/>
             </h:commandButton> 
 
@@ -41,7 +41,7 @@
 
 
 
-            <h:dataTable value = "#{anakartController.list}" var = "k" border = "1">
+            <h:dataTable styleClass="table" value = "#{anakartController.list}" var = "k" border = "1">
                 <h:column>
                     <f:facet name ="header" >Urun ID</f:facet>
                         #{k.urun_id}

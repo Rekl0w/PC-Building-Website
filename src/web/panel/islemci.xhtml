@@ -20,10 +20,10 @@
             Fiyat: <h:inputText value = "#{islemciController.entity.fiyat}" />
             Stok: <h:inputText value = "#{islemciController.entity.stok}" />
 
-            <h:commandButton rendered = "#{islemciController.entity.urun_id == 0}" action = "#{islemciController.create()}" value = "create">
+            <h:commandButton rendered = "#{islemciController.entity.urun_id == 0}" action = "#{islemciController.create()}" value = "create" styleClass="btn btn-primary">
                 <f:ajax execute = "islemci-form" render = "islemci-form islemci-table"/>
             </h:commandButton> 
-            <h:commandButton rendered = "#{islemciController.entity.urun_id != 0}" action = "#{islemciController.update()}" value = "update">
+            <h:commandButton rendered = "#{islemciController.entity.urun_id != 0}" action = "#{islemciController.update()}" value = "update" styleClass="btn btn-secondary">
                 <f:ajax execute = "islemci-form" render = "islemci-form islemci-table"/>
             </h:commandButton> 
 
@@ -31,7 +31,7 @@
         </h:form>
         <hr />
         <h:form id = "islemci-table">
-            <h:dataTable value = "#{islemciController.list}" var = "k" border = "1">
+            <h:dataTable styleClass="table" value = "#{islemciController.list}" var = "k" border = "1">
                 <h:column>
                     <f:facet name ="header" >Urun ID</f:facet>
                         #{k.urun_id}

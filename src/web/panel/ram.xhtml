@@ -20,17 +20,17 @@
             Fiyat: <h:inputText value = "#{ramController.entity.fiyat}" />
             Stok: <h:inputText value = "#{ramController.entity.stok}" />
 
-            <h:commandButton rendered = "#{ramController.entity.urun_id == 0}" action = "#{ramController.create()}" value = "create">
+            <h:commandButton rendered = "#{ramController.entity.urun_id == 0}" action = "#{ramController.create()}" value = "create" styleClass="btn btn-primary">
                 <f:ajax execute = "ram-form" render = "ram-form ram-table"/>
             </h:commandButton>    
-            <h:commandButton rendered = "#{ramController.entity.urun_id != 0}" action = "#{ramController.update()}" value = "update">
+            <h:commandButton rendered = "#{ramController.entity.urun_id != 0}" action = "#{ramController.update()}" value = "update" styleClass="btn btn-secondary">
                 <f:ajax execute = "ram-form" render = "ram-form ram-table"/>
             </h:commandButton>
 
         </h:form>
         <hr />
         <h:form id="ram-table">
-            <h:dataTable value = "#{ramController.list}" var = "k" border = "1">
+            <h:dataTable styleClass="table" value = "#{ramController.list}" var = "k" border = "1">
                 <h:column>
                     <f:facet name ="header" >Urun ID</f:facet>
                         #{k.urun_id}

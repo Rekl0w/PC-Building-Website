@@ -16,17 +16,17 @@
             Ad - Soyad=  <h:inputText value = "#{kullaniciController.entity.ad_soyad}" />
             Sifre = <h:inputText value = "#{kullaniciController.entity.sifre}" />
 
-            <h:commandButton rendered = "#{kullaniciController.entity.kullanici_id == 0}" action = "#{kullaniciController.create()}" value = "create">
+            <h:commandButton rendered = "#{kullaniciController.entity.kullanici_id == 0}" action = "#{kullaniciController.create()}" value = "create" styleClass="btn btn-primary">
                 <f:ajax execute = "kullanici-form" render = "kullanici-form kullanici-table"/>
             </h:commandButton>    
-            <h:commandButton rendered = "#{kullaniciController.entity.kullanici_id != 0}" action = "#{kullaniciController.update()}" value = "update">
+            <h:commandButton rendered = "#{kullaniciController.entity.kullanici_id != 0}" action = "#{kullaniciController.update()}" value = "update" styleClass="btn btn-secondary">
                 <f:ajax execute = "kullanici-form" render = "kullanici-form kullanici-table"/>
             </h:commandButton> 
 
         </h:form>
         <hr />
         <h:form id = "kullanici-table">
-            <h:dataTable value = "#{kullaniciController.list}" var = "k" border = "1">
+            <h:dataTable styleClass="table" value = "#{kullaniciController.list}" var = "k" border = "1">
                 <h:column>
                     <f:facet name ="header" >ID</f:facet>
                         #{k.kullanici_id}

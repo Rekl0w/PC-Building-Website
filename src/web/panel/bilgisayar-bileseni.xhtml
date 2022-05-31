@@ -19,17 +19,17 @@
 
             Stok: <h:inputText value = "#{bilgisayarBileseniController.entity.stok}" />
 
-            <h:commandButton rendered = "#{bilgisayarBileseniController.entity.urun_id == 0}" action = "#{bilgisayarBileseniController.create()}" value = "create">
+            <h:commandButton rendered = "#{bilgisayarBileseniController.entity.urun_id == 0}" action = "#{bilgisayarBileseniController.create()}" value = "create" styleClass="btn btn-primary">
                 <f:ajax execute = "bilesen-form" render = "bilesen-form bilesen-table"/>
             </h:commandButton> 
-            <h:commandButton rendered = "#{bilgisayarBileseniController.entity.urun_id != 0}" action = "#{bilgisayarBileseniController.update()}" value = "update">
+            <h:commandButton rendered = "#{bilgisayarBileseniController.entity.urun_id != 0}" action = "#{bilgisayarBileseniController.update()}" value = "update" styleClass="btn btn-secondary">
                 <f:ajax execute = "bilesen-form" render = "bilesen-form bilesen-table"/>
             </h:commandButton> 
 
         </h:form>
         <hr />
         <h:form id = "bilesen-table">
-            <h:dataTable value = "#{bilgisayarBileseniController.list}" var = "k" border = "1">
+            <h:dataTable styleClass="table" value = "#{bilgisayarBileseniController.list}" var = "k" border = "1">
                 <h:column>
                     <f:facet name ="header" >Urun ID</f:facet>
                         #{k.urun_id}

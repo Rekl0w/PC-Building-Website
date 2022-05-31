@@ -21,17 +21,17 @@
             Fiyat: <h:inputText value = "#{monitorController.entity.fiyat}" />
             Stok: <h:inputText value = "#{monitorController.entity.stok}" />
 
-            <h:commandButton rendered = "#{monitorController.entity.urun_id == 0}" action = "#{monitorController.create()}" value = "create">
+            <h:commandButton rendered = "#{monitorController.entity.urun_id == 0}" action = "#{monitorController.create()}" value = "create" styleClass="btn btn-primary">
                 <f:ajax execute = "monitor-form" render = "monitor-form monitor-table"/>
             </h:commandButton>    
-            <h:commandButton rendered = "#{monitorController.entity.urun_id != 0}" action = "#{monitorController.update()}" value = "update">
+            <h:commandButton rendered = "#{monitorController.entity.urun_id != 0}" action = "#{monitorController.update()}" value = "update" styleClass="btn btn-secondary">
                 <f:ajax execute = "monitor-form" render = "monitor-form monitor-table"/>
             </h:commandButton> 
 
         </h:form>
         <hr />
         <h:form id="monitor-table">
-            <h:dataTable value = "#{monitorController.list}" var = "k" border = "1">
+            <h:dataTable styleClass="table" value = "#{monitorController.list}" var = "k" border = "1">
                 <h:column>
                     <f:facet name ="header" >Urun ID</f:facet>
                         #{k.urun_id}

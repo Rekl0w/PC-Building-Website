@@ -16,10 +16,10 @@
 
             İndirim Yüzdesi=  <h:inputText value = "#{kampanyaController.entity.indirim_yuzdesi}" />
 
-            <h:commandButton rendered = "#{kampanyaController.entity.kampanya_id == 0}" action = "#{kampanyaController.create()}" value = "create">
+            <h:commandButton rendered = "#{kampanyaController.entity.kampanya_id == 0}" action = "#{kampanyaController.create()}" value = "create" styleClass="btn btn-primary">
                 <f:ajax execute = "kampanya-form" render = "kampanya-form kampanya-table"/>
             </h:commandButton> 
-            <h:commandButton rendered = "#{kampanyaController.entity.kampanya_id != 0}" action = "#{kampanyaController.update()}" value = "update">
+            <h:commandButton rendered = "#{kampanyaController.entity.kampanya_id != 0}" action = "#{kampanyaController.update()}" value = "update" styleClass="btn btn-secondary">
                 <f:ajax execute = "kampanya-form" render = "kampanya-form kampanya-table"/>
             </h:commandButton> 
 
@@ -28,7 +28,7 @@
         </h:form>
         <hr />
         <h:form id = "kampanya-table">
-            <h:dataTable value = "#{kampanyaController.list}" var = "k" border = "1">
+            <h:dataTable styleClass="table" value = "#{kampanyaController.list}" var = "k" border = "1">
                 <h:column>
                     <f:facet name ="header" >ID</f:facet>
                         #{k.kampanya_id}
