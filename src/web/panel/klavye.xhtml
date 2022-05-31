@@ -63,11 +63,11 @@
                 <h:column>
                     <f:facet name ="header" >Administration</f:facet>
                     <h:commandButton action = "#{klavyeController.delete(k)}" value ="delete">
-                        <f:ajax execute = "klavye-form" render = "klavye-form"/>
+                        <f:ajax execute = "klavye-form" render = "klavye-form klavye-table"/>
                     </h:commandButton>    
 
                     <h:commandButton action = "#{klavyeController.setEntity(k)}" value ="update">
-                        <f:ajax execute = "klavye-form" render = "klavye-form"/>
+                        <f:ajax execute = "klavye-form" render = "klavye-form klavye-table"/>
                     </h:commandButton> 
                 </h:column>
 

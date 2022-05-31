@@ -70,11 +70,11 @@
                 <h:column>
                     <f:facet name ="header" >Administration</f:facet>
                     <h:commandButton action = "#{ekranKartiController.delete(k)}" value ="delete">
-                        <f:ajax execute = "ekran-karti-form" render = "ekran-karti-form"/>
+                        <f:ajax execute = "ekran-karti-form" render = "ekran-karti-form ekran-karti-table"/>
                     </h:commandButton>    
 
                     <h:commandButton action = "#{ekranKartiController.setEntity(k)}" value ="update">
-                        <f:ajax execute = "ekran-karti-form" render = "ekran-karti-form"/>
+                        <f:ajax execute = "ekran-karti-form" render = "ekran-karti-form ekran-karti-table"/>
                     </h:commandButton>    
 
 

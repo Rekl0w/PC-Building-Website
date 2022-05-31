@@ -70,11 +70,11 @@
                 <h:column>
                     <f:facet name ="header" >Administration</f:facet>
                     <h:commandButton action = "#{monitorController.delete(k)}" value ="delete">
-                        <f:ajax execute = "monitor-form" render = "monitor-form"/>
+                        <f:ajax execute = "monitor-form" render = "monitor-form monitor-table"/>
                     </h:commandButton>    
 
                     <h:commandButton action = "#{monitorController.setEntity(k)}" value ="update">
-                        <f:ajax execute = "monitor-form" render = "monitor-form"/>
+                        <f:ajax execute = "monitor-form" render = "monitor-form monitor-table"/>
                     </h:commandButton> 
                 </h:column>
 

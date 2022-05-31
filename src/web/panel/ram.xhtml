@@ -64,11 +64,11 @@
                 <h:column>
                     <f:facet name ="header" >Administration</f:facet>
                     <h:commandButton action = "#{ramController.delete(k)}" value ="delete">
-                        <f:ajax execute = "ram-form" render = "ram-form"/>
+                        <f:ajax execute = "ram-form" render = "ram-form ram-table"/>
                     </h:commandButton>    
 
                     <h:commandButton action = "#{ramController.setEntity(k)}" value ="update">
-                        <f:ajax execute = "ram-form" render = "ram-form"/>
+                        <f:ajax execute = "ram-form" render = "ram-form ram-table"/>
                     </h:commandButton> 
                 </h:column>
 

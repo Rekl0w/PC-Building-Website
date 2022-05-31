@@ -64,11 +64,11 @@
                 <h:column>
                     <f:facet name ="header" >Administration</f:facet>
                     <h:commandButton action = "#{mouseController.delete(k)}" value ="delete">
-                        <f:ajax execute = "mouse-form" render = "mouse-form"/>
+                        <f:ajax execute = "mouse-form" render = "mouse-form mouse-table"/>
                     </h:commandButton>    
 
                     <h:commandButton action = "#{mouseController.setEntity(k)}" value ="update">
-                        <f:ajax execute = "mouse-form" render = "mouse-form"/>
+                        <f:ajax execute = "mouse-form" render = "mouse-form mouse-table"/>
                     </h:commandButton> 
                 </h:column>
 

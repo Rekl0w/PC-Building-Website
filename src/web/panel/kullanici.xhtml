@@ -45,11 +45,11 @@
                 <h:column>
                     <f:facet name ="header" >Administration</f:facet>
                     <h:commandButton action = "#{kullaniciController.delete(k)}" value ="delete">
-                        <f:ajax execute = "kullanici-form" render = "kullanici-form"/>
+                        <f:ajax execute = "kullanici-form" render = "kullanici-form kullanici-table"/>
                     </h:commandButton>    
 
                     <h:commandButton action = "#{kullaniciController.setEntity(k)}" value ="update">
-                        <f:ajax execute = "kullanici-form" render = "kullanici-form"/>
+                        <f:ajax execute = "kullanici-form" render = "kullanici-form kullanici-table"/>
                     </h:commandButton> 
                 </h:column>
 
