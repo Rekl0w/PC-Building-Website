@@ -23,7 +23,8 @@
                 <f:ajax execute = "bilesen-form" render = "bilesen-form bilesen-table"/>
             </h:commandButton> 
             <h:commandButton rendered = "#{bilgisayarBileseniController.entity.urun_id != 0}" action = "#{bilgisayarBileseniController.update()}" value = "update">
-
+                <f:ajax execute = "bilesen-form" render = "bilesen-form bilesen-table"/>
+            </h:commandButton> 
 
         </h:form>
         <hr />

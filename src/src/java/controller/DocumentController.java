@@ -20,7 +20,7 @@ public class DocumentController implements Serializable {
     private DocumentDAO documentDAO;
     private Part doc;
     
-    private final String uploadTo = "C:/Users/pc/uploads/";
+    private final String uploadTo = "/Users/musabeytekin/Desktop/uploads";
     
     public void upload() {
         try {

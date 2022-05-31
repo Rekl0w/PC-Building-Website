@@ -4,7 +4,7 @@ public class Klavye extends BilgisayarBileseni {
 
     private String switch_modeli;
 
-    public Klavye(int urun_id, String marka, String switch_modeli, float fiyat, int stok, Kampanya kampanya) {
+    public Klavye(int urun_id, String switch_modeli, String marka, float fiyat, int stok, Kampanya kampanya) {
         super(urun_id, marka, fiyat, stok, kampanya);
         this.switch_modeli = switch_modeli;
     }
