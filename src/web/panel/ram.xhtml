@@ -12,22 +12,24 @@
             <h:commandButton action="/index" value="HOME" />
         </h:form>
 
-        <h:form>
+        <h:form id="ram-form">
 
             Kampanya ID:  <h:inputText value = "#{ramController.entity.kampanya}" converter ="kampanyaConverter" />
-
             Bellek  <h:inputText value = "#{ramController.entity.bellek}" />
             Marka: <h:inputText value = "#{ramController.entity.marka}" />
             Fiyat: <h:inputText value = "#{ramController.entity.fiyat}" />
             Stok: <h:inputText value = "#{ramController.entity.stok}" />
 
-            <h:commandButton rendered = "#{ramController.entity.urun_id == 0}" action = "#{ramController.create()}" value = "create"/>
-            <h:commandButton rendered = "#{ramController.entity.urun_id != 0}" action = "#{ramController.update()}" value = "update"/>
-
+            <h:commandButton rendered = "#{ramController.entity.urun_id == 0}" action = "#{ramController.create()}" value = "create">
+                <f:ajax execute = "ram-form" render = "ram-form ram-table"/>
+            </h:commandButton>    
+            <h:commandButton rendered = "#{ramController.entity.urun_id != 0}" action = "#{ramController.update()}" value = "update">
+                <f:ajax execute = "ram-form" render = "ram-form ram-table"/>
+            </h:commandButton>
 
         </h:form>
         <hr />
-        <h:form>
+        <h:form id="ram-table">
             <h:dataTable value = "#{ramController.list}" var = "k" border = "1">
                 <h:column>
                     <f:facet name ="header" >Urun ID</f:facet>
@@ -61,9 +63,13 @@
 
                 <h:column>
                     <f:facet name ="header" >Administration</f:facet>
-                    <h:commandButton action = "#{ramController.delete(k)}" value ="delete"/>
-                    <h:commandButton action = "#{ramController.setEntity(k)}" value ="update"/>
+                    <h:commandButton action = "#{ramController.delete(k)}" value ="delete">
+                        <f:ajax execute = "ram-form" render = "ram-form"/>
+                    </h:commandButton>    
 
+                    <h:commandButton action = "#{ramController.setEntity(k)}" value ="update">
+                        <f:ajax execute = "ram-form" render = "ram-form"/>
+                    </h:commandButton> 
                 </h:column>
 
 

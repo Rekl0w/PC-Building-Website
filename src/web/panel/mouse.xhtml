@@ -12,7 +12,7 @@
             <h:commandButton action="/index" value="HOME" />
         </h:form>
 
-        <h:form>
+        <h:form id="mouse-form">
             Kampanya ID:  <h:inputText value = "#{mouseController.entity.kampanya}" converter ="kampanyaConverter" />
 
             Baglanma sekli:  <h:inputText value = "#{mouseController.entity.baglanma_sekli}" />
@@ -20,13 +20,16 @@
             Fiyat: <h:inputText value = "#{mouseController.entity.fiyat}" />
             Stok: <h:inputText value = "#{mouseController.entity.stok}" />
 
-            <h:commandButton rendered = "#{mouseController.entity.urun_id == 0}" action = "#{mouseController.create()}" value = "create"/>
-            <h:commandButton rendered = "#{mouseController.entity.urun_id != 0}" action = "#{mouseController.update()}" value = "update"/>
-
+            <h:commandButton rendered = "#{mouseController.entity.urun_id == 0}" action = "#{mouseController.create()}" value = "create">
+                <f:ajax execute = "mouse-form" render = "mouse-form mouse-table"/>
+            </h:commandButton>    
+            <h:commandButton rendered = "#{mouseController.entity.urun_id != 0}" action = "#{mouseController.update()}" value = "update">
+                <f:ajax execute = "mouse-form" render = "mouse-form mouse-table"/>
+            </h:commandButton> 
 
         </h:form>
         <hr />
-        <h:form>
+        <h:form id="mouse-table">
             <h:dataTable value = "#{mouseController.list}" var = "k" border = "1">
                 <h:column>
                     <f:facet name ="header" >Urun ID</f:facet>
@@ -60,9 +63,13 @@
 
                 <h:column>
                     <f:facet name ="header" >Administration</f:facet>
-                    <h:commandButton action = "#{mouseController.delete(k)}" value ="delete"/>
-                    <h:commandButton action = "#{mouseController.setEntity(k)}" value ="update"/>
+                    <h:commandButton action = "#{mouseController.delete(k)}" value ="delete">
+                        <f:ajax execute = "mouse-form" render = "mouse-form"/>
+                    </h:commandButton>    
 
+                    <h:commandButton action = "#{mouseController.setEntity(k)}" value ="update">
+                        <f:ajax execute = "mouse-form" render = "mouse-form"/>
+                    </h:commandButton> 
                 </h:column>
 
 

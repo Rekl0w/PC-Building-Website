@@ -13,7 +13,7 @@
             <h:commandButton action="/index" value="HOME" />
         </h:form>
 
-        <h:form>
+        <h:form id="monitor-form">
             Kampanya ID:  <h:inputText value = "#{monitorController.entity.kampanya}" converter ="kampanyaConverter" />
             Boyut:  <h:inputText value = "#{monitorController.entity.boyut}" />
             Ekran Yenileme Hızı:  <h:inputText value = "#{monitorController.entity.ekran_yenileme_hizi}" />
@@ -21,13 +21,16 @@
             Fiyat: <h:inputText value = "#{monitorController.entity.fiyat}" />
             Stok: <h:inputText value = "#{monitorController.entity.stok}" />
 
-            <h:commandButton rendered = "#{monitorController.entity.urun_id == 0}" action = "#{monitorController.create()}" value = "create"/>
-            <h:commandButton rendered = "#{monitorController.entity.urun_id != 0}" action = "#{monitorController.update()}" value = "update"/>
-
+            <h:commandButton rendered = "#{monitorController.entity.urun_id == 0}" action = "#{monitorController.create()}" value = "create">
+                <f:ajax execute = "monitor-form" render = "monitor-form monitor-table"/>
+            </h:commandButton>    
+            <h:commandButton rendered = "#{monitorController.entity.urun_id != 0}" action = "#{monitorController.update()}" value = "update">
+                <f:ajax execute = "monitor-form" render = "monitor-form monitor-table"/>
+            </h:commandButton> 
 
         </h:form>
         <hr />
-        <h:form>
+        <h:form id="monitor-table">
             <h:dataTable value = "#{monitorController.list}" var = "k" border = "1">
                 <h:column>
                     <f:facet name ="header" >Urun ID</f:facet>
@@ -66,11 +69,14 @@
 
                 <h:column>
                     <f:facet name ="header" >Administration</f:facet>
-                    <h:commandButton action = "#{monitorController.delete(k)}" value ="delete"/>
-                    <h:commandButton action = "#{monitorController.setEntity(k)}" value ="update"/>
+                    <h:commandButton action = "#{monitorController.delete(k)}" value ="delete">
+                        <f:ajax execute = "monitor-form" render = "monitor-form"/>
+                    </h:commandButton>    
 
+                    <h:commandButton action = "#{monitorController.setEntity(k)}" value ="update">
+                        <f:ajax execute = "monitor-form" render = "monitor-form"/>
+                    </h:commandButton> 
                 </h:column>
-
 
             </h:dataTable>
 

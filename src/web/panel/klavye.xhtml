@@ -12,20 +12,23 @@
             <h:commandButton action="/index" value="HOME" />
         </h:form>
 
-        <h:form>
+        <h:form id="klavye-form">
             Kampanya ID:  <h:inputText value = "#{klavyeController.entity.kampanya}" converter ="kampanyaConverter" />
             Switch Modeli:  <h:inputText value = "#{klavyeController.entity.switch_modeli}" />
             Marka: <h:inputText value = "#{klavyeController.entity.marka}" />
             Fiyat: <h:inputText value = "#{klavyeController.entity.fiyat}" />
             Stok: <h:inputText value = "#{klavyeController.entity.stok}" />
 
-            <h:commandButton rendered = "#{klavyeController.entity.urun_id == 0}" action = "#{klavyeController.create()}" value = "create"/>
-            <h:commandButton rendered = "#{klavyeController.entity.urun_id != 0}" action = "#{klavyeController.update()}" value = "update"/>
-
+            <h:commandButton rendered = "#{klavyeController.entity.urun_id == 0}" action = "#{klavyeController.create()}" value = "create">
+                <f:ajax execute = "klavye-form" render = "klavye-form klavye-table"/>
+            </h:commandButton>    
+            <h:commandButton rendered = "#{klavyeController.entity.urun_id != 0}" action = "#{klavyeController.update()}" value = "update">
+                <f:ajax execute = "klavye-form" render = "klavye-form klavye-table"/>
+            </h:commandButton> 
 
         </h:form>
         <hr />
-        <h:form>
+        <h:form id = "klavye-table">
             <h:dataTable value = "#{klavyeController.list}" var = "k" border = "1">
                 <h:column>
                     <f:facet name ="header" >Urun ID</f:facet>
@@ -59,11 +62,14 @@
 
                 <h:column>
                     <f:facet name ="header" >Administration</f:facet>
-                    <h:commandButton action = "#{klavyeController.delete(k)}" value ="delete"/>
-                    <h:commandButton action = "#{klavyeController.setEntity(k)}" value ="update"/>
+                    <h:commandButton action = "#{klavyeController.delete(k)}" value ="delete">
+                        <f:ajax execute = "klavye-form" render = "klavye-form"/>
+                    </h:commandButton>    
 
+                    <h:commandButton action = "#{klavyeController.setEntity(k)}" value ="update">
+                        <f:ajax execute = "klavye-form" render = "klavye-form"/>
+                    </h:commandButton> 
                 </h:column>
-
 
             </h:dataTable>
 
