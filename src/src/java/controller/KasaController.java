@@ -96,7 +96,7 @@ public class KasaController implements Serializable {
     }
 
     public List<Kasa> getList() {
-        this.list = this.getDao().getList();
+        this.list = this.getDao().getList(page);
         return list;
     }
 
