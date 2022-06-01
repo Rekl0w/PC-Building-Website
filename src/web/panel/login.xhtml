@@ -15,7 +15,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/XHtml.xhtml to edit t
         <h:form>
             <nav class="navbar navbar-expand-lg navbar-light bg-light">
                 <div class="container-fluid">
-                    <h:commandLink action="/index" value="PC Building" styleClass="navbar-brand"/>
+                    <h:commandLink action="/panel/login" value="PC Building" styleClass="navbar-brand"/>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
@@ -40,6 +40,9 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/XHtml.xhtml to edit t
         </h:form>
 
         <h:form rendered="#{validUser == null}">
+            <br/>
+            Giriş Yap!
+            <br/>
             <br/>
             <div class="mb-3">
                 <label class="form-label">Kullanıcı Adı: </label>

@@ -15,7 +15,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/XHtml.xhtml to edit t
         <h:form>
             <nav class="navbar navbar-expand-lg navbar-light bg-light">
                 <div class="container-fluid">
-                    <h:commandLink action="/index" value="PC Building" styleClass="navbar-brand"/>
+                    <h:commandLink action="/panel/register" value="PC Building" styleClass="navbar-brand"/>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
@@ -41,6 +41,9 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/XHtml.xhtml to edit t
         </h:form>
 
         <h:form id="form">
+            <br/>
+            Kayıt Ol!
+            <br/>
             <br/>
             Kullanıcı Adı:<h:inputText id="isim" validator="#{kullaniciController.validateUser}" value="#{kullaniciController.entity.ad_soyad}" required="true" requiredMessage="Bu alan boş bırakılamaz."/><br/>
             <h:message for="isim" style="color : red; font-size: 10pt" /> <br />
