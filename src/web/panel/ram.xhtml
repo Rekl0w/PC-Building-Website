@@ -9,7 +9,7 @@
     <h:body>
         <h:outputStylesheet library ="css" name ="bootstrap.min.css"/>
         <h:form>
-            <h:commandButton action="/index" value="HOME" />
+            <h:commandButton action="/index" value="HOME" styleClass="btn btn-warning" />
         </h:form>
 
         <h:form id="ram-form">
@@ -23,7 +23,7 @@
             <h:commandButton rendered = "#{ramController.entity.urun_id == 0}" action = "#{ramController.create()}" value = "create" styleClass="btn btn-primary">
                 <f:ajax execute = "ram-form" render = "ram-form ram-table"/>
             </h:commandButton>    
-            <h:commandButton rendered = "#{ramController.entity.urun_id != 0}" action = "#{ramController.update()}" value = "update" styleClass="btn btn-secondary">
+            <h:commandButton rendered = "#{ramController.entity.urun_id != 0}" action = "#{ramController.update()}" value = "update" styleClass="btn btn-success">
                 <f:ajax execute = "ram-form" render = "ram-form ram-table"/>
             </h:commandButton>
 
@@ -63,15 +63,14 @@
 
                 <h:column>
                     <f:facet name ="header" >Administration</f:facet>
-                    <h:commandButton action = "#{ramController.delete(k)}" value ="delete">
+                    <h:commandButton action = "#{ramController.delete(k)}" value ="delete" styleClass="btn btn-danger">
                         <f:ajax execute = "ram-form" render = "ram-form ram-table"/>
                     </h:commandButton>    
 
-                    <h:commandButton action = "#{ramController.setEntity(k)}" value ="update">
+                    <h:commandButton action = "#{ramController.setEntity(k)}" value ="update" styleClass="btn btn-success">
                         <f:ajax execute = "ram-form" render = "ram-form ram-table"/>
                     </h:commandButton> 
                 </h:column>
-
 
             </h:dataTable>
 

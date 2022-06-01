@@ -114,7 +114,6 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/XHtml.xhtml to edit t
                 text-transform: uppercase;
             }
 
-            /*navbar*/
             nav {
                 background-color: #2C3E50;
                 color: #fff;
@@ -184,12 +183,12 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/XHtml.xhtml to edit t
                 </div>
                 <div id="nav-links">
                     <ul>
-                       
+                          
                         <li class="nav-item">
-                            <a href="register.xhtml" class="nav-link text-uppercase">REGISTER</a>
+                            <a href="panel/register.xhtml" class="nav-link text-uppercase">REGISTER</a>
                         </li>
                         <li class="nav-item">
-                            <a href="login.xhtml" class="nav-link text-uppercase">LOGIN</a>
+                            <a href="panel/login.xhtml" class="nav-link text-uppercase">LOGIN</a>
                         </li>
                     </ul>
                 </div>
@@ -201,14 +200,14 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/XHtml.xhtml to edit t
 
             <div class="container">
                 <h:form rendered="#{validUser == null}"> <br/>
-                    kullanici ismi:
+                    Kullanıcı Adı:
                     <h:inputText  value="#{loginController.kullanici.ad_soyad}"/><br/>
-                    sifre:
+                    Şifre:
                     <h:inputText  value="#{loginController.kullanici.sifre}"/><br/>
                     <h:commandButton action="#{loginController.login()}" value="LOGIN"/>
                 </h:form>
                 <h:panelGroup rendered="#{validUser!=null}" layout="block" > 
-                    UserName: #{validUser.ad_soyad}<br/><!-- comment -->
+                    UserName: #{validUser.ad_soyad}<br/>
                     Password: #{validUser.sifre}
                     
                 </h:panelGroup>

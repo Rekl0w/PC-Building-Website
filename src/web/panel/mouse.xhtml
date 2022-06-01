@@ -9,7 +9,7 @@
     </h:head>
     <h:body>
         <h:form>
-            <h:commandButton action="/index" value="HOME" />
+            <h:commandButton action="/index" value="HOME" styleClass="btn btn-warning" />
         </h:form>
 
         <h:form id="mouse-form">
@@ -23,7 +23,7 @@
             <h:commandButton rendered = "#{mouseController.entity.urun_id == 0}" action = "#{mouseController.create()}" value = "create" styleClass="btn btn-primary">
                 <f:ajax execute = "mouse-form" render = "mouse-form mouse-table"/>
             </h:commandButton>    
-            <h:commandButton rendered = "#{mouseController.entity.urun_id != 0}" action = "#{mouseController.update()}" value = "update" styleClass="btn btn-secondary">
+            <h:commandButton rendered = "#{mouseController.entity.urun_id != 0}" action = "#{mouseController.update()}" value = "update" styleClass="btn btn-success">
                 <f:ajax execute = "mouse-form" render = "mouse-form mouse-table"/>
             </h:commandButton> 
 
@@ -63,11 +63,11 @@
 
                 <h:column>
                     <f:facet name ="header" >Administration</f:facet>
-                    <h:commandButton action = "#{mouseController.delete(k)}" value ="delete">
+                    <h:commandButton action = "#{mouseController.delete(k)}" value ="delete" styleClass="btn btn-danger">
                         <f:ajax execute = "mouse-form" render = "mouse-form mouse-table"/>
                     </h:commandButton>    
 
-                    <h:commandButton action = "#{mouseController.setEntity(k)}" value ="update">
+                    <h:commandButton action = "#{mouseController.setEntity(k)}" value ="update" styleClass="btn btn-success">
                         <f:ajax execute = "mouse-form" render = "mouse-form mouse-table"/>
                     </h:commandButton> 
                 </h:column>

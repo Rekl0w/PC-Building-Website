@@ -9,7 +9,7 @@
     </h:head>
     <h:body>
         <h:form>
-            <h:commandButton action="/index" value="HOME" />
+            <h:commandButton action="/index" value="HOME" styleClass="btn btn-warning" />
         </h:form>
 
         <h:form id = "kampanya-form">
@@ -19,7 +19,7 @@
             <h:commandButton rendered = "#{kampanyaController.entity.kampanya_id == 0}" action = "#{kampanyaController.create()}" value = "create" styleClass="btn btn-primary">
                 <f:ajax execute = "kampanya-form" render = "kampanya-form kampanya-table"/>
             </h:commandButton> 
-            <h:commandButton rendered = "#{kampanyaController.entity.kampanya_id != 0}" action = "#{kampanyaController.update()}" value = "update" styleClass="btn btn-secondary">
+            <h:commandButton rendered = "#{kampanyaController.entity.kampanya_id != 0}" action = "#{kampanyaController.update()}" value = "update" styleClass="btn btn-success">
                 <f:ajax execute = "kampanya-form" render = "kampanya-form kampanya-table"/>
             </h:commandButton> 
 
@@ -41,10 +41,10 @@
 
                 <h:column>
                     <f:facet name ="header" >Administration</f:facet>
-                    <h:commandButton action = "#{kampanyaController.delete(k)}" value ="delete">
+                    <h:commandButton action = "#{kampanyaController.delete(k)}" value ="delete" styleClass="btn btn-danger">
                         <f:ajax execute = "kampanya-form" render = "kampanya-form kampanya-table"/>
                     </h:commandButton> 
-                    <h:commandButton action = "#{kampanyaController.setEntity(k)}" value ="update">
+                    <h:commandButton action = "#{kampanyaController.setEntity(k)}" value ="update" styleClass="btn btn-success">
                         <f:ajax execute = "kampanya-form" render = "kampanya-form kampanya-table"/>
                     </h:commandButton> 
 

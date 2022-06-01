@@ -9,7 +9,7 @@
     </h:head>
     <h:body>
         <h:form>
-            <h:commandButton action="/index" value="HOME" />
+            <h:commandButton action="/index" value="HOME" styleClass="btn btn-warning" />
         </h:form>
 
         <h:form id = "bilesen-form">
@@ -22,7 +22,7 @@
             <h:commandButton rendered = "#{bilgisayarBileseniController.entity.urun_id == 0}" action = "#{bilgisayarBileseniController.create()}" value = "create" styleClass="btn btn-primary">
                 <f:ajax execute = "bilesen-form" render = "bilesen-form bilesen-table"/>
             </h:commandButton> 
-            <h:commandButton rendered = "#{bilgisayarBileseniController.entity.urun_id != 0}" action = "#{bilgisayarBileseniController.update()}" value = "update" styleClass="btn btn-secondary">
+            <h:commandButton rendered = "#{bilgisayarBileseniController.entity.urun_id != 0}" action = "#{bilgisayarBileseniController.update()}" value = "update" styleClass="btn btn-success">
                 <f:ajax execute = "bilesen-form" render = "bilesen-form bilesen-table"/>
             </h:commandButton> 
 
@@ -53,11 +53,11 @@
 
                 <h:column>
                     <f:facet name ="header" >Administration</f:facet>
-                    <h:commandButton action = "#{bilgisayarBileseniController.delete(k)}" value ="delete">
+                    <h:commandButton action = "#{bilgisayarBileseniController.delete(k)}" value ="delete" styleClass="btn btn-danger">
                         <f:ajax execute = "bilesen-form" render = "bilesen-form bilesen-table"/>
                     </h:commandButton> 
 
-                    <h:commandButton action = "#{bilgisayarBileseniController.setEntity(k)}" value ="update">
+                    <h:commandButton action = "#{bilgisayarBileseniController.setEntity(k)}" value ="update" styleClass="btn btn-success">
                         <f:ajax execute = "bilesen-form" render = "bilesen-form bilesen-table"/>
                     </h:commandButton> 
 

@@ -9,7 +9,7 @@
     </h:head>
     <h:body>
         <h:form>
-            <h:commandButton action="/index" value="HOME" />
+            <h:commandButton action="/index" value="HOME" styleClass="btn btn-warning" />
         </h:form>
 
         <h:form id="klavye-form">
@@ -22,7 +22,7 @@
             <h:commandButton rendered = "#{klavyeController.entity.urun_id == 0}" action = "#{klavyeController.create()}" value = "create" styleClass="btn btn-primary">
                 <f:ajax execute = "klavye-form" render = "klavye-form klavye-table"/>
             </h:commandButton>    
-            <h:commandButton rendered = "#{klavyeController.entity.urun_id != 0}" action = "#{klavyeController.update()}" value = "update" styleClass="btn btn-secondary">
+            <h:commandButton rendered = "#{klavyeController.entity.urun_id != 0}" action = "#{klavyeController.update()}" value = "update" styleClass="btn btn-success">
                 <f:ajax execute = "klavye-form" render = "klavye-form klavye-table"/>
             </h:commandButton> 
 
@@ -62,11 +62,11 @@
 
                 <h:column>
                     <f:facet name ="header" >Administration</f:facet>
-                    <h:commandButton action = "#{klavyeController.delete(k)}" value ="delete">
+                    <h:commandButton action = "#{klavyeController.delete(k)}" value ="delete" styleClass="btn btn-danger">
                         <f:ajax execute = "klavye-form" render = "klavye-form klavye-table"/>
                     </h:commandButton>    
 
-                    <h:commandButton action = "#{klavyeController.setEntity(k)}" value ="update">
+                    <h:commandButton action = "#{klavyeController.setEntity(k)}" value ="update" styleClass="btn btn-success">
                         <f:ajax execute = "klavye-form" render = "klavye-form klavye-table"/>
                     </h:commandButton> 
                 </h:column>

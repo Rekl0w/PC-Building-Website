@@ -9,7 +9,7 @@
     </h:head>
     <h:body>
         <h:form>
-            <h:commandButton action="/index" value="HOME" />
+            <h:commandButton action="/index" value="HOME" styleClass="btn btn-warning" />
         </h:form>
 
         <h:form id ="kasa-form">
@@ -23,7 +23,7 @@
             <h:commandButton rendered = "#{kasaController.entity.urun_id == 0}" action = "#{kasaController.create()}" value = "create" styleClass="btn btn-primary">
                 <f:ajax execute = "kasa-form" render = "kasa-form kasa-table"/>
             </h:commandButton> 
-            <h:commandButton rendered = "#{kasaController.entity.urun_id != 0}" action = "#{kasaController.update()}" value = "update" styleClass="btn btn-secondary">
+            <h:commandButton rendered = "#{kasaController.entity.urun_id != 0}" action = "#{kasaController.update()}" value = "update" styleClass="btn btn-success">
                 <f:ajax execute = "kasa-form" render = "kasa-form kasa-table"/>
             </h:commandButton> 
 
@@ -61,10 +61,10 @@
 
                 <h:column>
                     <f:facet name ="header" >Administration</f:facet>
-                    <h:commandButton action = "#{kasaController.delete(k)}" value ="delete">
+                    <h:commandButton action = "#{kasaController.delete(k)}" value ="delete" styleClass="btn btn-danger">
                         <f:ajax execute = "kasa-form" render = "kasa-form kasa-table"/>
                     </h:commandButton> 
-                    <h:commandButton action = "#{kasaController.setEntity(k)}" value ="update">
+                    <h:commandButton action = "#{kasaController.setEntity(k)}" value ="update" styleClass="btn btn-success">
                         <f:ajax execute = "kasa-form" render = "kasa-form kasa-table"/>
                     </h:commandButton> 
 
