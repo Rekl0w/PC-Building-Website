@@ -96,7 +96,7 @@ public class KasaDAO extends DBConnection {
         List<Kasa> list = new ArrayList<>();
         try {
             Statement st = this.getConnection().createStatement();
-            String query = "select * from kasa";
+            String query = "select * from kasa order by urun_id asc";
             ResultSet rs = st.executeQuery(query);
 
             while (rs.next()) {
@@ -115,7 +115,7 @@ public class KasaDAO extends DBConnection {
         List<Kasa> list = new ArrayList<>();
         try {
             Statement st = this.getConnection().createStatement();
-            ResultSet rs = st.executeQuery("select * from kasa limit 5 offset " + offset);
+            ResultSet rs = st.executeQuery("select * from kasa order by urun_id asc limit 5 offset " + offset);
 
             while (rs.next()) {
                 list.add(new Kasa(rs.getInt("urun_id"), rs.getString("boyut"), rs.getString("marka"), rs.getFloat("fiyat"), rs.getInt("stok"), this.getKampanyaDAO().findById(rs.getInt("kampanya_id"))));

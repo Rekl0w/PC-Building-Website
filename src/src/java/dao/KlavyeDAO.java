@@ -95,7 +95,7 @@ public class KlavyeDAO extends DBConnection {
         List<Klavye> list = new ArrayList<>();
         try {
             Statement st = this.getConnection().createStatement();
-            String query = "select * from klavye";
+            String query = "select * from klavye order by urun_id asc";
             ResultSet rs = st.executeQuery(query);
 
             while (rs.next()) {
@@ -114,7 +114,7 @@ public class KlavyeDAO extends DBConnection {
         List<Klavye> list = new ArrayList<>();
         try {
             Statement st = this.getConnection().createStatement();
-            ResultSet rs = st.executeQuery("select * from klavye limit 5 offset " + offset);
+            ResultSet rs = st.executeQuery("select * from klavye order by urun_id asc limit 5 offset " + offset);
 
             while (rs.next()) {
                 list.add(new Klavye(rs.getInt("urun_id"), rs.getString("switch_modeli"), rs.getString("marka"), rs.getFloat("fiyat"), rs.getInt("stok"), this.getKampanyaDAO().findById(rs.getInt("kampanya_id"))));

@@ -90,7 +90,7 @@ public class AnakartDAO extends DBConnection {
         List<Anakart> list = new ArrayList<>();
         try {
             Statement st = this.getConnection().createStatement();
-            ResultSet rs = st.executeQuery("select * from anakart");
+            ResultSet rs = st.executeQuery("select * from anakart order by urun_id asc ");
 
             while (rs.next()) {
                 list.add(new Anakart(rs.getInt("urun_id"), rs.getString("cpu_soketi"), rs.getInt("bellek_saat_hizi"), rs.getString("marka"), rs.getFloat("fiyat"), rs.getInt("stok"), this.getKampanyaDAO().findById(rs.getInt("kampanya_id"))));
@@ -109,7 +109,7 @@ public class AnakartDAO extends DBConnection {
 
         try {
             Statement st = this.getConnection().createStatement();
-            ResultSet rs = st.executeQuery("select * from anakart limit 5 offset " + offset);
+            ResultSet rs = st.executeQuery("select * from anakart order by urun_id asc limit 5 offset " + offset);
             while (rs.next()) {
                 list.add(new Anakart(rs.getInt("urun_id"), rs.getString("cpu_soketi"), rs.getInt("bellek_saat_hizi"), rs.getString("marka"), rs.getFloat("fiyat"), rs.getInt("stok"), this.getKampanyaDAO().findById(rs.getInt("kampanya_id"))));
 

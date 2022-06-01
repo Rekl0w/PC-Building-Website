@@ -69,7 +69,7 @@ public class KullaniciDAO extends DBConnection {
         List<Kullanici> list = new ArrayList<>();
         try {
             Statement st = this.getConnection().createStatement();
-            String query = "select * from kullanici";
+            String query = "select * from kullanici order by kullanici_id asc ";
             ResultSet rs = st.executeQuery(query);
 
             while (rs.next()) {

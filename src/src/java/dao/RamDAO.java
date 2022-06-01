@@ -91,7 +91,7 @@ public class RamDAO extends DBConnection {
         List<Ram> list = new ArrayList<>();
         try {
             Statement st = this.getConnection().createStatement();
-            ResultSet rs = st.executeQuery("select * from ram limit 5 offset " + offset);
+            ResultSet rs = st.executeQuery("select * from ram order by urun_id asc limit 5 offset " + offset);
 
             while (rs.next()) {
                 list.add(new Ram(rs.getInt("urun_id"), rs.getInt("bellek"), rs.getString("marka"), rs.getFloat("fiyat"), rs.getInt("stok"), this.getKampanyaDAO().findById(rs.getInt("kampanya_id"))));
@@ -108,7 +108,7 @@ public class RamDAO extends DBConnection {
         List<Ram> list = new ArrayList<>();
         try {
             Statement st = this.getConnection().createStatement();
-            String query = "select * from ram";
+            String query = "select * from ram order by urun_id asc";
             ResultSet rs = st.executeQuery(query);
 
             while (rs.next()) {

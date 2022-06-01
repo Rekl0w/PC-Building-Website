@@ -91,7 +91,7 @@ public class EkranKartiDAO extends DBConnection {
         List<EkranKarti> list = new ArrayList<>();
         try {
             Statement st = this.getConnection().createStatement();
-            ResultSet rs = st.executeQuery("select * from ekran_karti limit 5 offset " + offset);
+            ResultSet rs = st.executeQuery("select * from ekran_karti order by urun_id asc limit 5 offset " + offset);
             while (rs.next()) {
                 list.add(new EkranKarti(rs.getInt("urun_id"), rs.getString("model"), rs.getInt("bellek"), rs.getString("marka"), rs.getFloat("fiyat"), rs.getInt("stok"), this.getKampanyaDAO().findById(rs.getInt("kampanya_id"))));
 
@@ -108,7 +108,7 @@ public class EkranKartiDAO extends DBConnection {
         List<EkranKarti> list = new ArrayList<>();
         try {
             Statement st = this.getConnection().createStatement();
-            ResultSet rs = st.executeQuery("select * from ekran_karti");
+            ResultSet rs = st.executeQuery("select * from ekran_karti order by urun_id asc");
 
             while (rs.next()) {
                 list.add(new EkranKarti(rs.getInt("urun_id"), rs.getString("model"), rs.getInt("bellek"), rs.getString("marka"), rs.getFloat("fiyat"), rs.getInt("stok"), this.getKampanyaDAO().findById(rs.getInt("kampanya_id"))));

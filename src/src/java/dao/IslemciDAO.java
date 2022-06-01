@@ -90,7 +90,7 @@ public class IslemciDAO extends DBConnection {
         List<Islemci> list = new ArrayList<>();
         try {
             Statement st = this.getConnection().createStatement();
-            ResultSet rs = st.executeQuery("select * from islemci");
+            ResultSet rs = st.executeQuery("select * from islemci order by urun_id asc");
 
             while (rs.next()) {
                 list.add(new Islemci(rs.getInt("urun_id"), rs.getInt("cekirdek_sayisi"), rs.getInt("hiz"), rs.getString("marka"), rs.getFloat("fiyat"), rs.getInt("stok"), this.getKampanyaDAO().findById(rs.getInt("kampanya_id"))));
@@ -108,7 +108,7 @@ public class IslemciDAO extends DBConnection {
         List<Islemci> list = new ArrayList<>();
         try {
             Statement st = this.getConnection().createStatement();
-            ResultSet rs = st.executeQuery("select * from islemci limit 5 offset " + offset);
+            ResultSet rs = st.executeQuery("select * from islemci order by urun_id asc limit 5 offset " + offset);
 
             while (rs.next()) {
                 list.add(new Islemci(rs.getInt("urun_id"), rs.getInt("cekirdek_sayisi"), rs.getInt("hiz"), rs.getString("marka"), rs.getFloat("fiyat"), rs.getInt("stok"), this.getKampanyaDAO().findById(rs.getInt("kampanya_id"))));
