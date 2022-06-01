@@ -31,16 +31,20 @@
         </h:form>
         <hr />
         <h:form id = "islemci-table">
-                <pre>Page #{islemciController.page} of #{islemciController.pageCount}</pre>
+            <pre>Page #{islemciController.page} of #{islemciController.pageCount}</pre>
             <div class="btn-group">
-                <h:commandButton action="#{islemciController.previous()}" value="Previous" styleClass="btn btn-outline-dark"/>
-                <h:commandButton action="#{islemciController.next()}" value="Next" styleClass="btn btn-outline-dark"/>
+                <h:commandButton action="#{islemciController.previous()}" value="Previous" styleClass="btn btn-outline-dark">
+                    <f:ajax execute = "@this" render = "islemci-table"/>
+                </h:commandButton>
 
+                <h:commandButton action="#{islemciController.next()}" value="Next" styleClass="btn btn-outline-dark">
+                    <f:ajax execute = "@this" render = "islemci-table"/>
+                </h:commandButton>
 
             </div>
-            
-            
-            
+
+
+
             <h:dataTable styleClass="table" value = "#{islemciController.list}" var = "k" border = "1">
                 <h:column>
                     <f:facet name ="header" >Ürün ID</f:facet>

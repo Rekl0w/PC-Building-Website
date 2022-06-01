@@ -34,8 +34,12 @@
         <h:form id = "kasa-table">
             <pre>Page #{kasaController.page} of #{kasaController.pageCount}</pre>
             <div class="btn-group">
-                <h:commandButton action="#{kasaController.previous()}" value="Previous" styleClass="btn btn-outline-dark"/>
-                <h:commandButton action="#{kasaController.next()}" value="Next" styleClass="btn btn-outline-dark"/>
+                <h:commandButton action="#{kasaController.previous()}" value="Previous" styleClass="btn btn-outline-dark">
+                    <f:ajax execute = "@this" render = "kasa-table"/>
+                </h:commandButton>
+                <h:commandButton action="#{kasaController.next()}" value="Next" styleClass="btn btn-outline-dark">
+                    <f:ajax execute = "@this" render = "kasa-table"/>
+                </h:commandButton>
 
 
             </div>

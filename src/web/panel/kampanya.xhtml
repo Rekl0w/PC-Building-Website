@@ -30,8 +30,12 @@
         <h:form id = "kampanya-table">
             <pre>Page #{kampanyaController.page} of #{kampanyaController.pageCount}</pre>
             <div class="btn-group">
-                <h:commandButton action="#{kampanyaController.previous()}" value="Previous" styleClass="btn btn-outline-dark"/>
-                <h:commandButton action="#{kampanyaController.next()}" value="Next" styleClass="btn btn-outline-dark"/>
+                <h:commandButton action="#{kampanyaController.previous()}" value="Previous" styleClass="btn btn-outline-dark">
+                    <f:ajax execute = "@this" render = "kampanya-table"/>
+                </h:commandButton>
+                <h:commandButton action="#{kampanyaController.next()}" value="Next" styleClass="btn btn-outline-dark">
+                    <f:ajax execute = "@this" render = "kampanya-table"/>
+                </h:commandButton>
 
 
             </div>

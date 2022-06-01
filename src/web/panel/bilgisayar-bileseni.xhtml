@@ -30,8 +30,12 @@
         <h:form id = "bilesen-table">
             <pre>Page #{bilgisayarBileseniController.page} of #{bilgisayarBileseniController.pageCount}</pre>
             <div class="btn-group">
-                <h:commandButton action="#{bilgisayarBileseniController.previous()}" value="Previous" styleClass="btn btn-outline-dark"/>
-                <h:commandButton action="#{bilgisayarBileseniController.next()}" value="Next" styleClass="btn btn-outline-dark"/>
+                <h:commandButton action="#{bilgisayarBileseniController.previous()}" value="Previous" styleClass="btn btn-outline-dark">
+                    <f:ajax execute = "@this" render = "bilesen-table"/>
+                </h:commandButton>
+                <h:commandButton action="#{bilgisayarBileseniController.next()}" value="Next" styleClass="btn btn-outline-dark">
+                    <f:ajax execute = "@this" render = "bilesen-table"/>
+                </h:commandButton>
 
 
             </div>
