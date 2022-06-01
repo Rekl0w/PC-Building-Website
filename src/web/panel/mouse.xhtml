@@ -31,9 +31,12 @@
         <h:form id="mouse-table">
             <pre>Page #{mouseController.page} of #{mouseController.pageCount}</pre>
             <div class="btn-group">
-                <h:commandButton action="#{mouseController.previous()}" value="Previous" styleClass="btn btn-outline-dark"/>
-                <h:commandButton action="#{mouseController.next()}" value="Next" styleClass="btn btn-outline-dark"/>
-
+                <h:commandButton action="#{mouseController.previous()}" value="Previous" styleClass="btn btn-outline-dark">
+                    <f:ajax execute = "@this" render = "mouse-table"/>
+                </h:commandButton>
+                <h:commandButton action="#{mouseController.next()}" value="Next" styleClass="btn btn-outline-dark">
+                    <f:ajax execute = "@this" render = "mouse-table"/>
+                </h:commandButton>
 
             </div>
             <h:dataTable styleClass="table" value = "#{mouseController.list}" var = "k" border = "1">

@@ -32,9 +32,12 @@
         <h:form id="ram-table">
             <pre>Page #{ramController.page} of #{ramController.pageCount}</pre>
             <div class="btn-group">
-                <h:commandButton action="#{ramController.previous()}" value="Previous" styleClass="btn btn-outline-dark"/>
-                <h:commandButton action="#{ramController.next()}" value="Next" styleClass="btn btn-outline-dark"/>
-
+                <h:commandButton action="#{ramController.previous()}" value="Previous" styleClass="btn btn-outline-dark">
+                    <f:ajax execute = "@this" render = "ram-table"/>
+                </h:commandButton>
+                <h:commandButton action="#{ramController.next()}" value="Next" styleClass="btn btn-outline-dark">
+                    <f:ajax execute = "@this" render = "ram-table"/>
+                </h:commandButton>
 
             </div>
             <h:dataTable styleClass="table" value = "#{ramController.list}" var = "k" border = "1">

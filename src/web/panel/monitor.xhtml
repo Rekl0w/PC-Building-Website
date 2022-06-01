@@ -33,9 +33,12 @@
         <h:form id="monitor-table">
             <pre>Page #{monitorController.page} of #{monitorController.pageCount}</pre>
             <div class="btn-group">
-                <h:commandButton action="#{monitorController.previous()}" value="Previous" styleClass="btn btn-outline-dark"/>
-                <h:commandButton action="#{monitorController.next()}" value="Next" styleClass="btn btn-outline-dark"/>
-
+                <h:commandButton action="#{monitorController.previous()}" value="Previous" styleClass="btn btn-outline-dark">
+                    <f:ajax execute = "@this" render = "monitor-table"/>
+                </h:commandButton>
+                <h:commandButton action="#{monitorController.next()}" value="Next" styleClass="btn btn-outline-dark">
+                    <f:ajax execute = "@this" render = "monitor-table"/>
+                </h:commandButton>
 
             </div>
             <h:dataTable styleClass="table" value = "#{monitorController.list}" var = "k" border = "1">

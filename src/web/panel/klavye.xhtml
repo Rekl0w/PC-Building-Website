@@ -31,9 +31,12 @@
         <h:form id = "klavye-table">
             <pre>Page #{klavyeController.page} of #{klavyeController.pageCount}</pre>
             <div class="btn-group">
-                <h:commandButton action="#{klavyeController.previous()}" value="Previous" styleClass="btn btn-outline-dark"/>
-                <h:commandButton action="#{klavyeController.next()}" value="Next" styleClass="btn btn-outline-dark"/>
-
+                <h:commandButton action="#{klavyeController.previous()}" value="Previous" styleClass="btn btn-outline-dark">
+                    <f:ajax execute = "@this" render = "klavye-table"/>
+                </h:commandButton>
+                <h:commandButton action="#{klavyeController.next()}" value="Next" styleClass="btn btn-outline-dark">
+                    <f:ajax execute = "@this" render = "klavye-table"/>
+                </h:commandButton>
 
             </div>
             <h:dataTable styleClass="table" value = "#{klavyeController.list}" var = "k" border = "1">
