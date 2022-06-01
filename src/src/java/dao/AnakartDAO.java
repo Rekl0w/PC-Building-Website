@@ -87,7 +87,7 @@ public class AnakartDAO extends DBConnection {
     }
 
     public List<Anakart> getList() {
-
+        
         List<Anakart> list = new ArrayList<>();
 
         try {
