@@ -7,13 +7,51 @@ import jakarta.enterprise.context.SessionScoped;
 import java.io.Serializable;
 import java.util.List;
 
-@Named(value ="ramController")
+@Named(value = "ramController")
 @SessionScoped
 public class RamController implements Serializable {
 
     private Ram entity;
     private RamDAO dao;
     private List<Ram> list;
+
+    private int page = 1;
+    private int pageCount;
+
+    public void next() {
+        page++;
+        if (page > this.getPageCount()) {
+            page = 1;
+
+        }
+    }
+
+    public void previous() {
+        page--;
+        if (page < 1) {
+            page = this.getPageCount();
+
+        }
+    }
+
+    public int getPage() {
+        return page;
+    }
+
+    public void setPage(int page) {
+        this.page = page;
+    }
+
+    public int getPageCount() {
+        List<Ram> gList = this.getDao().getList();
+        int size = gList.size();
+        pageCount = (int) Math.ceil(size / 5);
+        return pageCount;
+    }
+
+    public void setPageCount(int pageCount) {
+        this.pageCount = pageCount;
+    }
 
     public void create() {
         this.getDao().create(entity);
@@ -56,7 +94,7 @@ public class RamController implements Serializable {
     }
 
     public List<Ram> getList() {
-        this.list = this.getDao().getList();
+        this.list = this.getDao().getList(page);
         return list;
     }
 

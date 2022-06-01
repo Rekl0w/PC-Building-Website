@@ -87,9 +87,7 @@ public class AnakartDAO extends DBConnection {
     }
 
     public List<Anakart> getList() {
-        
         List<Anakart> list = new ArrayList<>();
-
         try {
             Statement st = this.getConnection().createStatement();
             ResultSet rs = st.executeQuery("select * from anakart");
