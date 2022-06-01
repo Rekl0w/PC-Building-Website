@@ -90,13 +90,32 @@ public class MouseDAO extends DBConnection {
             System.out.println(ex.getMessage());
         }
     }
-
+    
+    
     public List<Mouse> getList() {
         List<Mouse> list = new ArrayList<>();
         try {
             Statement st = this.getConnection().createStatement();
             String query = "select * from mouse";
             ResultSet rs = st.executeQuery(query);
+
+            while (rs.next()) {
+                list.add(new Mouse(rs.getInt("urun_id"), rs.getString("baglanma_sekli"),rs.getString("marka"), rs.getFloat("fiyat"), rs.getInt("stok"), this.getKampanyaDAO().findById(rs.getInt("kampanya_id"))));
+
+            }
+        } catch (Exception ex) {
+
+            System.out.println(ex.getMessage());
+        }
+        return list;
+    }
+
+    public List<Mouse> getList(int page) {
+        int offset = (page - 1) * 5;
+        List<Mouse> list = new ArrayList<>();
+        try {
+            Statement st = this.getConnection().createStatement();
+            ResultSet rs = st.executeQuery("select * from mouse limit 5 offset " + offset);
 
             while (rs.next()) {
                 list.add(new Mouse(rs.getInt("urun_id"), rs.getString("baglanma_sekli"),rs.getString("marka"), rs.getFloat("fiyat"), rs.getInt("stok"), this.getKampanyaDAO().findById(rs.getInt("kampanya_id"))));
