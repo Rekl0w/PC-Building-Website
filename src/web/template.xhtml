@@ -76,25 +76,13 @@
 
                                 <li class="nav-item">
 
-                                    <h:commandLink styleClass="nav-link" action="/document/document?faces-redirect=true" value="Document" />
-                                </li>
-
-                                <li class="nav-item">
-
-                                    <h:commandLink styleClass="nav-link" action="/panel/login?faces-redirect=true" value="Login" />
-
-                                </li>
-
-                                <li class="nav-item">
-
-                                    <h:commandLink styleClass="nav-link" action="/panel/register?faces-redirect=true" value="Register" />
+                                    <h:commandLink styleClass="nav-link" action="/document/document" value="Document" />
                                 </li>
 
                                 <li class="nav-item">
 
                                     <h:commandLink styleClass="nav-link" action="/panel/logout?faces-redirect=true" value="Logout" />
                                 </li>
-
 
 
                             </ul>
@@ -104,8 +92,6 @@
             </h:form>
         </ui:insert>
 
-        <ui:insert name="content">
-
-        </ui:insert>
+        <ui:insert name="content"></ui:insert>
     </h:body>
 </html>
