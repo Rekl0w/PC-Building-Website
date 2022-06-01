@@ -21,27 +21,31 @@ public class LoginFilter implements Filter {
         HttpServletResponse response = (HttpServletResponse) sr1;
         String url = request.getRequestURI();
 
+        System.out.println(url);
         HttpSession session = request.getSession();
         Kullanici user = null;
 
-        if (user != null) {
+        if (session != null) {
             user = (Kullanici) session.getAttribute("validUser");
         }
         if (user == null) {
-            if (url.contains("support")) {
+            if (url.contains("logout")) {
+                session.invalidate();
                 response.sendRedirect(request.getContextPath() + "/panel/login.xhtml");
-
+                
             } else {
                 fc.doFilter(sr, sr1);
             }
 
         } else {
-            if (url.contains("register")) {
-                response.sendRedirect(request.getContextPath() + "/index.xhtml");
-            } else if (url.contains("support")) {
-
+            if (url.contains("login")) {
+                response.sendRedirect(request.getContextPath() + "/index?faces-redirect=true");
+            } 
+            /*else if (url.contains("logout")) {
+                session.invalidate();
                 response.sendRedirect(request.getContextPath() + "/panel/login.xhtml");
-            } else {
+            }*/
+            else {
                 fc.doFilter(sr, sr1);
             }
         }
