@@ -63,13 +63,32 @@ public class KampanyaDAO extends DBConnection {
         
         return k;
     }
-
+    
     public List<Kampanya> getList() {
         List<Kampanya> list = new ArrayList<>();
         try {
             Statement st = this.getConnection().createStatement();
             String query = "select * from kampanya";
             ResultSet rs = st.executeQuery(query);
+
+            while (rs.next()) {
+                list.add(new Kampanya(rs.getInt("kampanya_id"), rs.getFloat("indirim_yuzdesi")));
+
+            }
+        } catch (Exception ex) {
+
+            System.out.println(ex.getMessage());
+        }
+        return list;
+    }
+    
+    
+    public List<Kampanya> getList(int page) {
+        int offset = (page - 1) * 5;
+        List<Kampanya> list = new ArrayList<>();
+        try {
+            Statement st = this.getConnection().createStatement();
+            ResultSet rs = st.executeQuery("select * from kampanya limit 5 offset " + offset);
 
             while (rs.next()) {
                 list.add(new Kampanya(rs.getInt("kampanya_id"), rs.getFloat("indirim_yuzdesi")));
