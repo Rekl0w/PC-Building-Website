@@ -45,7 +45,7 @@ public class AnakartController implements Serializable {
     public int getPageCount() {
         List<Anakart> gList = this.getDao().getList();
         int size = gList.size();
-        pageCount = (int) Math.ceil(size / 5);
+        pageCount = (int) Math.ceil(size / 5) + 1;
         return pageCount;
     }
 

@@ -46,7 +46,7 @@ public class MouseController implements Serializable {
     public int getPageCount() {
         List<Mouse> gList = this.getDao().getList();
         int size = gList.size();
-        pageCount = (int) Math.ceil(size / 5);
+        pageCount = (int) Math.ceil(size / 5) + 1;
         return pageCount;
     }
 

@@ -45,7 +45,7 @@ public class MonitorController implements Serializable {
     public int getPageCount() {
         List<Monitor> gList = this.getDao().getList();
         int size = gList.size();
-        pageCount = (int) Math.ceil(size / 5);
+        pageCount = (int) Math.ceil(size / 5) + 1;
         return pageCount;
     }
 
