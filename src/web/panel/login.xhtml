@@ -31,16 +31,14 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/XHtml.xhtml to edit t
 
                                 <h:commandLink styleClass="nav-link" action="/panel/register?faces-redirect=true" value="Register" />
                             </li>
-                            <li class="nav-item">
 
-                                <h:commandLink styleClass="nav-link" action="/panel/logout?faces-redirect=true" value="Logout" />
-                            </li>
                         </ul>
                     </div>
                 </div>
             </nav>
         </h:form>
     </ui:define>
+
     <ui:define name="content">
         <h:form rendered="#{validUser == null}">
             <br/>
