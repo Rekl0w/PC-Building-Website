@@ -42,6 +42,28 @@ public class KullaniciDAO extends DBConnection {
             System.out.println(ex.getMessage());
         }
     }
+    public boolean verifyLogin(Kullanici k){
+        try {
+            Statement st = getConnection().createStatement();
+            String query = "SELECT * FROM kullanici WHERE ad_soyad='"+k.getAd_soyad()+"' AND sifre='"+k.getSifre()+"'";
+            ResultSet rs = st.executeQuery(query);
+            while(rs.next()){
+                k.setKullanici_id(rs.getInt("kullanici_id"));
+                k.setAd_soyad(rs.getString("ad_soyad"));
+                k.setAd_soyad(rs.getString("sifre"));
+                
+                
+            }
+        } catch (Exception ex) {
+            
+            System.out.println(ex.getMessage());
+        }
+        
+        if(k.getKullanici_id()!= 0){
+            return true;
+        }
+        return false;
+    }
 
     public List<Kullanici> getList() {
         List<Kullanici> list = new ArrayList<>();

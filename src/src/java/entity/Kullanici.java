@@ -20,6 +20,10 @@ public class Kullanici {
         this.sifre = sifre;
     }
 
+    public void setKullanici_id(int kullanici_id) {
+        this.kullanici_id = kullanici_id;
+    }
+
     public int getKullanici_id() {
         return kullanici_id;
     }
