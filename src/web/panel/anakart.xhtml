@@ -33,9 +33,12 @@
         <h:form id = "anakart-table">
             <pre>Page #{anakartController.page} of #{anakartController.pageCount}</pre>
             <div class="btn-group">
-                <h:commandButton action="#{anakartController.previous()}" value="Previous" styleClass="btn btn-outline-dark"/>
-                <h:commandButton action="#{anakartController.next()}" value="Next" styleClass="btn btn-outline-dark"/>
-
+                <h:commandButton action="#{anakartController.previous()}" value="Previous" styleClass="btn btn-outline-dark">
+                    <f:ajax execute = "@this" render = "anakart-table"/>
+                </h:commandButton>
+                <h:commandButton action="#{anakartController.next()}" value="Next" styleClass="btn btn-outline-dark">
+                    <f:ajax execute = "@this" render = "anakart-table"/>
+                </h:commandButton>
 
             </div>
 

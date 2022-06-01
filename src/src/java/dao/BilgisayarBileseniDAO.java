@@ -94,7 +94,7 @@ public class BilgisayarBileseniDAO extends DBConnection {
         List<BilgisayarBileseni> list = new ArrayList<>();
         try {
             Statement st = this.getConnection().createStatement();
-            ResultSet rs = st.executeQuery("select * from anakart limit 5 offset " + offset);
+            ResultSet rs = st.executeQuery("select * from bilgisayar_bileseni limit 5 offset " + offset);
 
             while (rs.next()) {
                 list.add(new BilgisayarBileseni(rs.getInt("urun_id"), rs.getString("marka"), rs.getInt("stok"), this.getKampanyaDAO().findById(rs.getInt("kampanya_id"))));
