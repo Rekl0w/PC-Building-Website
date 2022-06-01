@@ -14,12 +14,30 @@
         </h:form>
 
         <h:form id="monitor-form">
-            Kampanya ID:  <h:inputText value = "#{monitorController.entity.kampanya}" converter ="kampanyaConverter" />
-            Boyut:  <h:inputText value = "#{monitorController.entity.boyut}" />
-            Ekran Yenileme Hızı:  <h:inputText value = "#{monitorController.entity.ekran_yenileme_hizi}" />
-            Marka: <h:inputText value = "#{monitorController.entity.marka}" />
-            Fiyat: <h:inputText value = "#{monitorController.entity.fiyat}" />
-            Stok: <h:inputText value = "#{monitorController.entity.stok}" />
+            <div class="mb-3">
+                <label class="form-control">Kampanya ID: </label>
+                <h:inputText value = "#{monitorController.entity.kampanya}" converter ="kampanyaConverter" />
+            </div>
+            <div class="mb-3">
+                <label class="form-control">Boyut: </label>
+                <h:inputText value = "#{monitorController.entity.boyut}" />
+            </div>
+            <div class="mb-3">
+                <label class="form-control">Ekran Yenileme Hızı: </label>
+                <h:inputText value = "#{monitorController.entity.ekran_yenileme_hizi}" />
+            </div>
+            <div class="mb-3">
+                <label class="form-control">Marka: </label>
+                <h:inputText value = "#{monitorController.entity.marka}" />
+            </div>
+            <div class="mb-3">
+                <label class="form-control">Fiyat: </label>
+                <h:inputText value = "#{monitorController.entity.fiyat}" />
+            </div>
+            <div class="mb-3">
+                <label class="form-control">Stok: </label>
+                <h:inputText value = "#{monitorController.entity.stok}" />
+            </div>
 
             <h:commandButton rendered = "#{monitorController.entity.urun_id == 0}" action = "#{monitorController.create()}" value = "create" styleClass="btn btn-primary">
                 <f:ajax execute = "monitor-form" render = "monitor-form monitor-table"/>

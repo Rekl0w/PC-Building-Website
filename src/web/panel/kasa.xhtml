@@ -14,11 +14,26 @@
 
         <h:form id ="kasa-form">
 
-            Kampanya ID: <h:inputText value = "#{kasaController.entity.kampanya}" converter = "kampanyaConverter"/>
-            Boyut: <h:inputText value = "#{kasaController.entity.boyut}" />
-            Marka: <h:inputText value = "#{kasaController.entity.marka}" />
-            Fiyat: <h:inputText value = "#{kasaController.entity.fiyat}" />
-            Stok: <h:inputText value = "#{kasaController.entity.stok}" />
+            <div class="mb-3">
+                <label class="form-label">Kampanya ID: </label>
+                <h:inputText value = "#{kasaController.entity.kampanya}" converter = "kampanyaConverter"/>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Boyut: </label>
+                <h:inputText value = "#{kasaController.entity.boyut}" />
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Marka: </label>
+                <h:inputText value = "#{kasaController.entity.marka}" />
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Fiyat: </label>
+                <h:inputText value = "#{kasaController.entity.fiyat}" />
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Stok: </label>
+                <h:inputText value = "#{kasaController.entity.stok}" />
+            </div>
 
             <h:commandButton rendered = "#{kasaController.entity.urun_id == 0}" action = "#{kasaController.create()}" value = "create" styleClass="btn btn-primary">
                 <f:ajax execute = "kasa-form" render = "kasa-form kasa-table"/>

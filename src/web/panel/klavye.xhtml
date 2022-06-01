@@ -13,11 +13,27 @@
         </h:form>
 
         <h:form id="klavye-form">
-            Kampanya ID:  <h:inputText value = "#{klavyeController.entity.kampanya}" converter ="kampanyaConverter" />
-            Switch Modeli:  <h:inputText value = "#{klavyeController.entity.switch_modeli}" />
-            Marka: <h:inputText value = "#{klavyeController.entity.marka}" />
-            Fiyat: <h:inputText value = "#{klavyeController.entity.fiyat}" />
-            Stok: <h:inputText value = "#{klavyeController.entity.stok}" />
+
+            <div class="mb-3">
+                <label class="form-control">Kampanya ID: </label>
+                <h:inputText value = "#{klavyeController.entity.kampanya}" converter ="kampanyaConverter" />
+            </div>
+            <div class="mb-3">
+                <label class="form-control">Switch Modeli: </label>
+                <h:inputText value = "#{klavyeController.entity.switch_modeli}" />
+            </div>
+            <div class="mb-3">
+                <label class="form-control">Marka: </label>
+                <h:inputText value = "#{klavyeController.entity.marka}" />
+            </div>
+            <div class="mb-3">
+                <label class="form-control">Fiyat: </label>
+                <h:inputText value = "#{klavyeController.entity.fiyat}" />
+            </div>
+            <div class="mb-3">
+                <label class="form-control">Stok: </label>
+                <h:inputText value = "#{klavyeController.entity.stok}" />
+            </div>
 
             <h:commandButton rendered = "#{klavyeController.entity.urun_id == 0}" action = "#{klavyeController.create()}" value = "create" styleClass="btn btn-primary">
                 <f:ajax execute = "klavye-form" render = "klavye-form klavye-table"/>

@@ -13,8 +13,14 @@
         </h:form>
 
         <h:form id="kullanici-form">
-            Ad - Soyad: <h:inputText value = "#{kullaniciController.entity.ad_soyad}" />
-            Şifre: <h:inputText value = "#{kullaniciController.entity.sifre}" />
+                <div class="mb-3">
+                <label class="form-control">Ad - Soyad: </label>
+            <h:inputText value = "#{kullaniciController.entity.ad_soyad}" />
+                </div>
+                <div class="mb-3">
+                <label class="form-control">Şifre: </label>
+            <h:inputText value = "#{kullaniciController.entity.sifre}" />
+                </div>
 
             <h:commandButton rendered = "#{kullaniciController.entity.kullanici_id == 0}" action = "#{kullaniciController.create()}" value = "create" styleClass="btn btn-primary">
                 <f:ajax execute = "kullanici-form" render = "kullanici-form kullanici-table"/>
