@@ -14,7 +14,7 @@
 
         <h:form id="kullanici-form">
             Ad - Soyad: <h:inputText value = "#{kullaniciController.entity.ad_soyad}" />
-            Sifre: <h:inputText value = "#{kullaniciController.entity.sifre}" />
+            Şifre: <h:inputText value = "#{kullaniciController.entity.sifre}" />
 
             <h:commandButton rendered = "#{kullaniciController.entity.kullanici_id == 0}" action = "#{kullaniciController.create()}" value = "create" styleClass="btn btn-primary">
                 <f:ajax execute = "kullanici-form" render = "kullanici-form kullanici-table"/>
@@ -38,7 +38,7 @@
                 </h:column>
 
                 <h:column>
-                    <f:facet name ="header" >Sifre</f:facet>
+                    <f:facet name ="header" >Şifre</f:facet>
                         #{k.sifre}
                 </h:column>
 

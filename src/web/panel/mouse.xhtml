@@ -14,8 +14,7 @@
 
         <h:form id="mouse-form">
             Kampanya ID:  <h:inputText value = "#{mouseController.entity.kampanya}" converter ="kampanyaConverter" />
-
-            Baglanma sekli:  <h:inputText value = "#{mouseController.entity.baglanma_sekli}" />
+            Bağlanma Şekli:  <h:inputText value = "#{mouseController.entity.baglanma_sekli}" />
             Marka: <h:inputText value = "#{mouseController.entity.marka}" />
             Fiyat: <h:inputText value = "#{mouseController.entity.fiyat}" />
             Stok: <h:inputText value = "#{mouseController.entity.stok}" />
@@ -32,17 +31,17 @@
         <h:form id="mouse-table">
             <h:dataTable styleClass="table" value = "#{mouseController.list}" var = "k" border = "1">
                 <h:column>
-                    <f:facet name ="header" >Urun ID</f:facet>
+                    <f:facet name ="header" >Ürün ID</f:facet>
                         #{k.urun_id}
                 </h:column>
 
                 <h:column>
-                    <f:facet name ="header" >Kampanya ID</f:facet>
+                    <f:facet name ="header" >Kampanya</f:facet>
                         #{k.kampanya}
                 </h:column>
 
                 <h:column>
-                    <f:facet name ="header" >Baglanma sekli</f:facet>
+                    <f:facet name ="header" >Bağlanma Şekli</f:facet>
                         #{k.baglanma_sekli}
                 </h:column>
 

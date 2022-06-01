@@ -14,7 +14,7 @@
         <h:form id = "islemci-form">
 
             Kampanya ID:  <h:inputText value = "#{islemciController.entity.kampanya}" converter ="kampanyaConverter" />
-            Cekirdek Sayisi:  <h:inputText value = "#{islemciController.entity.cekirdek_sayisi}" />
+            Çekirdek Sayısı:  <h:inputText value = "#{islemciController.entity.cekirdek_sayisi}" />
             Hız:  <h:inputText value = "#{islemciController.entity.hiz}" />
             Marka: <h:inputText value = "#{islemciController.entity.marka}" />
             Fiyat: <h:inputText value = "#{islemciController.entity.fiyat}" />
@@ -33,22 +33,22 @@
         <h:form id = "islemci-table">
             <h:dataTable styleClass="table" value = "#{islemciController.list}" var = "k" border = "1">
                 <h:column>
-                    <f:facet name ="header" >Urun ID</f:facet>
+                    <f:facet name ="header" >Ürün ID</f:facet>
                         #{k.urun_id}
                 </h:column>
 
                 <h:column>
-                    <f:facet name ="header" >Kampanya ID</f:facet>
+                    <f:facet name ="header" >Kampanya</f:facet>
                         #{k.kampanya}
                 </h:column>
 
                 <h:column>
-                    <f:facet name ="header" >Cekirdek Sayisi</f:facet>
+                    <f:facet name ="header" >Çekirdek Sayısı</f:facet>
                         #{k.cekirdek_sayisi}
                 </h:column>
 
                 <h:column>
-                    <f:facet name ="header" >Hiz</f:facet>
+                    <f:facet name ="header" >Hız</f:facet>
                         #{k.hiz}
                 </h:column>
 
