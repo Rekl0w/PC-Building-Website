@@ -12,13 +12,30 @@
             <h:commandButton action="/index" value="HOME" styleClass="btn btn-warning" />
         </h:form>
         <h:form id = "islemci-form">
-
-            Kampanya ID:  <h:inputText value = "#{islemciController.entity.kampanya}" converter ="kampanyaConverter" />
-            Çekirdek Sayısı:  <h:inputText value = "#{islemciController.entity.cekirdek_sayisi}" />
-            Hız:  <h:inputText value = "#{islemciController.entity.hiz}" />
-            Marka: <h:inputText value = "#{islemciController.entity.marka}" />
-            Fiyat: <h:inputText value = "#{islemciController.entity.fiyat}" />
-            Stok: <h:inputText value = "#{islemciController.entity.stok}" />
+            <div class="mb-3">
+                <label class="form-label">Kampanya ID: </label>
+                <h:inputText value = "#{islemciController.entity.kampanya}" converter ="kampanyaConverter" />
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Çekirdek Sayısı: </label>
+                <h:inputText value = "#{islemciController.entity.cekirdek_sayisi}" />
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Hız: </label>
+                <h:inputText value = "#{islemciController.entity.hiz}" />
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Marka: </label>
+                <h:inputText value = "#{islemciController.entity.marka}" />
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Fiyat: </label>
+                <h:inputText value = "#{islemciController.entity.fiyat}" />
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Stok: </label>
+                <h:inputText value = "#{islemciController.entity.stok}" />
+            </div>
 
             <h:commandButton rendered = "#{islemciController.entity.urun_id == 0}" action = "#{islemciController.create()}" value = "create" styleClass="btn btn-primary">
                 <f:ajax execute = "islemci-form" render = "islemci-form islemci-table"/>

@@ -13,10 +13,18 @@
         </h:form>
 
         <h:form id = "bilesen-form">
-
-            Kampanya ID: <h:inputText value = "#{bilgisayarBileseniController.entity.kampanya}" converter = "kampanyaConverter"/>
-            Marka: <h:inputText value = "#{bilgisayarBileseniController.entity.marka}" />
-            Stok: <h:inputText value = "#{bilgisayarBileseniController.entity.stok}" />
+            <div class="mb-3">
+                <label class="form-label">Kampanya ID: </label>
+                <h:inputText value = "#{bilgisayarBileseniController.entity.kampanya}" converter = "kampanyaConverter"/>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Marka: </label>
+                <h:inputText value = "#{bilgisayarBileseniController.entity.marka}" />
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Stok: </label>
+                <h:inputText value = "#{bilgisayarBileseniController.entity.stok}" />
+            </div>
 
             <h:commandButton rendered = "#{bilgisayarBileseniController.entity.urun_id == 0}" action = "#{bilgisayarBileseniController.create()}" value = "create" styleClass="btn btn-primary">
                 <f:ajax execute = "bilesen-form" render = "bilesen-form bilesen-table"/>
@@ -39,8 +47,8 @@
 
 
             </div>
-            
-            
+
+
             <h:dataTable styleClass="table table-striped table-hover" value = "#{bilgisayarBileseniController.list}" var = "k" border = "1">
                 <h:column>
                     <f:facet name ="header" >Ürün ID</f:facet>

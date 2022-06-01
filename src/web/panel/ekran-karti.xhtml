@@ -13,13 +13,30 @@
         </h:form>
 
         <h:form id = "ekran-karti-form">
-
-            Kampanya ID: <h:inputText value = "#{ekranKartiController.entity.kampanya}" converter = "kampanyaConverter"/>
-            Model : <h:inputText value = "#{ekranKartiController.entity.model}" />
-            Bellek : <h:inputText value = "#{ekranKartiController.entity.bellek}" />
-            Marka: <h:inputText value = "#{ekranKartiController.entity.marka}" />
-            Fiyat : <h:inputText value = "#{ekranKartiController.entity.fiyat}" />
-            Stok: <h:inputText value = "#{ekranKartiController.entity.stok}" />
+            <div class="mb-3">
+                <label class="form-label">Kampanya ID: </label>
+                <h:inputText value = "#{ekranKartiController.entity.kampanya}" converter = "kampanyaConverter"/>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Model: </label>
+                <h:inputText value = "#{ekranKartiController.entity.model}" />
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Bellek: </label>
+                <h:inputText value = "#{ekranKartiController.entity.bellek}" />
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Marka: </label>
+                <h:inputText value = "#{ekranKartiController.entity.marka}" />
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Fiyat: </label>
+                <h:inputText value = "#{ekranKartiController.entity.fiyat}" />
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Stok: </label>
+                <h:inputText value = "#{ekranKartiController.entity.stok}" />
+            </div>
 
             <h:commandButton rendered = "#{ekranKartiController.entity.urun_id == 0}" action = "#{ekranKartiController.create()}" value = "create" styleClass="btn btn-primary">
                 <f:ajax execute = "ekran-karti-form" render = "ekran-karti-form ekran-karti-table"/>
