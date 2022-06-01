@@ -31,6 +31,13 @@
         </h:form>
         <hr />
         <h:form id="monitor-table">
+            <pre>Page #{monitorController.page} of #{monitorController.pageCount}</pre>
+            <div class="btn-group">
+                <h:commandButton action="#{monitorController.previous()}" value="Previous" styleClass="btn btn-outline-dark"/>
+                <h:commandButton action="#{monitorController.next()}" value="Next" styleClass="btn btn-outline-dark"/>
+
+
+            </div>
             <h:dataTable styleClass="table" value = "#{monitorController.list}" var = "k" border = "1">
                 <h:column>
                     <f:facet name ="header" >Ürün ID</f:facet>

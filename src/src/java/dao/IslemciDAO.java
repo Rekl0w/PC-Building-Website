@@ -26,15 +26,15 @@ public class IslemciDAO extends DBConnection {
     public void create(Islemci a) {
         try {
             Statement st = this.getConnection().createStatement();
-            String query = "insert into islemci (kampanya_id, cekirdek_sayisi, hiz, marka, fiyat, stok) values(" + a.getKampanya().getKampanya_id() + ", '" + a.getCekirdek_sayisi()+ "', " + a.getHiz()+ ", '" + a.getMarka() + "', " + a.getFiyat() + ", " + a.getStok() + ") ";
+            String query = "insert into islemci (kampanya_id, cekirdek_sayisi, hiz, marka, fiyat, stok) values(" + a.getKampanya().getKampanya_id() + ", '" + a.getCekirdek_sayisi() + "', " + a.getHiz() + ", '" + a.getMarka() + "', " + a.getFiyat() + ", " + a.getStok() + ") ";
             st.executeUpdate(query);
 
             ResultSet rs = st.executeQuery("select max(urun_id) as mid from islemci");
-            
+
             rs.next();
             int id = rs.getInt("mid");
 
-            BilgisayarBileseni bb = new BilgisayarBileseni(id , a.getMarka(), a.getFiyat(), a.getStok(), a.getKampanya());
+            BilgisayarBileseni bb = new BilgisayarBileseni(id, a.getMarka(), a.getFiyat(), a.getStok(), a.getKampanya());
 
             this.getBbDao().create(bb);
 
@@ -48,15 +48,15 @@ public class IslemciDAO extends DBConnection {
     public void update(Islemci a) {
         try {
             Statement st = this.getConnection().createStatement();
-            String query = "update islemci set kampanya_id = '" + a.getKampanya().getKampanya_id() + "', cekirdek_sayisi ='" + a.getCekirdek_sayisi()+ "', hiz = " + a.getHiz()+ ", marka = '" + a.getMarka() + "', fiyat = " + a.getFiyat() + ", stok = " + a.getStok()+ "where urun_id = " + a.getUrun_id();
+            String query = "update islemci set kampanya_id = '" + a.getKampanya().getKampanya_id() + "', cekirdek_sayisi ='" + a.getCekirdek_sayisi() + "', hiz = " + a.getHiz() + ", marka = '" + a.getMarka() + "', fiyat = " + a.getFiyat() + ", stok = " + a.getStok() + "where urun_id = " + a.getUrun_id();
             st.executeUpdate(query);
-            
+
             ResultSet rs = st.executeQuery("select * from islemci where urun_id = " + a.getUrun_id());
-            
+
             rs.next();
             int id = rs.getInt("urun_id");
 
-            BilgisayarBileseni bb = new BilgisayarBileseni(id , a.getMarka(), a.getFiyat(), a.getStok(), a.getKampanya());
+            BilgisayarBileseni bb = new BilgisayarBileseni(id, a.getMarka(), a.getFiyat(), a.getStok(), a.getKampanya());
 
             this.getBbDao().update(bb);
         } catch (Exception ex) {
@@ -69,22 +69,17 @@ public class IslemciDAO extends DBConnection {
     public void delete(Islemci a) {
         try {
             Statement st = this.getConnection().createStatement();
-            
+
             ResultSet rs = st.executeQuery("select * from islemci where urun_id = " + a.getUrun_id());
             rs.next();
             int id = rs.getInt("urun_id");
-            
-            BilgisayarBileseni bb = new BilgisayarBileseni(id , a.getMarka(), a.getFiyat(), a.getStok(), a.getKampanya());
+
+            BilgisayarBileseni bb = new BilgisayarBileseni(id, a.getMarka(), a.getFiyat(), a.getStok(), a.getKampanya());
             this.getBbDao().delete(bb);
-            
-            
+
             String query = "delete from islemci where urun_id = " + a.getUrun_id();
             st.executeUpdate(query);
-            
-            
-            
 
-            
         } catch (Exception ex) {
 
             System.out.println(ex.getMessage());
@@ -95,8 +90,25 @@ public class IslemciDAO extends DBConnection {
         List<Islemci> list = new ArrayList<>();
         try {
             Statement st = this.getConnection().createStatement();
-            String query = "select * from islemci";
-            ResultSet rs = st.executeQuery(query);
+            ResultSet rs = st.executeQuery("select * from islemci");
+
+            while (rs.next()) {
+                list.add(new Islemci(rs.getInt("urun_id"), rs.getInt("cekirdek_sayisi"), rs.getInt("hiz"), rs.getString("marka"), rs.getFloat("fiyat"), rs.getInt("stok"), this.getKampanyaDAO().findById(rs.getInt("kampanya_id"))));
+
+            }
+        } catch (Exception ex) {
+
+            System.out.println(ex.getMessage());
+        }
+        return list;
+    }
+
+    public List<Islemci> getList(int page) {
+        int offset = (page - 1) * 5;
+        List<Islemci> list = new ArrayList<>();
+        try {
+            Statement st = this.getConnection().createStatement();
+            ResultSet rs = st.executeQuery("select * from islemci limit 5 offset " + offset);
 
             while (rs.next()) {
                 list.add(new Islemci(rs.getInt("urun_id"), rs.getInt("cekirdek_sayisi"), rs.getInt("hiz"), rs.getString("marka"), rs.getFloat("fiyat"), rs.getInt("stok"), this.getKampanyaDAO().findById(rs.getInt("kampanya_id"))));

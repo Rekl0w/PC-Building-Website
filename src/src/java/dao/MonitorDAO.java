@@ -104,6 +104,24 @@ public class MonitorDAO extends DBConnection {
         return list;
     }
 
+    public List<Monitor> getList(int page) {
+        int offset = (page - 1) * 5;
+        List<Monitor> list = new ArrayList<>();
+        try {
+            Statement st = this.getConnection().createStatement();
+            ResultSet rs = st.executeQuery("select * from monitor limit 5 offset " + offset);
+
+            while (rs.next()) {
+                list.add(new Monitor(rs.getInt("urun_id"), rs.getInt("boyut"), rs.getInt("ekran_yenileme_hizi"), rs.getString("marka"), rs.getFloat("fiyat"), rs.getInt("stok"), this.getKampanyaDAO().findById(rs.getInt("kampanya_id"))));
+
+            }
+        } catch (Exception ex) {
+
+            System.out.println(ex.getMessage());
+        }
+        return list;
+    }
+
     public KampanyaDAO getKampanyaDAO() {
         if (this.kampanyaDAO == null) {
             this.kampanyaDAO = new KampanyaDAO();
