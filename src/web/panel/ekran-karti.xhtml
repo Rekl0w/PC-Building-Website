@@ -33,6 +33,20 @@
         </h:form>
         <hr />
         <h:form id = "ekran-karti-table">
+            <pre>Page #{ekranKartiController.page} of #{ekranKartiController.pageCount}</pre>
+            <div class="btn-group">
+                <h:commandButton action="#{ekranKartiController.previous()}" value="Previous" styleClass="btn btn-outline-dark"/>
+                <h:commandButton action="#{ekranKartiController.next()}" value="Next" styleClass="btn btn-outline-dark"/>
+
+
+            </div>
+
+
+        
+        
+        
+        
+
             <h:dataTable styleClass="table" value = "#{ekranKartiController.list}" var = "k" border = "1">
                 <h:column>
                     <f:facet name ="header" >Ürün ID</f:facet>

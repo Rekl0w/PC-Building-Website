@@ -28,9 +28,18 @@
         </h:form>
         <hr />
         <h:form id = "bilesen-table">
+            <pre>Page #{bilgisayarBileseniController.page} of #{bilgisayarBileseniController.pageCount}</pre>
+            <div class="btn-group">
+                <h:commandButton action="#{bilgisayarBileseniController.previous()}" value="Previous" styleClass="btn btn-outline-dark"/>
+                <h:commandButton action="#{bilgisayarBileseniController.next()}" value="Next" styleClass="btn btn-outline-dark"/>
+
+
+            </div>
+            
+            
             <h:dataTable styleClass="table" value = "#{bilgisayarBileseniController.list}" var = "k" border = "1">
                 <h:column>
-                    <f:facet name ="header" >Ürüün ID</f:facet>
+                    <f:facet name ="header" >Ürün ID</f:facet>
                         #{k.urun_id}
                 </h:column>
 

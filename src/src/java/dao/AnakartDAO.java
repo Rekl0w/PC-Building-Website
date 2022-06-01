@@ -2,7 +2,6 @@ package dao;
 
 import entity.Anakart;
 import entity.BilgisayarBileseni;
-import java.sql.PreparedStatement;
 import java.sql.Statement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
@@ -31,11 +30,11 @@ public class AnakartDAO extends DBConnection {
             st.executeUpdate(query);
 
             ResultSet rs = st.executeQuery("select max(urun_id) as mid from anakart");
-            
+
             rs.next();
             int id = rs.getInt("mid");
 
-            BilgisayarBileseni bb = new BilgisayarBileseni(id , a.getMarka(), a.getFiyat(), a.getStok(), a.getKampanya());
+            BilgisayarBileseni bb = new BilgisayarBileseni(id, a.getMarka(), a.getFiyat(), a.getStok(), a.getKampanya());
 
             this.getBbDao().create(bb);
 
@@ -49,15 +48,15 @@ public class AnakartDAO extends DBConnection {
     public void update(Anakart a) {
         try {
             Statement st = this.getConnection().createStatement();
-            String query = "update anakart set kampanya_id = '" + a.getKampanya().getKampanya_id() + "', cpu_soketi ='" + a.getCpu_soketi() + "', bellek_saat_hizi = " + a.getBellek_saat_hizi() + ", marka = '" + a.getMarka() + "', fiyat = " + a.getFiyat() + ", stok = " + a.getStok()+ "where urun_id = " + a.getUrun_id();
+            String query = "update anakart set kampanya_id = '" + a.getKampanya().getKampanya_id() + "', cpu_soketi ='" + a.getCpu_soketi() + "', bellek_saat_hizi = " + a.getBellek_saat_hizi() + ", marka = '" + a.getMarka() + "', fiyat = " + a.getFiyat() + ", stok = " + a.getStok() + "where urun_id = " + a.getUrun_id();
             st.executeUpdate(query);
-            
+
             ResultSet rs = st.executeQuery("select * from anakart where urun_id = " + a.getUrun_id());
-            
+
             rs.next();
             int id = rs.getInt("urun_id");
 
-            BilgisayarBileseni bb = new BilgisayarBileseni(id , a.getMarka(), a.getFiyat(), a.getStok(), a.getKampanya());
+            BilgisayarBileseni bb = new BilgisayarBileseni(id, a.getMarka(), a.getFiyat(), a.getStok(), a.getKampanya());
 
             this.getBbDao().update(bb);
         } catch (Exception ex) {
@@ -70,31 +69,31 @@ public class AnakartDAO extends DBConnection {
     public void delete(Anakart a) {
         try {
             Statement st = this.getConnection().createStatement();
-            
+
             ResultSet rs = st.executeQuery("select * from anakart where urun_id = " + a.getUrun_id());
             rs.next();
             int id = rs.getInt("urun_id");
-            
-            BilgisayarBileseni bb = new BilgisayarBileseni(id , a.getMarka(), a.getFiyat(), a.getStok(), a.getKampanya());
+
+            BilgisayarBileseni bb = new BilgisayarBileseni(id, a.getMarka(), a.getFiyat(), a.getStok(), a.getKampanya());
             this.getBbDao().delete(bb);
-            
-            
+
             String query = "delete from anakart where urun_id = " + a.getUrun_id();
             st.executeUpdate(query);
-            
+
         } catch (Exception ex) {
 
             System.out.println(ex.getMessage());
         }
     }
 
-    public List<Anakart> getList(int page , int pageSize) {
+    public List<Anakart> getList() {
+
         List<Anakart> list = new ArrayList<>();
-        int offset = (page-1)*5;
+
         try {
-            PreparedStatement pst = this.getConnection().prepareStatement("select * from anakart limit 5 offset"+offset);
-            ResultSet rs = pst.executeQuery();
-            rs.next();
+            Statement st = this.getConnection().createStatement();
+            ResultSet rs = st.executeQuery("select * from anakart");
+
             while (rs.next()) {
                 list.add(new Anakart(rs.getInt("urun_id"), rs.getString("cpu_soketi"), rs.getInt("bellek_saat_hizi"), rs.getString("marka"), rs.getFloat("fiyat"), rs.getInt("stok"), this.getKampanyaDAO().findById(rs.getInt("kampanya_id"))));
 
@@ -105,23 +104,24 @@ public class AnakartDAO extends DBConnection {
         }
         return list;
     }
-    
-    
-    public int count() {
-        int count = 0;
+
+    public List<Anakart> getList(int page) {
+        int offset = (page - 1) * 5;
+        List<Anakart> list = new ArrayList<>();
+
         try {
-            PreparedStatement pst = this.getConnection().prepareStatement("select count(fiyat) as anakart_count from anakart");
-            ResultSet rs = pst.executeQuery();
-            rs.next();
-            count=rs.getInt("anakart_count");
-            
+            Statement st = this.getConnection().createStatement();
+            ResultSet rs = st.executeQuery("select * from anakart limit 5 offset " + offset);
+            while (rs.next()) {
+                list.add(new Anakart(rs.getInt("urun_id"), rs.getString("cpu_soketi"), rs.getInt("bellek_saat_hizi"), rs.getString("marka"), rs.getFloat("fiyat"), rs.getInt("stok"), this.getKampanyaDAO().findById(rs.getInt("kampanya_id"))));
+
+            }
         } catch (Exception ex) {
 
             System.out.println(ex.getMessage());
         }
-        return count;
+        return list;
     }
-    
 
     public KampanyaDAO getKampanyaDAO() {
         if (this.kampanyaDAO == null) {

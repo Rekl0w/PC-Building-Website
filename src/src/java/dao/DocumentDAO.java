@@ -8,7 +8,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class DocumentDAO extends DBConnection {
-
+    
     public List<Document> findAll() {
         List<Document> dList = new ArrayList<>();
 
@@ -32,7 +32,7 @@ public class DocumentDAO extends DBConnection {
         return dList;
 
     }
-
+    
     public void insert(Document d) {
         String query = "insert into document (path, name, type) values (?,?,?)";
         try {

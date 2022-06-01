@@ -16,25 +16,22 @@ public class AnakartController implements Serializable {
     private List<Anakart> list;
 
     private int page = 1;
-    private int pageSize = 3;
     private int pageCount;
 
     public void next() {
-        if (this.page == this.getPageCount()) {
-            this.page = 1;
-        } else {
-            this.page++;
-        }
+        page++;
+        if (page > this.getPageCount()) {
+            page = 1;
 
+        }
     }
 
     public void previous() {
-        if (this.page == 1) {
-            this.page = this.getPageCount();
-        } else {
-            this.page--;
-        }
+        page--;
+        if (page < 1) {
+            page = this.getPageCount();
 
+        }
     }
 
     public int getPage() {
@@ -45,17 +42,10 @@ public class AnakartController implements Serializable {
         this.page = page;
     }
 
-    public int getPageSize() {
-        return pageSize;
-    }
-
-    public void setPageSize(int pageSize) {
-        this.pageSize = pageSize;
-    }
-
     public int getPageCount() {
-        this.pageCount = (int) Math.ceil(this.getDao().count() / (double) pageSize);
-
+        List<Anakart> gList = this.getDao().getList();
+        int size = gList.size();
+        pageCount = (int) Math.ceil(size / 5);
         return pageCount;
     }
 
@@ -104,7 +94,7 @@ public class AnakartController implements Serializable {
     }
 
     public List<Anakart> getList() {
-        this.list = this.getDao().getList(page, pageSize);
+        this.list = this.getDao().getList(page);
         return list;
     }
 

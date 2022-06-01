@@ -15,6 +15,44 @@ public class BilgisayarBileseniController implements Serializable {
     private BilgisayarBileseniDAO dao;
     private List<BilgisayarBileseni> list;
 
+    private int page = 1;
+    private int pageCount;
+
+    public void next() {
+        page++;
+        if (page > this.getPageCount()) {
+            page = 1;
+
+        }
+    }
+
+    public void previous() {
+        page--;
+        if (page < 1) {
+            page = this.getPageCount();
+
+        }
+    }
+
+    public int getPage() {
+        return page;
+    }
+
+    public void setPage(int page) {
+        this.page = page;
+    }
+
+    public int getPageCount() {
+        List<BilgisayarBileseni> gList = this.getDao().getList();
+        int size = gList.size();
+        pageCount = (int) Math.ceil(size / 5);
+        return pageCount;
+    }
+
+    public void setPageCount(int pageCount) {
+        this.pageCount = pageCount;
+    }
+
     public void create() {
         this.getDao().create(entity);
         entity = new BilgisayarBileseni();
@@ -56,7 +94,7 @@ public class BilgisayarBileseniController implements Serializable {
     }
 
     public List<BilgisayarBileseni> getList() {
-        this.list = this.getDao().getList();
+        this.list = this.getDao().getList(page);
         return list;
     }
 
@@ -68,4 +106,3 @@ public class BilgisayarBileseniController implements Serializable {
     }
 
 }
-

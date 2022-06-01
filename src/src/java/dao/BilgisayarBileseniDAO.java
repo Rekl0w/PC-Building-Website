@@ -12,15 +12,15 @@ import java.util.List;
 public class BilgisayarBileseniDAO extends DBConnection {
 
     private KampanyaDAO kampanyaDAO;
-    
+
     public void create(BilgisayarBileseni a) {
         try {
             Statement st = this.getConnection().createStatement();
-            String query = "insert into bilgisayar_bileseni (urun_id, kampanya_id, marka,fiyat, stok) values("+a.getUrun_id()+" , " + a.getKampanya().getKampanya_id() + ",'"+ a.getMarka() +  "', "  +a.getFiyat()+", " + a.getStok() + ")";
+            String query = "insert into bilgisayar_bileseni (urun_id, kampanya_id, marka,fiyat, stok) values(" + a.getUrun_id() + " , " + a.getKampanya().getKampanya_id() + ",'" + a.getMarka() + "', " + a.getFiyat() + ", " + a.getStok() + ")";
             st.executeUpdate(query);
 
             ResultSet rs = st.executeQuery("select max(urun_id) as mid from bilgisayar_bileseni");
-            
+
             rs.next();
             int id = rs.getInt("mid");
 
@@ -75,6 +75,26 @@ public class BilgisayarBileseniDAO extends DBConnection {
             Statement st = this.getConnection().createStatement();
             String query = "select * from bilgisayar_bileseni";
             ResultSet rs = st.executeQuery(query);
+
+            while (rs.next()) {
+                list.add(new BilgisayarBileseni(rs.getInt("urun_id"), rs.getString("marka"), rs.getInt("stok"), this.getKampanyaDAO().findById(rs.getInt("kampanya_id"))));
+
+            }
+        } catch (Exception ex) {
+
+            System.out.println(ex.getMessage());
+
+        }
+        return list;
+
+    }
+
+    public List<BilgisayarBileseni> getList(int page) {
+        int offset = (page - 1) * 5;
+        List<BilgisayarBileseni> list = new ArrayList<>();
+        try {
+            Statement st = this.getConnection().createStatement();
+            ResultSet rs = st.executeQuery("select * from anakart limit 5 offset " + offset);
 
             while (rs.next()) {
                 list.add(new BilgisayarBileseni(rs.getInt("urun_id"), rs.getString("marka"), rs.getInt("stok"), this.getKampanyaDAO().findById(rs.getInt("kampanya_id"))));
