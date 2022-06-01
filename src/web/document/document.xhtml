@@ -22,7 +22,7 @@
         </h:form>
         <hr />
 
-        <h:dataTable styleClass="table" value="#{documentController.documentList}" var="d">
+        <h:dataTable styleClass="table table-striped table-hover" value="#{documentController.documentList}" var="d">
             <h:column>
                 <f:facet name="header">ID</f:facet>
                     #{d.id}
