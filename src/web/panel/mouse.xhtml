@@ -13,11 +13,26 @@
         </h:form>
 
         <h:form id="mouse-form">
-            Kampanya ID:  <h:inputText value = "#{mouseController.entity.kampanya}" converter ="kampanyaConverter" />
-            Bağlanma Şekli:  <h:inputText value = "#{mouseController.entity.baglanma_sekli}" />
-            Marka: <h:inputText value = "#{mouseController.entity.marka}" />
-            Fiyat: <h:inputText value = "#{mouseController.entity.fiyat}" />
-            Stok: <h:inputText value = "#{mouseController.entity.stok}" />
+            <div class="mb-3">
+                <label class="form-control">Kampanya ID </label>
+                <h:inputText value = "#{mouseController.entity.kampanya}" converter ="kampanyaConverter" />
+            </div>
+            <div class="mb-3">
+                <label class="form-control">Bağlanma Şekli </label>
+                <h:inputText value = "#{mouseController.entity.baglanma_sekli}" />
+            </div>
+            <div class="mb-3">
+                <label class="form-control">Marka </label>
+                <h:inputText value = "#{mouseController.entity.marka}" />
+            </div>
+            <div class="mb-3">
+                <label class="form-control">Fiyat </label>
+                <h:inputText value = "#{mouseController.entity.fiyat}" />
+            </div>
+            <div class="mb-3">
+                <label class="form-control">Stok </label>
+                <h:inputText value = "#{mouseController.entity.stok}" />
+            </div>
 
             <h:commandButton rendered = "#{mouseController.entity.urun_id == 0}" action = "#{mouseController.create()}" value = "create" styleClass="btn btn-primary">
                 <f:ajax execute = "mouse-form" render = "mouse-form mouse-table"/>

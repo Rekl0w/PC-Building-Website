@@ -13,12 +13,26 @@
         </h:form>
 
         <h:form id="ram-form">
-
-            Kampanya ID:  <h:inputText value = "#{ramController.entity.kampanya}" converter ="kampanyaConverter" />
-            Bellek  <h:inputText value = "#{ramController.entity.bellek}" />
-            Marka: <h:inputText value = "#{ramController.entity.marka}" />
-            Fiyat: <h:inputText value = "#{ramController.entity.fiyat}" />
-            Stok: <h:inputText value = "#{ramController.entity.stok}" />
+            <div class="mb-3">
+                <label class="form-control">Kampanya ID </label>
+                <h:inputText value = "#{ramController.entity.kampanya}" converter ="kampanyaConverter" />
+            </div>
+            <div class="mb-3">
+                <label class="form-control">Bellek </label>
+                <h:inputText value = "#{ramController.entity.bellek}" />
+            </div>
+            <div class="mb-3">
+                <label class="form-control">Marka </label>
+                <h:inputText value = "#{ramController.entity.marka}" />
+            </div>
+            <div class="mb-3">
+                <label class="form-control">Fiyat </label>
+                <h:inputText value = "#{ramController.entity.fiyat}" />
+            </div>
+            <div class="mb-3">
+                <label class="form-control">Stok </label>
+                <h:inputText value = "#{ramController.entity.stok}" />
+            </div>
 
             <h:commandButton rendered = "#{ramController.entity.urun_id == 0}" action = "#{ramController.create()}" value = "create" styleClass="btn btn-primary">
                 <f:ajax execute = "ram-form" render = "ram-form ram-table"/>
