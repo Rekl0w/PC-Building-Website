@@ -9,7 +9,90 @@
     </h:head>
     <h:body>
         <h:form>
-            <h:commandButton action="/index" value="HOME" styleClass="btn btn-warning" />
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <div class="container-fluid">
+                    <h:commandLink action="/index" value="PC Building" styleClass="navbar-brand"/>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                        <ul class="navbar-nav">
+
+                            <li class="nav-item">
+                                <h:commandLink styleClass="nav-link" action="/panel/kullanici" value="Kullanıcı İşlemleri" />
+                            </li>
+
+                            <li class="nav-item">
+                                <h:commandLink styleClass="nav-link" action="/panel/anakart" value="Anakart" />
+
+                            </li>
+
+                            <li class="nav-item">
+                                <h:commandLink styleClass="nav-link" action="/panel/bilgisayar-bileseni" value="Bilgisayar Bileşeni" />
+
+                            </li>
+
+                            <li class="nav-item">
+                                <h:commandLink styleClass="nav-link" action="/panel/ekran-karti" value="Ekran Kartı" />
+
+                            </li>
+
+                            <li class="nav-item">
+                                <h:commandLink styleClass="nav-link" action="/panel/islemci" value="İşlemci" />
+
+                            </li>
+
+                            <li class="nav-item">
+                                <h:commandLink styleClass="nav-link" action="/panel/monitor" value="Monitör" />
+
+                            </li>
+
+                            <li class="nav-item">
+                                <h:commandLink styleClass="nav-link" action="/panel/mouse" value="Mouse" />
+                            </li>
+
+                            <li class="nav-item">
+
+                                <h:commandLink styleClass="nav-link" action="/panel/ram" value="Ram" />
+
+                            </li>
+
+                            <li class="nav-item">
+
+                                <h:commandLink styleClass="nav-link" action="/panel/kampanya" value="Kampanya" />
+
+                            </li>
+
+                            <li class="nav-item">
+                                <h:commandLink styleClass="nav-link" action="/panel/kasa" value="Kasa" />
+
+                            </li>
+
+                            <li class="nav-item">
+
+                                <h:commandLink styleClass="nav-link" action="/panel/klavye" value="Klavye" />
+                            </li>
+
+                            <li class="nav-item">
+
+                                <h:commandLink styleClass="nav-link" action="/panel/login" value="Login" />
+
+                            </li>
+
+                            <li class="nav-item">
+
+                                <h:commandLink styleClass="nav-link" action="/panel/register" value="Register" />
+                            </li>
+
+                            <li class="nav-item">
+
+                                <h:commandLink styleClass="nav-link" action="/document/document" value="Document" />
+                            </li>
+
+                        </ul>
+                    </div>
+                </div>
+            </nav>
         </h:form>
         <h:form id = "islemci-form">
             <div class="mb-3">
