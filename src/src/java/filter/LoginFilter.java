@@ -31,24 +31,13 @@ public class LoginFilter implements Filter {
         if (user == null) {
             if (url.contains("logout")) {
                 session.invalidate();
-                response.sendRedirect(request.getContextPath() + "/panel/login.xhtml");
+                response.sendRedirect(request.getContextPath() + "/panel/login.xhtml?faces-redirect=true");
                 
             } else {
                 fc.doFilter(sr, sr1);
             }
 
-        } else {
-            if (url.contains("login")) {
-                response.sendRedirect(request.getContextPath() + "/index?faces-redirect=true");
-            } 
-            /*else if (url.contains("logout")) {
-                session.invalidate();
-                response.sendRedirect(request.getContextPath() + "/panel/login.xhtml");
-            }*/
-            else {
-                fc.doFilter(sr, sr1);
-            }
-        }
+        } 
 
     }
 }
