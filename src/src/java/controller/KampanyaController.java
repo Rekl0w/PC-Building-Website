@@ -94,6 +94,7 @@ public class KampanyaController implements Serializable {
     }
 
     public List<Kampanya> getList() {
+        //this.list = this.getDao().getList(page);
         this.list = this.getDao().getList(page);
         return list;
     }

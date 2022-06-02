@@ -9,8 +9,10 @@
     <ui:define name="content">
         <h:form id = "islemci-form">
             <div class="mb-3">
-                <label class="form-control">Kampanya ID </label>
-                <h:inputText value = "#{islemciController.entity.kampanya}" converter ="kampanyaConverter" />
+                <label class="form-control">Kampanya </label>
+                <h:selectOneMenu value="#{islemciController.entity.kampanya}" converter="kampanyaConverter">
+                    <f:selectItems value="#{kampanyaController.list}" var="k" itemValue="#{k}" itemLabel="#{k.indirim_yuzdesi}"/>
+                </h:selectOneMenu>
             </div>
             <div class="mb-3">
                 <label class="form-control">Çekirdek Sayısı </label>

@@ -10,7 +10,9 @@
         <h:form id="mouse-form">
             <div class="mb-3">
                 <label class="form-control">Kampanya ID </label>
-                <h:inputText value = "#{mouseController.entity.kampanya}" converter ="kampanyaConverter" />
+                <h:selectOneMenu value="#{mouseController.entity.kampanya}" converter="kampanyaConverter">
+                    <f:selectItems value="#{kampanyaController.list}" var="k" itemValue="#{k}" itemLabel="#{k.indirim_yuzdesi}"/>
+                </h:selectOneMenu>
             </div>
             <div class="mb-3">
                 <label class="form-control">Bağlanma Şekli </label>
