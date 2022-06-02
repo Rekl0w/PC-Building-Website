@@ -46,7 +46,7 @@ public class LoginController implements Serializable {
             System.out.println("giris basarili");
         } else {
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Username or Password is Wrong!"));
-            return "/panel/login?faces-redirect=true";
+            return "/panel/login";
         }
         return "/index?faces-redirect=true";
          
