@@ -28,6 +28,16 @@
         </h:form>
         <hr />
         <h:form id = "kullanici-table">
+            <pre>Page #{kullaniciController.page} of #{kullaniciController.pageCount}</pre>
+            <div class="btn-group">
+                <h:commandButton action="#{kullaniciController.previous()}" value="Previous" styleClass="btn btn-outline-dark">
+                    <f:ajax execute = "@this" render = "kullanici-table"/>
+                </h:commandButton>
+                <h:commandButton action="#{kullaniciController.next()}" value="Next" styleClass="btn btn-outline-dark">
+                    <f:ajax execute = "@this" render = "kullanici-table"/>
+                </h:commandButton>
+
+            </div>
             <h:dataTable styleClass="table table-striped table-hover" value = "#{kullaniciController.list}" var = "k" border = "1">
                 <h:column>
                     <f:facet name ="header" >ID</f:facet>
